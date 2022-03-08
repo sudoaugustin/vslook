@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
-import { EyeIcon } from '@heroicons/react/solid';
-import ColorField from './ColorField';
-import { postMessage } from '../utils';
+import { EyeIcon, ChevronUpIcon } from '@heroicons/react/solid';
+import ColorField from '../ColorField';
+import { postMessage } from '../../utils';
 
-const Element = ({ title = '', styles = {}, preview }) => {
+const Element = ({ title = '', styles = {}, preview, shrink, onShrinkToggle }) => {
   const states = Object.keys(styles);
   const [state, setState] = useState(states[0]);
 
@@ -15,8 +15,14 @@ const Element = ({ title = '', styles = {}, preview }) => {
   return (
     <li className={`group ml-3 p-3 pl-0 ${styles[state] ? 'space-y-2 border-b last:border-0' : 'pb-0'}`}>
       <article className='flex items-center justify-between'>
-        <div className='inline-flex space-x-2'>
+        <div className='inline-flex items-center space-x-2'>
           <h1 className='font-medium text-gray-600 group-first:uppercase group-first:text-gray-800 '>{title}</h1>
+          {shrink !== undefined && (
+            <ChevronUpIcon
+              className={`w-5 cursor-pointer text-gray-300 duration-200 hover:text-gray-400 ${shrink && 'rotate-180'}`}
+              onClick={() => onShrinkToggle(!shrink)}
+            />
+          )}
           {preview && (
             <EyeIcon
               className='w-3.5 cursor-pointer text-gray-300 hover:text-gray-400'
@@ -31,7 +37,7 @@ const Element = ({ title = '', styles = {}, preview }) => {
               <ToggleGroup.Item
                 key={state}
                 value={state}
-                className='radix-on:text-orange-600 rounded px-1 text-gray-400 duration-300 hover:text-gray-600'
+                className='rounded px-1 text-gray-400 duration-300 hover:text-gray-600 radix-on:text-orange-500'
               >
                 {state}
               </ToggleGroup.Item>

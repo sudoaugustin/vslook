@@ -6,6 +6,7 @@ const components = [
         normal: [
           { label: 'Progress Bar', name: 'progressBar.background' },
           { label: 'Sash', name: 'sash.hoverBorder' },
+          { label: 'Icon', name: 'icon.foreground' },
           { label: 'Shadow', name: 'widget.shadow' },
         ],
         focus: [{ label: 'Border', name: 'focusBorder' }],
@@ -30,16 +31,22 @@ const components = [
     {
       title: 'Text',
       styles: {
-        normal: [
-          { label: 'Default', name: 'foreground' },
-          { label: 'Link', name: 'textLink.foreground' },
-          { label: 'Preformat', name: 'textPreformat.foreground' },
-          { label: 'Description', name: 'descriptionForeground' },
-          { label: 'Separator', name: 'textSeparator.foreground' },
-          { label: 'Error', name: 'errorForeground' },
-        ],
-        hover: [{ label: 'Link', name: 'textLink.activeForeground' }],
+        normal: [{ label: 'Foreground', name: 'foreground' }],
+        error: [{ label: 'Foreground', name: 'errorForeground' }],
         selection: [{ label: 'Background', name: 'selection.background' }],
+      },
+    },
+    {
+      title: 'Preformat',
+      styles: {
+        normal: [{ label: 'Foreground', name: 'textPreformat.foreground' }],
+      },
+    },
+    {
+      title: 'Link',
+      styles: {
+        normal: [{ label: 'Foreground', name: 'textLink.foreground' }],
+        active: [{ label: 'Foreground', name: 'textLink.activeForeground' }],
       },
     },
     {
@@ -51,16 +58,11 @@ const components = [
         ],
       },
     },
-    {
-      title: 'Code',
-      styles: {
-        normal: [{ label: 'Background', name: 'textCodeBlock.background' }],
-      },
-    },
   ],
   [
     {
       title: 'Button',
+      preview: 'BUTTONS',
     },
     {
       title: 'Primary',
@@ -68,7 +70,6 @@ const components = [
         normal: [
           { label: 'Background', name: 'button.background' },
           { label: 'Foreground', name: 'button.foreground' },
-          { label: 'Border', name: 'button.border' },
         ],
         hover: [{ label: 'Background', name: 'button.hoverBackground' }],
       },
@@ -86,10 +87,9 @@ const components = [
     {
       title: 'Icon',
       styles: {
-        normal: [{ label: 'Foreground', name: 'icon.foreground' }],
         hover: [
           { label: 'Background', name: 'toolbar.hoverBackground' },
-          { label: 'Border', name: 'toolbar.hoverOutline' },
+          { label: 'Outline', name: 'toolbar.hoverOutline' },
         ],
         active: [{ label: 'Background', name: 'toolbar.activeBackground' }],
       },
@@ -104,27 +104,6 @@ const components = [
           { label: 'Foreground', name: 'checkbox.foreground' },
           { label: 'Border', name: 'checkbox.border' },
         ],
-      },
-    },
-  ],
-  [
-    {
-      title: 'Select',
-    },
-    {
-      title: 'Trigger',
-      styles: {
-        normal: [
-          { label: 'Background', name: 'dropdown.background' },
-          { label: 'Foreground', name: 'dropdown.foreground' },
-          { label: 'Border', name: 'dropdown.border' },
-        ],
-      },
-    },
-    {
-      title: 'Content',
-      styles: {
-        normal: [{ label: 'Background', name: 'dropdown.listBackground' }],
       },
     },
   ],
@@ -174,6 +153,27 @@ const components = [
   ],
   [
     {
+      title: 'Dropdown',
+    },
+    {
+      title: 'Trigger',
+      styles: {
+        normal: [
+          { label: 'Background', name: 'dropdown.background' },
+          { label: 'Foreground', name: 'dropdown.foreground' },
+          { label: 'Border', name: 'dropdown.border' },
+        ],
+      },
+    },
+    {
+      title: 'Content',
+      styles: {
+        normal: [{ label: 'Background', name: 'dropdown.listBackground' }],
+      },
+    },
+  ],
+  [
+    {
       title: 'Badge',
       styles: {
         normal: [
@@ -185,7 +185,7 @@ const components = [
   ],
   [
     {
-      title: 'List & Tree',
+      title: 'List',
       styles: {
         normal: [{ label: 'Indent Stroke', name: 'tree.indentGuidesStroke' }],
       },
@@ -193,18 +193,11 @@ const components = [
     {
       title: 'Item',
       styles: {
-        normal: [
-          { label: 'Highlight', name: 'list.highlightForeground' },
-          { label: 'Invalid', name: 'list.invalidItemForeground' },
-          { label: 'Error', name: 'list.errorForeground' },
-          { label: 'Warning', name: 'list.warningForeground' },
-          { label: 'Deemphasize', name: 'list.deemphasizedForeground' },
-        ],
         hover: [
           { label: 'Background', name: 'list.hoverBackground' },
           { label: 'Foreground', name: 'list.hoverForeground' },
         ],
-        selected: [
+        active: [
           { label: 'Background', name: 'list.inactiveSelectionBackground' },
           { label: 'Foreground', name: 'list.inactiveSelectionForeground' },
           { label: 'Icon', name: 'list.inactiveSelectionIconForeground' },
@@ -214,6 +207,9 @@ const components = [
           { label: 'Foreground', name: 'list.focusForeground' },
           { label: 'Border', name: 'list.inactiveFocusOutline' },
         ],
+        obscure: [{ label: 'Foreground', name: 'list.deemphasizedForeground' }],
+        error: [{ label: 'Foreground', name: 'list.errorForeground' }],
+        warning: [{ label: 'Foreground', name: 'list.warningForeground' }],
         drop: [{ label: 'Background', name: 'list.dropBackground' }],
       },
     },
@@ -228,12 +224,14 @@ const components = [
       },
     },
     {
-      title: 'Filter Match',
+      title: 'Filter Highlight',
       styles: {
         normal: [
+          { label: 'Foreground', name: 'list.highlightForeground' },
           { label: 'Background', name: 'list.filterMatchBackground' },
           { label: 'Border', name: 'list.filterMatchBorder' },
         ],
+        focus: [{ label: 'Foreground', name: 'list.focusHighlightForeground' }],
       },
     },
   ],
@@ -246,27 +244,6 @@ const components = [
           { label: 'Foreground', name: 'keybindingLabel.foreground' },
           { label: 'Border', name: 'keybindingLabel.border' },
           { label: 'Border Bottom', name: 'keybindingLabel.bottomBorder' },
-        ],
-      },
-    },
-  ],
-  [
-    {
-      title: 'Git Decoration',
-      styles: {
-        normal: [
-          { label: 'Add', name: 'gitDecoration.addedResourceForeground' },
-          { label: 'Modify', name: 'gitDecoration.modifiedResourceForeground' },
-          { label: 'Delete', name: 'gitDecoration.deletedResourceForeground' },
-          { label: 'Rename', name: 'gitDecoration.renamedResourceForeground' },
-          { label: 'Untrack', name: 'gitDecoration.untrackedResourceForeground' },
-          { label: 'Ignore', name: 'gitDecoration.ignoredResourceForeground' },
-          { label: 'Conflict', name: 'gitDecoration.conflictingResourceForeground' },
-          { label: 'Submodule', name: 'gitDecoration.submoduleResourceForeground' },
-        ],
-        staged: [
-          { label: 'Modify', name: 'gitDecoration.stageModifiedResourceForeground' },
-          { label: 'Delete', name: 'gitDecoration.stageDeletedResourceForeground' },
         ],
       },
     },
@@ -323,26 +300,27 @@ const layouts = [
       styles: {
         normal: [
           { label: 'Background', name: 'quickInput.background' },
-          { label: 'Foreground', name: 'pickerGroup.foreground' },
+          { label: 'Foreground', name: 'quickInput.foreground' },
           { label: 'Seperator', name: 'pickerGroup.border' },
         ],
       },
-    },
-    {
-      title: 'List Item',
-      styles: {
-        normal: [{ label: 'Foreground', name: 'quickInput.foreground' }],
-        focus: [
-          { label: 'Background', name: 'quickInputList.focusBackground' },
-          { label: 'Foreground', name: 'quickInputList.focusForeground' },
-          { label: 'Icon', name: 'quickInputList.focusIconForeground' },
-        ],
-      },
+      preview: 'QUICK_PICKER',
     },
     {
       title: 'Title',
       styles: {
         normal: [{ label: 'Background', name: 'quickInputTitle.background' }],
+      },
+    },
+    {
+      title: 'List Item',
+      styles: {
+        normal: [{ label: 'Foreground', name: 'pickerGroup.foreground' }],
+        focus: [
+          { label: 'Background', name: 'quickInputList.focusBackground' },
+          { label: 'Foreground', name: 'quickInputList.focusForeground' },
+          { label: 'Icon', name: 'quickInputList.focusIconForeground' },
+        ],
       },
     },
   ],
@@ -785,10 +763,31 @@ const pages = [
   ],
 ];
 
-const symbols = [
+const others = [
   [
     {
-      title: '',
+      title: 'Git Decoration',
+      styles: {
+        normal: [
+          { label: 'Add', name: 'gitDecoration.addedResourceForeground' },
+          { label: 'Modify', name: 'gitDecoration.modifiedResourceForeground' },
+          { label: 'Delete', name: 'gitDecoration.deletedResourceForeground' },
+          { label: 'Rename', name: 'gitDecoration.renamedResourceForeground' },
+          { label: 'Untrack', name: 'gitDecoration.untrackedResourceForeground' },
+          { label: 'Ignore', name: 'gitDecoration.ignoredResourceForeground' },
+          { label: 'Conflict', name: 'gitDecoration.conflictingResourceForeground' },
+          { label: 'Submodule', name: 'gitDecoration.submoduleResourceForeground' },
+        ],
+        staged: [
+          { label: 'Modify', name: 'gitDecoration.stageModifiedResourceForeground' },
+          { label: 'Delete', name: 'gitDecoration.stageDeletedResourceForeground' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Symbols',
       styles: {
         normal: [
           { label: 'Array', name: 'symbolIcon.arrayForeground' },
@@ -855,4 +854,4 @@ const editor = [
   ],
 ];
 
-export default { components, layouts, pages, symbols };
+export default { components, layouts, pages, others };

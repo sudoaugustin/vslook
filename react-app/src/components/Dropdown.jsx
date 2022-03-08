@@ -11,12 +11,14 @@ export default ({ trigger, children, classes = {}, onOpenEffect }) => {
   return (
     <DropdownMenu.Root className={classes.root} open={open} onOpenChange={setOpen} modal={false}>
       <DropdownMenu.Trigger className={`!outline-none ${classes.trigger}`}>{trigger}</DropdownMenu.Trigger>
-      <DropdownMenu.Content
-        className={`block overflow-hidden rounded-md border border-gray-200 bg-white shadow ${classes.content}`}
-        sideOffset={6}
-      >
-        {open && children()}
-      </DropdownMenu.Content>
+      {open && (
+        <DropdownMenu.Content
+          className={`block overflow-hidden rounded-md border border-gray-200 bg-white shadow ${classes.content}`}
+          sideOffset={6}
+        >
+          {children()}
+        </DropdownMenu.Content>
+      )}
     </DropdownMenu.Root>
   );
 };

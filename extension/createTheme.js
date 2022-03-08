@@ -1,5 +1,8 @@
 function createTheme({ theme, name, value, type }) {
-  const newType = { [name]: value };
+  const newTheme = { [name]: value };
+  // const defaults = {
+  //   'button.border': '#000',
+  // };
   const additional = {
     // 'tab.inactiveBackground': 'tab.unfocusedInactiveBackground',
     // 'tab.inactiveForeground': 'tab.unfocusedInactiveForeground',
@@ -7,6 +10,7 @@ function createTheme({ theme, name, value, type }) {
     // 'tab.hoverForeground': 'tab.unfocusedHoverForeground',
     // 'tab.hoverBorder': 'tab.unfocusedHoverBorder',
     // 'editor.selectionBackground': 'editor.inactiveSelectionBackground',
+    'list.errorForeground': 'list.invalidItemForeground',
     'list.inactiveSelectionBackground': 'list.activeSelectionBackground',
     'list.inactiveSelectionForeground': 'list.activeSelectionForeground',
     'list.inactiveSelectionIconForeground': 'list.activeSelectionIconForeground',
@@ -20,7 +24,7 @@ function createTheme({ theme, name, value, type }) {
     // 'settings.textInputBorder': 'settings.numberInputBorder',
   };
   if (additional[name]) {
-    newType[additional[name]] = value;
+    newTheme[additional[name]] = value;
   }
   // switch (name) {
   //   case "tab.inactiveBackground":
@@ -55,7 +59,7 @@ function createTheme({ theme, name, value, type }) {
   //   break;
   //   */
   // }
-  return { ...theme, [type]: { ...theme[type], ...newType } };
+  return { ...theme, [type]: { ...theme[type], ...newTheme } };
 }
 
 module.exports = createTheme;

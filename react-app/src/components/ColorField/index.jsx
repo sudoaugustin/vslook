@@ -12,7 +12,8 @@ const ColorInput = ({ name, label }) => {
   useDebounce(
     () => {
       const Colord = colord(color);
-      if (!Colord.isEqual(window.$theme[name])) {
+      const currentValue = window.$theme[name];
+      if (!currentValue || !Colord.isEqual(currentValue)) {
         postMessage({ type: 'SET_COLOR', payload: { name, value: color } });
       }
     },
@@ -24,8 +25,8 @@ const ColorInput = ({ name, label }) => {
     <fieldset>
       <label className='mb-1 block text-xs font-medium text-gray-400'>{label}</label>
       <div className='flex h-6 items-center divide-x divide-gray-200 overflow-hidden rounded-md ring-1 ring-gray-200'>
-        <Picker value={color} onChange={setColor} />
-        <Swatch value={color} onChange={setColor} />
+        <Picker value={color || '#00000000'} onChange={setColor} />
+        <Swatch value={color || '#00000000'} onChange={setColor} />
       </div>
     </fieldset>
   );

@@ -1,6 +1,5 @@
 const path = require('path');
 const vscode = require('vscode');
-const palettes = require('../data/palettes');
 
 function createWebview({ root, palette }, onMessage) {
   const getRootUri = getUri(root);
@@ -28,15 +27,10 @@ function getHTML({ js, css, palette }) {
         </head>
         <body>
           <div id="root"></div>
-          <script> window.$colors=${getPalette(palette)};</script>
+          <script> window.$palette='${palette}';</script>
           <script src="${js}"></script>
         </body>
       </html>`;
-}
-
-function getPalette(name = '') {
-  const colors = Object.entries({ base: palettes.base, ...palettes[name] });
-  return JSON.stringify(colors.map(([name, indents]) => [name, Object.entries(indents)]));
 }
 
 function getUri(root) {

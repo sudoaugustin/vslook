@@ -6,5 +6,5 @@
     "checkJs": true /* Typecheck .js files. */,
     "lib": ["ES2020"]
   },
-  "exclude": ["node_modules", "src"]
+  "exclude": ["node_modules", "react-app"]
 }

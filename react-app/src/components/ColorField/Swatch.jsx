@@ -20,7 +20,7 @@ export default ({ value, onChange }) => {
     >
       {() => (
         <Tooltip.Provider delayDuration={500}>
-          <RadioGroup value={value} onValueChange={onChange} className='space-y-4'>
+          <RadioGroup value={value} onValueChange={onChange} className='space-y-4 scroll-smooth'>
             {window.$colors.map(([name, indents]) => (
               <section key={name} className='py-2'>
                 <p className='mb-2 ml-2 select-none text-xs font-medium capitalize text-gray-500'>{name}</p>
@@ -39,7 +39,7 @@ export default ({ value, onChange }) => {
                             className='flex h-full w-full items-center justify-center'
                           >
                             {isSelected && (
-                              <i ref={isSelected ? ref : null}>
+                              <i ref={ref}>
                                 <CheckIcon className='w-5 text-white mix-blend-difference' />
                               </i>
                             )}
