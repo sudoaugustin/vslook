@@ -14,7 +14,7 @@ export default ({ trigger, children, classes = {}, onOpenEffect }) => {
       {open && (
         <DropdownMenu.Content
           className={`block overflow-hidden rounded-md border border-gray-200 bg-white shadow ${classes.content}`}
-          sideOffset={6}
+          sideOffset={5}
         >
           {children()}
         </DropdownMenu.Content>

@@ -13,7 +13,8 @@ export default ({ value, onChange }) => {
     <Dropdown
       trigger={<ColorSwatchIcon className='w-4 fill-gray-100/75' />}
       classes={{
-        trigger: 'bg-white p-1.5 text-gray-400 hover:text-gray-600',
+        trigger:
+          'h-6 w-6 text-gray-400 hover:text-gray-600 inline-flex justify-center items-center rounded-r-md radix-peer',
         content: 'max-h-96 w-60 overflow-y-auto',
       }}
       onOpenEffect={() => ref?.current?.scrollIntoView()}
@@ -31,7 +32,7 @@ export default ({ value, onChange }) => {
                       <RadioItem
                         key={indent}
                         value={value}
-                        className='bg-transparent-pattern h-8 w-8 cursor-pointer overflow-hidden rounded-full !outline-none ring ring-transparent ring-offset-1 ring-offset-gray-200 duration-300 ease-in-out focus:ring-orange-200 focus:ring-offset-orange-500'
+                        className='bg-transparent-pattern h-8 w-8 cursor-pointer overflow-hidden rounded-full !outline-none ring ring-transparent ring-offset-1 ring-offset-gray-200 duration-300 ease-in-out focus:ring-orange-200 focus:ring-offset-orange-400'
                       >
                         <Tooltip.Root>
                           <Tooltip.Trigger

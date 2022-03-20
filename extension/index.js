@@ -11,7 +11,6 @@ function activate(context) {
     theme: path.join(context.extensionPath, 'themes', 'index.json'),
   };
   let theme = fs.read(paths.theme, true);
-
   const disposableOnInit = vscode.commands.registerCommand(`brush.init`, () => {
     const config = vscode.workspace.getConfiguration('brush');
 

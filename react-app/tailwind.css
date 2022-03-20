@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  @apply h-full min-w-[300px] bg-white text-[14px];
+  @apply h-full min-w-[25rem] bg-white text-[14px];
   scroll-behavior: smooth;
 }
 

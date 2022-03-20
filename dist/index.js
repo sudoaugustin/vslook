@@ -23777,7 +23777,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       className: `!outline-none ${classes.trigger}`
     }, trigger), open && /* @__PURE__ */ React.createElement(Content4, {
       className: `block overflow-hidden rounded-md border border-gray-200 bg-white shadow ${classes.content}`,
-      sideOffset: 6
+      sideOffset: 5
     }, children()));
   };
 
@@ -23806,7 +23806,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         style: { background: value },
         className: "block h-full w-full"
       }),
-      classes: { trigger: "bg-transparent-pattern h-full flex-1", content: "w-60 p-2" }
+      classes: {
+        trigger: "bg-transparent-pattern h-6 flex-1 rounded-l-md overflow-hidden radix-peer",
+        content: "w-60 p-2"
+      }
     }, () => /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(me, {
       color: colors.rgb,
       onChange: handleChange
@@ -24007,7 +24010,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         className: "w-4 fill-gray-100/75"
       }),
       classes: {
-        trigger: "bg-white p-1.5 text-gray-400 hover:text-gray-600",
+        trigger: "h-6 w-6 text-gray-400 hover:text-gray-600 inline-flex justify-center items-center rounded-r-md radix-peer",
         content: "max-h-96 w-60 overflow-y-auto"
       },
       onOpenEffect: () => ref?.current?.scrollIntoView()
@@ -24029,7 +24032,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       return /* @__PURE__ */ React.createElement(RadioItem2, {
         key: indent,
         value: value2,
-        className: "bg-transparent-pattern h-8 w-8 cursor-pointer overflow-hidden rounded-full !outline-none ring ring-transparent ring-offset-1 ring-offset-gray-200 duration-300 ease-in-out focus:ring-orange-200 focus:ring-offset-orange-500"
+        className: "bg-transparent-pattern h-8 w-8 cursor-pointer overflow-hidden rounded-full !outline-none ring ring-transparent ring-offset-1 ring-offset-gray-200 duration-300 ease-in-out focus:ring-orange-200 focus:ring-offset-orange-400"
       }, /* @__PURE__ */ React.createElement(Root8, null, /* @__PURE__ */ React.createElement(Trigger3, {
         style: { background: value2 },
         className: "flex h-full w-full items-center justify-center"
@@ -24071,21 +24074,23 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     const [color, setColor] = (0, import_react11.useState)(window.$theme[name]);
     useDebounce(() => {
       const Colord = w2(color);
-      const currentValue = window.$theme[name];
-      if (!currentValue || !Colord.isEqual(currentValue)) {
+      const windowValue = window.$theme[name];
+      if (color && (!windowValue || !Colord.isEqual(windowValue))) {
         postMessage({ type: "SET_COLOR", payload: { name, value: color } });
       }
     }, 200, [color]);
     return /* @__PURE__ */ React.createElement("fieldset", null, /* @__PURE__ */ React.createElement("label", {
       className: "mb-1 block text-xs font-medium text-gray-400"
     }, label), /* @__PURE__ */ React.createElement("div", {
-      className: "flex h-6 items-center divide-x divide-gray-200 overflow-hidden rounded-md ring-1 ring-gray-200"
+      className: "relative flex divide-x rounded-md shadow-sm"
     }, /* @__PURE__ */ React.createElement(Picker_default, {
       value: color || "#00000000",
       onChange: setColor
     }), /* @__PURE__ */ React.createElement(Swatch_default, {
       value: color || "#00000000",
       onChange: setColor
+    }), /* @__PURE__ */ React.createElement("span", {
+      className: "absolute inset-0 -z-10 rounded-md ring ring-transparent ring-offset-1 ring-offset-gray-200 duration-200 radix-peer-open:ring-orange-200 radix-peer-open:ring-offset-orange-400"
     })));
   };
   var ColorField_default = ColorInput;
@@ -24096,14 +24101,14 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     const [state, setState] = (0, import_react12.useState)(states[0]);
     const handleStateChange = (newState) => setState(newState || states[0]);
     return /* @__PURE__ */ React.createElement("li", {
-      className: `group ml-3 p-3 pl-0 ${styles[state] ? "space-y-2 border-b last:border-0" : "pb-0"}`
+      className: `group ml-3 py-2 pr-2 ${styles[state] ? "space-y-1 border-b last:border-0" : "pb-0"}`
     }, /* @__PURE__ */ React.createElement("article", {
       className: "flex items-center justify-between"
     }, /* @__PURE__ */ React.createElement("div", {
       className: "inline-flex items-center space-x-2"
     }, /* @__PURE__ */ React.createElement("h1", {
       className: "font-medium text-gray-600 group-first:uppercase group-first:text-gray-800 "
-    }, title), shrink !== void 0 && /* @__PURE__ */ React.createElement(ChevronUpIcon_default, {
+    }, title), !!title && shrink !== void 0 && /* @__PURE__ */ React.createElement(ChevronUpIcon_default, {
       className: `w-5 cursor-pointer text-gray-300 duration-200 hover:text-gray-400 ${shrink && "rotate-180"}`,
       onClick: () => onShrinkToggle(!shrink)
     }), preview && /* @__PURE__ */ React.createElement(EyeIcon_default, {
@@ -24118,7 +24123,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       value: state2,
       className: "rounded px-1 text-gray-400 duration-300 hover:text-gray-600 radix-on:text-orange-500"
     }, state2)))), /* @__PURE__ */ React.createElement("div", {
-      className: "grid grid-cols-3 gap-3 sm:grid-cols-4"
+      className: "grid grid-cols-4 gap-x-2 gap-y-4"
     }, styles[state]?.map((props) => /* @__PURE__ */ React.createElement(ColorField_default, {
       key: props.name,
       ...props
@@ -24134,7 +24139,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       window.$shrink[rootName] = shrink;
     }, [shrink]);
     return /* @__PURE__ */ React.createElement("ul", {
-      className: `overflow-hidden duration-200 ${shrink ? "max-h-[2.675rem]" : "max-h-full"}`
+      className: `overflow-hidden py-1 duration-200 ${shrink ? "max-h-[2.475rem]" : "max-h-full"}`
     }, elements.map((props, i8) => /* @__PURE__ */ React.createElement(Element_default, {
       key: i8,
       ...props,
@@ -24209,17 +24214,15 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     [
       {
         title: "Button",
-        preview: "BUTTONS"
-      },
-      {
-        title: "Primary",
         styles: {
           normal: [
             { label: "Background", name: "button.background" },
-            { label: "Foreground", name: "button.foreground" }
+            { label: "Foreground", name: "button.foreground" },
+            { label: "Border", name: "button.border" }
           ],
           hover: [{ label: "Background", name: "button.hoverBackground" }]
-        }
+        },
+        preview: "BUTTONS"
       },
       {
         title: "Secondary",
@@ -24230,9 +24233,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           ],
           hover: [{ label: "Background", name: "button.secondaryHoverBackground" }]
         }
-      },
+      }
+    ],
+    [
       {
-        title: "Icon",
+        title: "Toolbar",
         styles: {
           hover: [
             { label: "Background", name: "toolbar.hoverBackground" },
@@ -24321,6 +24326,30 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     ],
     [
       {
+        title: "Toast",
+        styles: {
+          normal: [
+            { label: "Background", name: "notifications.background" },
+            { label: "Foreground", name: "notifications.foreground" },
+            { label: "Link", name: "notificationLink.foreground" },
+            { label: "Border", name: "notificationToast.border" }
+          ]
+        },
+        preview: "TOAST"
+      },
+      {
+        title: "Icons",
+        styles: {
+          normal: [
+            { label: "Info", name: "notificationsInfoIcon.foreground" },
+            { label: "Warning", name: "notificationsWarningIcon.foreground" },
+            { label: "Error", name: "notificationsErrorIcon.foreground" }
+          ]
+        }
+      }
+    ],
+    [
+      {
         title: "Badge",
         styles: {
           normal: [
@@ -24334,12 +24363,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       {
         title: "List",
         styles: {
-          normal: [{ label: "Indent Stroke", name: "tree.indentGuidesStroke" }]
+          normal: [{ label: "Indent", name: "tree.indentGuidesStroke" }]
         }
       },
       {
         title: "Item",
         styles: {
+          normal: [{ label: "Highlight", name: "list.highlightForeground" }],
           hover: [
             { label: "Background", name: "list.hoverBackground" },
             { label: "Foreground", name: "list.hoverForeground" }
@@ -24352,11 +24382,12 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           focus: [
             { label: "Background", name: "list.inactiveFocusBackground" },
             { label: "Foreground", name: "list.focusForeground" },
-            { label: "Border", name: "list.inactiveFocusOutline" }
+            { label: "Border", name: "list.inactiveFocusOutline" },
+            { label: "Highlight", name: "list.focusHighlightForeground" }
           ],
           obscure: [{ label: "Foreground", name: "list.deemphasizedForeground" }],
-          error: [{ label: "Foreground", name: "list.errorForeground" }],
           warning: [{ label: "Foreground", name: "list.warningForeground" }],
+          error: [{ label: "Foreground", name: "list.errorForeground" }],
           drop: [{ label: "Background", name: "list.dropBackground" }]
         }
       },
@@ -24371,14 +24402,12 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         }
       },
       {
-        title: "Filter Highlight",
+        title: "Filter Match",
         styles: {
           normal: [
-            { label: "Foreground", name: "list.highlightForeground" },
             { label: "Background", name: "list.filterMatchBackground" },
             { label: "Border", name: "list.filterMatchBorder" }
-          ],
-          focus: [{ label: "Foreground", name: "list.focusHighlightForeground" }]
+          ]
         }
       }
     ],
@@ -24442,7 +24471,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     ],
     [
       {
-        title: "Quick Picker",
+        title: "Quick Pick",
         styles: {
           normal: [
             { label: "Background", name: "quickInput.background" },
@@ -24450,7 +24479,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             { label: "Seperator", name: "pickerGroup.border" }
           ]
         },
-        preview: "QUICK_PICKER"
+        preview: "QUICK_PICK"
       },
       {
         title: "Title",
@@ -24459,9 +24488,14 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         }
       },
       {
+        title: "Label",
+        styles: {
+          normal: [{ label: "Foreground", name: "pickerGroup.foreground" }]
+        }
+      },
+      {
         title: "List Item",
         styles: {
-          normal: [{ label: "Foreground", name: "pickerGroup.foreground" }],
           focus: [
             { label: "Background", name: "quickInputList.focusBackground" },
             { label: "Foreground", name: "quickInputList.focusForeground" },
@@ -24522,17 +24556,12 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         }
       },
       {
-        title: "Sections",
-        styles: {
-          normal: [{ label: "Separator", name: "sideBarSectionHeader.border" }]
-        }
-      },
-      {
         title: "Section Header",
         styles: {
           normal: [
             { label: "Background", name: "sideBarSectionHeader.background" },
-            { label: "Foreground", name: "sideBarSectionHeader.foreground" }
+            { label: "Foreground", name: "sideBarSectionHeader.foreground" },
+            { label: "Separator", name: "sideBarSectionHeader.border" }
           ]
         }
       }
@@ -24566,38 +24595,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             { label: "Background", name: "statusBarItem.remoteBackground" },
             { label: "Foreground", name: "statusBarItem.remoteForeground" }
           ],
-          error: [
-            { label: "Background", name: "statusBarItem.errorBackground" },
-            { label: "Foreground", name: "statusBarItem.errorForeground" }
-          ],
           warning: [
             { label: "Background", name: "statusBarItem.warningBackground" },
             { label: "Foreground", name: "statusBarItem.warningForeground" }
-          ]
-        }
-      }
-    ],
-    [
-      {
-        title: "Extension"
-      },
-      {
-        title: "Button",
-        styles: {
-          normal: [
-            { label: "Background", name: "extensionButton.prominentBackground" },
-            { label: "Foreground", name: "extensionButton.prominentForeground" }
           ],
-          hover: [{ label: "Background", name: "extensionButton.prominentHoverBackground" }]
-        }
-      },
-      {
-        title: "Icons",
-        styles: {
-          normal: [
-            { label: "Star", name: "extensionIcon.starForeground" },
-            { label: "Verified", name: "extensionIcon.verifiedForeground" },
-            { label: "Pre-release", name: "extensionIcon.preReleaseForeground" }
+          error: [
+            { label: "Background", name: "statusBarItem.errorBackground" },
+            { label: "Foreground", name: "statusBarItem.errorForeground" }
           ]
         }
       }
@@ -24637,25 +24641,37 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         }
       },
       {
-        title: "Terminal ANSI",
+        title: "Problem Icons",
         styles: {
           normal: [
-            { label: "Black", name: "terminal.ansiBlack" },
-            { label: "Blue", name: "terminal.ansiBlue" },
-            { label: "Cyan", name: "terminal.ansiCyan" },
-            { label: "Green", name: "terminal.ansiGreen" },
-            { label: "Magenta", name: "terminal.ansiMagenta" },
-            { label: "Red", name: "terminal.ansiRed" },
-            { label: "White", name: "terminal.ansiWhite" },
-            { label: "Yellow", name: "terminal.ansiYellow" },
-            { label: "Bright Black", name: "terminal.ansiBrightBlack" },
-            { label: "Bright Blue", name: "terminal.ansiBrightBlue" },
-            { label: "Bright Cyan", name: "terminal.ansiBrightCyan" },
-            { label: "Bright Green", name: "terminal.ansiBrightGreen" },
-            { label: "Bright Magenta", name: "terminal.ansiBrightMagenta" },
-            { label: "Bright Red", name: "terminal.ansiBrightRed" },
-            { label: "Bright White", name: "terminal.ansiBrightWhite" },
-            { label: "Bright Yellow", name: "terminal.ansiBrightYellow" }
+            { label: "Info", name: "problemsInfoIcon.foreground" },
+            { label: "Warning", name: "problemsWarningIcon.foreground" },
+            { label: "Error", name: "problemsErrorIcon.foreground" }
+          ]
+        }
+      }
+    ],
+    [
+      {
+        title: "Extension"
+      },
+      {
+        title: "Button",
+        styles: {
+          normal: [
+            { label: "Background", name: "extensionButton.prominentBackground" },
+            { label: "Foreground", name: "extensionButton.prominentForeground" }
+          ],
+          hover: [{ label: "Background", name: "extensionButton.prominentHoverBackground" }]
+        }
+      },
+      {
+        title: "Icons",
+        styles: {
+          normal: [
+            { label: "Star", name: "extensionIcon.starForeground" },
+            { label: "Verified", name: "extensionIcon.verifiedForeground" },
+            { label: "Pre-release", name: "extensionIcon.preReleaseForeground" }
           ]
         }
       }
@@ -24671,61 +24687,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             { label: "Separator", name: "notifications.border" }
           ]
         }
-      },
-      {
-        title: "Item",
-        styles: {
-          normal: [
-            { label: "Background", name: "notifications.background" },
-            { label: "Foreground", name: "notifications.foreground" },
-            { label: "Link", name: "notificationLink.foreground" },
-            { label: "Border", name: "notificationToast.border" }
-          ]
-        }
-      },
-      {
-        title: "Icons",
-        styles: {
-          normal: [
-            { label: "Info", name: "notificationsInfoIcon.foreground" },
-            { label: "Warning", name: "notificationsWarningIcon.foreground" },
-            { label: "Error", name: "notificationsErrorIcon.foreground" }
-          ]
-        }
       }
-    ],
+    ]
+  ];
+  var editors = [
     [
       {
-        title: "Minimap",
-        styles: {
-          normal: [{ label: "Background", name: "minimap.background" }]
-        }
-      },
-      {
-        title: "Highlights",
-        styles: {
-          normal: [
-            { label: "Find Match", name: "minimap.findMatchHighlight" },
-            { label: "Selection", name: "minimap.selectionHighlight" },
-            { label: "Occurrence", name: "minimap.selectionOccurrenceHighlight" },
-            { label: "Unicode", name: "minimap.unicodeHighlight" },
-            { label: "Error", name: "minimap.errorHighlight" },
-            { label: "Warning", name: "minimap.warningHighlight" }
-          ]
-        }
-      },
-      {
-        title: "Slider",
-        styles: {
-          normal: [{ label: "Background", name: "minimapSlider.background" }],
-          hover: [{ label: "Background", name: "minimapSlider.hoverBackground" }],
-          active: [{ label: "Background", name: "minimapSlider.activeBackground" }]
-        }
-      }
-    ],
-    [
-      {
-        title: "Editor",
+        title: "Root",
         styles: {
           normal: [
             { label: "Background", name: "editor.background" },
@@ -24735,9 +24703,19 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           drop: [{ label: "Background", name: "editorGroup.dropBackground" }],
           empty: [{ label: "Background", name: "editorGroup.emptyBackground" }]
         }
-      },
+      }
+    ],
+    [
       {
-        title: "Header",
+        title: "Pane",
+        styles: {
+          normal: [{ label: "Background", name: "editorPane.background" }]
+        }
+      }
+    ],
+    [
+      {
+        title: "Tabs",
         styles: {
           normal: [
             { label: "Background", name: "editorGroupHeader.tabsBackground" },
@@ -24747,7 +24725,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         }
       },
       {
-        title: "Tab",
+        title: "Item",
         styles: {
           normal: [
             { label: "Background", name: "tab.inactiveBackground" },
@@ -24765,15 +24743,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             { label: "Border Top", name: "tab.activeBorderTop" }
           ]
         }
-      },
+      }
+    ],
+    [
       {
-        title: "Body",
+        title: "Editor",
         styles: {
-          normal: [
-            { label: "Line No", name: "editorLineNumber.foreground" },
-            { label: "Cursor", name: "editorCursor.foreground" }
-          ],
-          active: [{ label: "Line No", name: "editorLineNumber.activeForeground" }],
+          normal: [{ label: "Whitespace", name: "editorWhitespace.foreground" }],
           selection: [
             { label: "Background", name: "editor.selectionBackground" },
             { label: "Foreground", name: "editor.selectionForeground" }
@@ -24781,8 +24757,45 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         }
       },
       {
+        title: "Indent",
+        styles: {
+          normal: [{ label: "Background", name: "editorIndentGuide.background" }],
+          active: [{ label: "Background", name: "editorIndentGuide.activeBackground" }]
+        }
+      },
+      {
+        title: "Line",
+        styles: {
+          active: [
+            { label: "Background", name: "editor.lineHighlightBackground" },
+            { label: "Border", name: "editor.lineHighlightBorder" }
+          ]
+        }
+      },
+      {
+        title: "Light Bulb",
+        styles: {
+          normal: [{ label: "Foreground", name: "editorLightBulb.foreground" }],
+          "auto-fix": [{ label: "Foreground", name: "editorLightBulbAutoFix.foreground" }]
+        }
+      },
+      {
+        title: "Cursor",
+        styles: {
+          normal: [
+            { label: "Background", name: "editorCursor.foreground" },
+            { label: "Foreground", name: "editorCursor.background" }
+          ]
+        }
+      },
+      {
         title: "Highlight",
         styles: {
+          selection: [
+            { label: "Background", name: "editor.selectionHighlightBackground" },
+            { label: "Border", name: "editor.selectionHighlightBorder" }
+          ],
+          hover: [{ label: "Background", name: "editor.hoverHighlightBackground" }],
           word: [
             { label: "Background", name: "editor.wordHighlightBackground" },
             { label: "Border", name: "editor.wordHighlightBorder" }
@@ -24790,10 +24803,6 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           strong: [
             { label: "Background", name: "editor.wordHighlightStrongBackground" },
             { label: "Border", name: "editor.wordHighlightStrongBorder" }
-          ],
-          selection: [
-            { label: "Background", name: "editor.selectionHighlightBackground" },
-            { label: "Border", name: "editor.selectionHighlightBorder" }
           ]
         }
       },
@@ -24807,6 +24816,173 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           active: [
             { label: "Background", name: "editor.findMatchBackground" },
             { label: "Border", name: "editor.findMatchBorder" }
+          ]
+        }
+      }
+    ],
+    [
+      {
+        title: "Bracket Pair",
+        styles: {
+          active: [
+            { label: "Background", name: "editorBracketMatch.background" },
+            { label: "Border", name: "editorBracketMatch.border" }
+          ]
+        }
+      },
+      {
+        title: "Colorizer",
+        styles: {
+          1: [{ label: "Foreground", name: "editorBracketHighlight.foreground1" }],
+          2: [{ label: "Foreground", name: "editorBracketHighlight.foreground2" }],
+          3: [{ label: "Foreground", name: "editorBracketHighlight.foreground3" }],
+          4: [{ label: "Foreground", name: "editorBracketHighlight.foreground4" }],
+          5: [{ label: "Foreground", name: "editorBracketHighlight.foreground5" }],
+          6: [{ label: "Foreground", name: "editorBracketHighlight.foreground6" }]
+        }
+      }
+    ],
+    [
+      {
+        title: "Linter",
+        styles: {
+          info: [
+            { label: "Background", name: "editorInfo.background" },
+            { label: "Border", name: "editorInfo.border" },
+            { label: "Wavy", name: "editorInfo.foreground" }
+          ],
+          warning: [
+            { label: "Background", name: "editorWarning.background" },
+            { label: "Border", name: "editorWarning.border" },
+            { label: "Wavy", name: "editorWarning.foreground" }
+          ],
+          error: [
+            { label: "Background", name: "editorError.background" },
+            { label: "Border", name: "editorError.border" },
+            { label: "Wavy", name: "editorError.foreground" }
+          ]
+        }
+      },
+      {
+        title: "Unused Code",
+        styles: { unused: [{ label: "Border", name: "editorUnnecessaryCode.border" }] }
+      },
+      {
+        title: "Hint",
+        styles: {
+          normal: [
+            { label: "Foreground", name: "editorHint.foreground" },
+            { label: "Border", name: "editorHint.border" }
+          ]
+        }
+      }
+    ],
+    [
+      {
+        title: "Minimap",
+        styles: {
+          normal: [{ label: "Background", name: "minimap.background" }]
+        }
+      },
+      {
+        title: "Slider",
+        styles: {
+          normal: [{ label: "Background", name: "minimapSlider.background" }],
+          hover: [{ label: "Background", name: "minimapSlider.hoverBackground" }],
+          active: [{ label: "Background", name: "minimapSlider.activeBackground" }]
+        }
+      },
+      {
+        title: "Highlights",
+        styles: {
+          normal: [
+            { label: "Find Match", name: "minimap.findMatchHighlight" },
+            { label: "Selection", name: "minimap.selectionHighlight" },
+            { label: "Occurrence", name: "minimap.selectionOccurrenceHighlight" },
+            { label: "Unicode", name: "minimap.unicodeHighlight" },
+            { label: "Error", name: "minimap.errorHighlight" },
+            { label: "Warning", name: "minimap.warningHighlight" }
+          ]
+        }
+      }
+    ],
+    [
+      {
+        title: "Gutter",
+        styles: {
+          normal: [{ label: "Background", name: "editorGutter.background" }]
+        }
+      },
+      {
+        title: "Line No",
+        styles: {
+          normal: [{ label: "Foreground", name: "editorLineNumber.foreground" }],
+          active: [{ label: "Foreground", name: "editorLineNumber.activeForeground" }]
+        }
+      },
+      {
+        title: "Highlights",
+        styles: {
+          normal: [
+            { label: "Modify", name: "editorGutter.modifiedBackground" },
+            { label: "Add", name: "editorGutter.addedBackground" },
+            { label: "Delete", name: "editorGutter.deletedBackground" },
+            { label: "Comment", name: "editorGutter.commentRangeForeground" },
+            { label: "Fold Control", name: "editorGutter.foldingControlForeground" }
+          ]
+        }
+      }
+    ],
+    [
+      {
+        title: "Overview",
+        styles: {
+          normal: [
+            { label: "Background", name: "editorOverviewRuler.background" },
+            { label: "Border", name: "editorOverviewRuler.border" }
+          ]
+        }
+      },
+      {
+        title: "Highlights",
+        styles: {
+          normal: [
+            { label: "Find Match", name: "editorOverviewRuler.findMatchForeground" },
+            { label: "Range", name: "editorOverviewRuler.rangeHighlightForeground" },
+            { label: "Selection", name: "editorOverviewRuler.selectionHighlightForeground" },
+            { label: "Word", name: "editorOverviewRuler.wordHighlightForeground" },
+            { label: "Strong", name: "editorOverviewRuler.wordHighlightStrongForeground" },
+            { label: "Modify", name: "editorOverviewRuler.modifiedForeground" },
+            { label: "Add", name: "editorOverviewRuler.addedForeground" },
+            { label: "Delete", name: "editorOverviewRuler.deletedForeground" },
+            { label: "Info", name: "editorOverviewRuler.infoForeground" },
+            { label: "Warning", name: "editorOverviewRuler.warningForeground" },
+            { label: "Error", name: "editorOverviewRuler.errorForeground" },
+            { label: "Bracket", name: "editorOverviewRuler.bracketMatchForeground" }
+          ]
+        }
+      }
+    ],
+    [
+      {
+        title: "Widget",
+        styles: {
+          normal: [
+            { label: "Background", name: "editorWidget.background" },
+            { label: "Foreground", name: "editorWidget.foreground" },
+            { label: "Border", name: "editorWidget.border" }
+          ]
+        }
+      }
+    ],
+    [
+      {
+        title: "Suggestion Widget",
+        styles: {
+          normal: [
+            { label: "Background", name: "editorHoverWidget.background" },
+            { label: "Foreground", name: "editorHoverWidget.foreground" },
+            { label: "Border", name: "editorHoverWidget.border" }
           ]
         }
       }
@@ -24905,6 +25081,26 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           hover: [{ label: "Background", name: "welcomePage.tileHoverBackground" }]
         }
       }
+    ],
+    [
+      {
+        title: "Search Editor"
+      },
+      {
+        title: "Find Match",
+        styles: {
+          normal: [
+            { label: "Background", name: "searchEditor.findMatchBackground" },
+            { label: "Border", name: "searchEditor.findMatchBorder" }
+          ]
+        }
+      },
+      {
+        title: "Input",
+        styles: {
+          normal: [{ label: "Border", name: "searchEditor.textInputBorder" }]
+        }
+      }
     ]
   ];
   var others = [
@@ -24925,6 +25121,33 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           staged: [
             { label: "Modify", name: "gitDecoration.stageModifiedResourceForeground" },
             { label: "Delete", name: "gitDecoration.stageDeletedResourceForeground" }
+          ]
+        }
+      }
+    ],
+    [
+      {
+        title: "Terminal ANSI",
+        styles: {
+          normal: [
+            { label: "Black", name: "terminal.ansiBlack" },
+            { label: "Blue", name: "terminal.ansiBlue" },
+            { label: "Cyan", name: "terminal.ansiCyan" },
+            { label: "Green", name: "terminal.ansiGreen" },
+            { label: "Magenta", name: "terminal.ansiMagenta" },
+            { label: "Red", name: "terminal.ansiRed" },
+            { label: "White", name: "terminal.ansiWhite" },
+            { label: "Yellow", name: "terminal.ansiYellow" }
+          ],
+          bright: [
+            { label: "Black", name: "terminal.ansiBrightBlack" },
+            { label: "Blue", name: "terminal.ansiBrightBlue" },
+            { label: "Cyan", name: "terminal.ansiBrightCyan" },
+            { label: "Green", name: "terminal.ansiBrightGreen" },
+            { label: "Magenta", name: "terminal.ansiBrightMagenta" },
+            { label: "Red", name: "terminal.ansiBrightRed" },
+            { label: "White", name: "terminal.ansiBrightWhite" },
+            { label: "Yellow", name: "terminal.ansiBrightYellow" }
           ]
         }
       }
@@ -24964,15 +25187,64 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             { label: "String", name: "symbolIcon.stringForeground" },
             { label: "Struct", name: "symbolIcon.structForeground" },
             { label: "Text", name: "symbolIcon.textForeground" },
-            { label: "Type parameter", name: "symbolIcon.typeParameterForeground" },
+            { label: "Parameter", name: "symbolIcon.typeParameterForeground" },
             { label: "Unit", name: "symbolIcon.unitForeground" },
             { label: "Variable", name: "symbolIcon.variableForeground" }
           ]
         }
       }
+    ],
+    [
+      {
+        title: "Diff Editor",
+        styles: {
+          normal: [
+            { label: "Separator", name: "diffEditor.border" },
+            { label: "Stripe", name: "diffEditor.diagonalFill" }
+          ]
+        }
+      },
+      {
+        title: "Text Highlight",
+        styles: {
+          add: [
+            { label: "Background", name: "diffEditor.insertedTextBackground" },
+            { label: "Border", name: "diffEditor.insertedTextBorder" }
+          ],
+          delete: [
+            { label: "Background", name: "diffEditor.removedTextBackground" },
+            { label: "Border", name: "diffEditor.removedTextBorder" }
+          ]
+        }
+      },
+      {
+        title: "Line Highlight",
+        styles: {
+          add: [{ label: "Background", name: "diffEditor.insertedLineBackground" }],
+          delete: [{ label: "Background", name: "diffEditor.removedLineBackground" }]
+        }
+      },
+      {
+        title: "Gutter Highlights",
+        styles: {
+          normal: [
+            { label: "Add", name: "diffEditorGutter.insertedLineBackground" },
+            { label: "Delete", name: "diffEditorGutter.removedLineBackground" }
+          ]
+        }
+      },
+      {
+        title: "Overview Highlights",
+        styles: {
+          normal: [
+            { label: "Add", name: "diffEditorOverview.insertedLineBackground" },
+            { label: "Delete", name: "diffEditorOverview.removedLineBackground" }
+          ]
+        }
+      }
     ]
   ];
-  var elements_default = { components, layouts, pages, others };
+  var elements_default = { components, layouts, editors, pages, others };
 
   // src/layouts/Tool.jsx
   var Tool_default = () => {
@@ -24984,7 +25256,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }, tabs.map(([name]) => /* @__PURE__ */ React.createElement(Trigger, {
       key: name,
       value: name,
-      className: "rounded-full px-2 py-1 font-medium capitalize text-gray-400 duration-300 hover:text-gray-600 radix-active:bg-orange-50 radix-active:text-orange-500"
+      className: "rounded-full px-2 py-1 font-medium capitalize text-gray-400 !outline-none duration-300 hover:text-gray-600 radix-active:bg-orange-50 radix-active:text-orange-500"
     }, name))), tabs.map(([name, groups]) => /* @__PURE__ */ React.createElement(Content, {
       key: name,
       value: name,

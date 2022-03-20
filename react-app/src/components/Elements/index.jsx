@@ -10,7 +10,7 @@ export default ({ elements }) => {
   }, [shrink]);
 
   return (
-    <ul className={`overflow-hidden duration-200 ${shrink ? 'max-h-[2.675rem]' : 'max-h-full'}`}>
+    <ul className={`overflow-hidden py-1 duration-200 ${shrink ? 'max-h-[2.475rem]' : 'max-h-full'}`}>
       {elements.map((props, i) => (
         <Element key={i} {...props} shrink={i === 0 ? shrink : undefined} onShrinkToggle={setShrink} />
       ))}
