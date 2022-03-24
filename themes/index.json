@@ -1,7 +1,7 @@
 {
 	"type": "dark",
 	"colors": {
-		"progressBar.background": "#0ea5e9",
+		"progressBar.background": "#0284c7",
 		"sash.hoverBorder": "#334155",
 		"widget.shadow": "#1e293b40",
 		"textBlockQuote.background": "#0c4a6e",

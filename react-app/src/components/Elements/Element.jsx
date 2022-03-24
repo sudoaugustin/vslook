@@ -42,7 +42,7 @@ const Element = ({ title = '', styles = {}, preview, shrink, onShrinkToggle }) =
               <ToggleGroup.Item
                 key={state}
                 value={state}
-                className='rounded px-1 text-gray-400 duration-300 hover:text-gray-600 radix-on:text-orange-500'
+                className='rounded px-1 text-gray-400 !outline-none duration-300 hover:text-gray-600 focus:text-gray-600 radix-on:text-orange-500'
               >
                 {state}
               </ToggleGroup.Item>

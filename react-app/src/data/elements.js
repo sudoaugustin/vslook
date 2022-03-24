@@ -598,6 +598,28 @@ const editors = [
   ],
   [
     {
+      title: 'Breadcrumb',
+      styles: {
+        normal: [{ label: 'Background', name: 'breadcrumb.background' }],
+      },
+    },
+    {
+      title: 'Item',
+      styles: {
+        normal: [{ label: 'Foreground', name: 'breadcrumb.foreground' }],
+        hover: [{ label: 'Foreground', name: 'breadcrumb.focusForeground' }],
+        active: [{ label: 'Foreground', name: 'breadcrumb.activeSelectionForeground' }],
+      },
+    },
+    {
+      title: 'Dropdown',
+      styles: {
+        normal: [{ label: 'Background', name: 'breadcrumbPicker.background' }],
+      },
+    },
+  ],
+  [
+    {
       title: 'Editor',
       styles: {
         normal: [{ label: 'Whitespace', name: 'editorWhitespace.foreground' }],
@@ -846,39 +868,65 @@ const editors = [
   ],
   [
     {
-      title: 'Suggestion Widget',
+      title: 'Suggestions',
+      styles: {
+        normal: [
+          { label: 'Background', name: 'editorSuggestWidget.background' },
+          { label: 'Foreground', name: 'editorSuggestWidget.foreground' },
+          { label: 'Border', name: 'editorSuggestWidget.border' },
+        ],
+      },
+    },
+    {
+      title: 'Item',
+      styles: {
+        normal: [{ label: 'Highlight', name: 'editorSuggestWidget.highlightForeground' }],
+        active: [
+          { label: 'Background', name: 'editorSuggestWidget.selectedBackground' },
+          { label: 'Foreground', name: 'editorSuggestWidget.selectedForeground' },
+          { label: 'Icon', name: 'editorSuggestWidget.selectedIconForeground' },
+        ],
+        focus: [{ label: 'Highlight', name: 'editorSuggestWidget.focusHighlightForeground' }],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Hover Card',
       styles: {
         normal: [
           { label: 'Background', name: 'editorHoverWidget.background' },
           { label: 'Foreground', name: 'editorHoverWidget.foreground' },
           { label: 'Border', name: 'editorHoverWidget.border' },
+          { label: 'Highlight', name: 'editorHoverWidget.highlightForeground' },
         ],
       },
     },
   ],
-
-  // [
-  //   {
-  //     title: 'Breadcrumb',
-  //     styles: {
-  //       normal: [{ label: 'Background', name: 'breadcrumb.background' }],
-  //     },
-  //   },
-  //   {
-  //     title: 'Item',
-  //     styles: {
-  //       normal: [{ label: 'Foreground', name: 'breadcrumb.foreground' }],
-  //       hover: [{ label: 'Foreground', name: 'breadcrumb.focusForeground' }],
-  //       active: [{ label: 'Foreground', name: 'breadcrumb.activeSelectionForeground' }],
-  //     },
-  //   },
-  //   {
-  //     title: 'Picker',
-  //     styles: {
-  //       normal: [{ label: 'Background', name: 'breadcrumbPicker.background' }],
-  //     },
-  //   },
-  // ],
+  [
+    {
+      title: 'Navigator',
+      styles: {
+        normal: [{ label: 'Background', name: 'editorMarkerNavigation.background' }],
+      },
+    },
+    {
+      title: 'Header',
+      styles: {
+        info: [{ label: 'Background', name: 'editorMarkerNavigationInfo.headerBackground' }],
+        error: [{ label: 'Background', name: 'editorMarkerNavigationError.headerBackground' }],
+        warning: [{ label: 'Background', name: 'editorMarkerNavigationWarning.headerBackground' }],
+      },
+    },
+    {
+      title: 'Item',
+      styles: {
+        info: [{ label: 'Background', name: 'editorMarkerNavigationInfo.background' }],
+        error: [{ label: 'Background', name: 'editorMarkerNavigationError.background' }],
+        warning: [{ label: 'Background', name: 'editorMarkerNavigationWarning.background' }],
+      },
+    },
+  ],
 ];
 
 const pages = [

@@ -8,6 +8,10 @@
     "name": "Augutstin Joseph",
     "email": "sudoaugustin@gmail.com"
   },
+  "extensionKind": [
+    "ui",
+    "workspace"
+  ],
   "engines": {
     "vscode": "^1.63.0"
   },
@@ -29,8 +33,8 @@
   "contributes": {
     "commands": [
       {
-        "title": "Start Theming",
-        "command": "brush.init",
+        "title": "Edit Theme",
+        "command": "brush.edit",
         "category": "Brush"
       }
     ],
@@ -45,6 +49,13 @@
     "configuration": {
       "title": "Brush",
       "properties": {
+        "brush._colors": {
+          "type": "object",
+          "default": {
+            "act": "#fcba03"
+          },
+          "markdownDescription": "Color theme (Don't edit anything)."
+        },
         "brush.palette": {
           "type": "string",
           "default": "Tailwind",
@@ -73,6 +84,5 @@
     "glob": "^7.1.7",
     "mocha": "^9.1.3",
     "typescript": "^4.4.4"
-  },
-  "dependencies": {}
+  }
 }

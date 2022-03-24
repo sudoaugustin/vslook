@@ -15,7 +15,7 @@ export default ({ value, onChange }) => {
       classes={{
         trigger:
           'h-6 w-6 text-gray-400 hover:text-gray-600 inline-flex justify-center items-center rounded-r-md radix-peer',
-        content: 'max-h-96 w-60 overflow-y-auto',
+        content: 'max-h-96 w-56 overflow-y-auto',
       }}
       onOpenEffect={() => ref?.current?.scrollIntoView()}
     >
@@ -25,14 +25,14 @@ export default ({ value, onChange }) => {
             {window.$colors.map(([name, indents]) => (
               <section key={name} className='py-2'>
                 <p className='mb-2 ml-2 select-none text-xs font-medium capitalize text-gray-500'>{name}</p>
-                <ul className='mx-2 grid grid-cols-5 gap-3'>
+                <ul className='mx-2 grid grid-cols-5 gap-2'>
                   {indents.map(([indent, value]) => {
                     const isSelected = Colord.isEqual(value);
                     return (
                       <RadioItem
                         key={indent}
                         value={value}
-                        className='bg-transparent-pattern h-8 w-8 cursor-pointer overflow-hidden rounded-full !outline-none ring ring-transparent ring-offset-1 ring-offset-gray-200 duration-300 ease-in-out focus:ring-orange-200 focus:ring-offset-orange-400'
+                        className='bg-pattern-rectangle h-8 w-8 cursor-pointer overflow-hidden rounded-full shadow-sm !outline-none ring-2 ring-transparent duration-300 focus:ring-orange-400 focus:ring-offset-2'
                       >
                         <Tooltip.Root>
                           <Tooltip.Trigger

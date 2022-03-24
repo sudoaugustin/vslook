@@ -1,19 +1,27 @@
-import Tool from './layouts/Tool';
-import Loading from './layouts/Loading';
 import { useState } from 'react';
 import { useEffectOnce } from 'react-use';
-import { setGlobals, setTheme } from './utils';
+import { useSetRecoilState } from 'recoil';
+import { Tool, Loading } from './layouts';
+import { setGlobals, getTheme } from './utils';
+import { themeState } from './states';
 
 export default () => {
+  const setTheme = useSetRecoilState(themeState);
   const [isReady, setIsReady] = useState(false);
 
   useEffectOnce(() => {
-    console.log('Effect Once runned');
-    setTheme();
+    console.log('Theme effect runned');
+    const _setTheme = () => setTheme(getTheme());
+    _setTheme();
+    const observer = new MutationObserver(_setTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
+  });
+
+  useEffectOnce(() => {
+    console.log('Global effect runned');
+
     setGlobals();
     setIsReady(true);
-    const observer = new MutationObserver(setTheme);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
   });
 
   return <div className='select-none'>{isReady ? <Tool /> : <Loading />}</div>;

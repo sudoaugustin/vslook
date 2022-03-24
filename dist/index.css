@@ -600,6 +600,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 1.5rem;
 }
 
+.w-56 {
+  width: 14rem;
+}
+
 .w-8 {
   width: 2rem;
 }
@@ -701,8 +705,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   justify-content: space-between;
 }
 
-.gap-3 {
-  gap: 0.75rem;
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .gap-x-2 {
@@ -980,6 +984,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   outline-style: solid;
 }
 
+.ring-2 {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
 .ring {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
@@ -1013,10 +1023,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .duration-200 {
   transition-duration: 200ms;
-}
-
-.ease-in-out {
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
@@ -1063,7 +1069,7 @@ input[type='number']::-webkit-outer-spin-button {
   width: 0px;
 }
 
-.bg-transparent-pattern {
+.bg-pattern-rectangle {
   background-color: transparent;
   background-image: repeating-linear-gradient(
       45deg,
@@ -1083,14 +1089,6 @@ input[type='number']::-webkit-outer-spin-button {
     );
   background-position: 0 0, 7px 7px;
   background-size: 14px 14px;
-}
-
-.bg-tile {
-  background-image: linear-gradient(-45deg, transparent 75%, #f4f7fb 75%),
-    linear-gradient(45deg, transparent 75%, #f4f7fb 75%), linear-gradient(45deg, #f4f7fb 25%, transparent 0),
-    linear-gradient(-45deg, #f4f7fb 25%, transparent 25%);
-  background-size: 12px 12px;
-  background-position: 0 0, 0 -6px, 6px 0, -6px -6px;
 }
 
 .react-colorful {
@@ -1162,19 +1160,24 @@ input[type='number']::-webkit-outer-spin-button {
   border-color: rgb(253 186 116 / var(--tw-border-opacity));
 }
 
+.focus\:text-gray-600:focus {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
 .focus\:ring-\[3px\]:focus {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
-.focus\:ring-orange-200:focus {
+.focus\:ring-orange-400:focus {
   --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(254 215 170 / var(--tw-ring-opacity));
+  --tw-ring-color: rgb(251 146 60 / var(--tw-ring-opacity));
 }
 
-.focus\:ring-offset-orange-400:focus {
-  --tw-ring-offset-color: #fb923c;
+.focus\:ring-offset-2:focus {
+  --tw-ring-offset-width: 2px;
 }
 
 .group:first-child .group-first\:uppercase {

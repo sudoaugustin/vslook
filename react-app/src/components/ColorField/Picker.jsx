@@ -31,7 +31,7 @@ export default ({ value, onChange }) => {
     <Dropdown
       trigger={<i style={{ background: value }} className='block h-full w-full' />}
       classes={{
-        trigger: 'bg-transparent-pattern h-6 flex-1 rounded-l-md overflow-hidden radix-peer',
+        trigger: 'bg-pattern-rectangle h-6 flex-1 rounded-l-md overflow-hidden radix-peer',
         content: 'w-60 p-2',
       }}
     >

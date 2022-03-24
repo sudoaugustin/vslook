@@ -36,6 +36,7 @@
     "colord": "^2.9.2",
     "react-colorful": "^5.5.1",
     "react-use": "^17.3.2",
-    "recoil": "^0.6.1"
+    "recoil": "^0.6.1",
+    "use-debounce": "^7.0.1"
   }
 }

@@ -11,10 +11,11 @@ function activate(context) {
     theme: path.join(context.extensionPath, 'themes', 'index.json'),
   };
   let theme = fs.read(paths.theme, true);
-  const disposableOnInit = vscode.commands.registerCommand(`brush.init`, () => {
+  const disposableOnInit = vscode.commands.registerCommand(`brush.edit`, () => {
     const config = vscode.workspace.getConfiguration('brush');
 
     createWebview({ root: paths.root, palette: config.get('palette').toLowerCase() }, ({ type, payload }) => {
+      console.log('Message recieved');
       switch (type) {
         case 'SET_COLOR':
           theme = createTheme({ theme, type: 'colors', ...payload });
