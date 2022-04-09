@@ -29,7 +29,7 @@ module.exports = plugin(({ addVariant, e }) => {
 
       // radix-group-closed:text-gray-600
       const groupVariant = `radix-group-${item}`;
-      addVariant(groupVariant, ({ modifySelectors, separator, ...s }) => {
+      addVariant(groupVariant, ({ modifySelectors, separator}) => {
         modifySelectors(({ className }) => {
           return `.radix-group[${attr}] .${e(`${groupVariant}${separator}${className}`)}`;
         });
@@ -37,7 +37,7 @@ module.exports = plugin(({ addVariant, e }) => {
 
       // radix-peer-closed:text-gray-600
       const peerVariant = `radix-peer-${item}`;
-      addVariant(peerVariant, ({ modifySelectors, separator, ...s }) => {
+      addVariant(peerVariant, ({ modifySelectors, separator}) => {
         modifySelectors(({ className }) => {
           return `.radix-peer[${attr}] ~ .${e(`${peerVariant}${separator}${className}`)}`;
         });

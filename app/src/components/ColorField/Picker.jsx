@@ -1,8 +1,8 @@
+import Menu from './Menu';
 import { useState } from 'react';
 import { colord } from 'colord';
 import { SelectorIcon } from '@heroicons/react/solid';
 import { RgbaColorPicker, HexColorInput } from 'react-colorful';
-import Dropdown from '../Dropdown';
 
 const inputs = {
   hex: ['hex', 'a'],
@@ -12,7 +12,7 @@ const inputs = {
 
 export default ({ value, onChange }) => {
   const colors = getColors(value);
-  const [format, setFormat] = useState('hex');
+  const [format, setFormat] = useState('rgb');
   const color = colors[format];
 
   const handleChange = ({ a, ...values }) => {
@@ -28,7 +28,7 @@ export default ({ value, onChange }) => {
   };
 
   return (
-    <Dropdown
+    <Menu
       trigger={<i style={{ background: value }} className='block h-full w-full' />}
       classes={{
         trigger: 'bg-pattern-rectangle h-6 flex-1 rounded-l-md overflow-hidden radix-peer',
@@ -36,7 +36,7 @@ export default ({ value, onChange }) => {
       }}
     >
       {() => (
-        <div>
+        <>
           <RgbaColorPicker color={colors.rgb} onChange={handleChange} />
           <section className='flex items-center pt-3'>
             <div className='flex space-x-1.5'>
@@ -48,7 +48,7 @@ export default ({ value, onChange }) => {
                   <fieldset className='text-center' key={name}>
                     <Tag
                       id={name}
-                      className='w-full rounded-md border border-gray-200 bg-gray-100 p-1 text-center text-sm font-medium text-gray-700  !outline-none ring-orange-200 duration-200 focus:border-orange-300 focus:ring-[3px]'
+                      className='w-full rounded-md border border-gray-200 bg-gray-100 p-1 text-center text-sm font-medium text-gray-700 ring-orange-200 duration-200 focus:border-orange-300 focus:ring-[3px]'
                       onChange={e => handleChange({ ...color, [name]: formatInput(e?.target?.value || e, name) })}
                       {...props}
                     />
@@ -66,9 +66,9 @@ export default ({ value, onChange }) => {
               <SelectorIcon className='h-5' />
             </i>
           </section>
-        </div>
+        </>
       )}
-    </Dropdown>
+    </Menu>
   );
 };
 

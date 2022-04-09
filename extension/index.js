@@ -1,33 +1,11 @@
-const path = require('path');
 const vscode = require('vscode');
-const fs = require('./utils/fs');
-const createTheme = require('./createTheme');
 const createWebview = require('./createWebview');
-const handlePreviews = require('./handlePreviews');
+const handleMessage = require('./handleMessage');
 
 function activate(context) {
-  const paths = {
-    root: context.extensionPath,
-    theme: path.join(context.extensionPath, 'themes', 'index.json'),
-  };
-  let theme = fs.read(paths.theme, true);
-  const disposableOnInit = vscode.commands.registerCommand(`brush.edit`, () => {
-    const config = vscode.workspace.getConfiguration('brush');
-
-    createWebview({ root: paths.root, palette: config.get('palette').toLowerCase() }, ({ type, payload }) => {
-      console.log('Message recieved');
-      switch (type) {
-        case 'SET_COLOR':
-          theme = createTheme({ theme, type: 'colors', ...payload });
-          fs.write(paths.theme, theme, true);
-          break;
-        case 'OPEN_PREVIEW':
-          handlePreviews(payload);
-          break;
-        default:
-          break;
-      }
-    });
+  const disposableOnInit = vscode.commands.registerCommand(`vslook.edit`, () => {
+    const paths = { root: context.extensionPath };
+    createWebview({ root: paths.root }, handleMessage);
   });
   context.subscriptions.push(disposableOnInit);
 }

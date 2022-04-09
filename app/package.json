@@ -5,10 +5,10 @@
   "scripts": {
     "watch": "concurrently 'npm:watch:*'",
     "build": "concurrently 'npm:build:*'",
-    "watch:esbuild": "esbuild index.jsx --bundle --outdir=../dist --watch  --inject:shim.js",
-    "build:esbuild": "esbuild index.jsx --bundle --outdir=../dist --minify --inject:shim.js",
-    "watch:tailwind": "npx tailwindcss -i ./tailwind.css -o ../dist/index.css -w",
-    "build:tailwind": "npx tailwindcss -i ./tailwind.css -o ../dist/index.css -m"
+    "watch:esbuild": "esbuild index.jsx --bundle --outdir=../.dist --watch  --inject:.shim.js",
+    "build:esbuild": "esbuild index.jsx --bundle --outdir=../.dist --minify --inject:.shim.js --analyze",
+    "watch:tailwind": "npx tailwindcss -i ./tailwind.css -o ../.dist/index.css -w",
+    "build:tailwind": "npx tailwindcss -i ./tailwind.css -o ../.dist/index.css -m"
   },
   "devDependencies": {
     "concurrently": "^6.5.1",
@@ -30,6 +30,7 @@
   "dependencies": {
     "@heroicons/react": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^0.1.4",
+    "@radix-ui/react-select": "^0.1.1",
     "@radix-ui/react-tabs": "^0.1.4",
     "@radix-ui/react-toggle-group": "^0.1.4",
     "@radix-ui/react-tooltip": "^0.1.6",

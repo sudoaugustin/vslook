@@ -1,16 +1,16 @@
+import Menu from './Menu';
 import { useRef } from 'react';
 import { colord } from 'colord';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { RadioGroup, RadioItem } from '@radix-ui/react-dropdown-menu';
 import { ColorSwatchIcon, CheckIcon } from '@heroicons/react/outline';
-import Dropdown from '../Dropdown';
 
 export default ({ value, onChange }) => {
   const ref = useRef();
   const Colord = colord(value);
 
   return (
-    <Dropdown
+    <Menu
       trigger={<ColorSwatchIcon className='w-4 fill-gray-100/75' />}
       classes={{
         trigger:
@@ -20,8 +20,8 @@ export default ({ value, onChange }) => {
       onOpenEffect={() => ref?.current?.scrollIntoView()}
     >
       {() => (
-        <Tooltip.Provider delayDuration={500}>
-          <RadioGroup value={value} onValueChange={onChange} className='space-y-4 scroll-smooth'>
+        <RadioGroup value={value} onValueChange={onChange} className='space-y-4 scroll-smooth'>
+          <Tooltip.Provider delayDuration={500}>
             {window.$colors.map(([name, indents]) => (
               <section key={name} className='py-2'>
                 <p className='mb-2 ml-2 select-none text-xs font-medium capitalize text-gray-500'>{name}</p>
@@ -32,7 +32,7 @@ export default ({ value, onChange }) => {
                       <RadioItem
                         key={indent}
                         value={value}
-                        className='bg-pattern-rectangle h-8 w-8 cursor-pointer overflow-hidden rounded-full shadow-sm !outline-none ring-2 ring-transparent duration-300 focus:ring-orange-400 focus:ring-offset-2'
+                        className='bg-pattern-rectangle h-8 w-8 cursor-pointer overflow-hidden rounded-full shadow-sm ring-2 ring-transparent duration-300 focus:ring-orange-400 focus:ring-offset-2'
                       >
                         <Tooltip.Root>
                           <Tooltip.Trigger
@@ -56,9 +56,9 @@ export default ({ value, onChange }) => {
                 </ul>
               </section>
             ))}
-          </RadioGroup>
-        </Tooltip.Provider>
+          </Tooltip.Provider>
+        </RadioGroup>
       )}
-    </Dropdown>
+    </Menu>
   );
 };

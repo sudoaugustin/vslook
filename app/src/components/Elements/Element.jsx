@@ -1,10 +1,21 @@
 import { useState } from 'react';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import { EyeIcon, ChevronUpIcon } from '@heroicons/react/solid';
-import ColorField from '../ColorField';
-import { postMessage } from '../../utils';
+import Select from 'components/Select';
+import ColorField from 'components/ColorField';
+import { postMessage } from 'utils';
 
-const Element = ({ title = '', styles = {}, preview, shrink, onShrinkToggle }) => {
+const options = {
+  font: [
+    { name: 'Normal', value: '' },
+    { name: 'Bold', value: 'bold' },
+    { name: 'Italic', value: 'italic' },
+    { name: 'Strike', value: 'strikethrough' },
+    { name: 'Underline', value: 'underline' },
+  ],
+};
+
+const Element = ({ title = '', styles = {}, preview, isExpand, onExpandToggle }) => {
   const states = Object.keys(styles);
   const [state, setState] = useState(states[0]);
 
@@ -15,34 +26,29 @@ const Element = ({ title = '', styles = {}, preview, shrink, onShrinkToggle }) =
   return (
     <li className={`group ml-3 py-2 pr-2 ${styles[state] ? 'space-y-1 border-b last:border-0' : 'pb-0'}`}>
       <article className='flex items-center justify-between'>
-        <div className='inline-flex items-center space-x-2'>
+        <div className='inline-flex items-center space-x-2 text-gray-400'>
           <h1 className='font-medium text-gray-600 group-first:uppercase group-first:text-gray-800 '>{title}</h1>
-          {!!title && shrink !== undefined && (
+          {isExpand !== undefined && (
             <ChevronUpIcon
-              className={`w-5 cursor-pointer text-gray-300 duration-200 hover:text-gray-400 ${shrink && 'rotate-180'}`}
-              onClick={() => onShrinkToggle(!shrink)}
+              className={`pointer w-5 duration-200 ${!isExpand && 'rotate-180'}`}
+              onClick={() => onExpandToggle(!isExpand)}
             />
           )}
           {preview && (
             <EyeIcon
-              className='w-3.5 cursor-pointer text-gray-300 hover:text-gray-400'
+              className='pointer w-3.5'
               onClick={() => postMessage({ type: 'OPEN_PREVIEW', payload: { name: preview, show: true } })}
             />
           )}
         </div>
-        <ToggleGroup.Root
-          type='single'
-          value={state}
-          // className='scrollbar-hidden inline-flex max-w-[200px] items-center overflow-scroll'
-          onValueChange={handleStateChange}
-        >
+        <ToggleGroup.Root type='single' value={state} onValueChange={handleStateChange}>
           {states
             .filter(state => state !== 'normal')
             .map(state => (
               <ToggleGroup.Item
                 key={state}
                 value={state}
-                className='rounded px-1 text-gray-400 !outline-none duration-300 hover:text-gray-600 focus:text-gray-600 radix-on:text-orange-500'
+                className='rounded px-1 text-gray-400 duration-300 hover:text-gray-600 focus:text-gray-600 radix-on:text-orange-500'
               >
                 {state}
               </ToggleGroup.Item>
@@ -51,9 +57,13 @@ const Element = ({ title = '', styles = {}, preview, shrink, onShrinkToggle }) =
       </article>
 
       <div className='grid grid-cols-4 gap-x-2 gap-y-4'>
-        {styles[state]?.map(props => (
-          <ColorField key={props.name} {...props} />
-        ))}
+        {styles[state]?.map(({ type, ...rest }, i) =>
+          type === 'select' ? (
+            <Select key={i} {...rest} options={options[rest.label.toLowerCase()]} />
+          ) : (
+            <ColorField key={i} {...rest} />
+          ),
+        )}
       </div>
     </li>
   );

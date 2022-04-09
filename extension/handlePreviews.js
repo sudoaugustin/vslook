@@ -1,6 +1,6 @@
-const { window, commands, ThemeIcon } = require('vscode');
+const { window } = require('vscode');
 
-function handlePreviews({ name, show }) {
+function handlePreviews({ name }) {
   switch (name) {
     case 'BASE_COLORS':
       window.withProgress(
@@ -12,8 +12,9 @@ function handlePreviews({ name, show }) {
     case 'BUTTONS':
       window.showInformationMessage(
         'Do you want to request OTP?',
-        { modal: true, detail: "You will recieve a 6-digit code. Please don't share it with anyone." },
+        { detail: "You will recieve a 6-digit code. Please don't share it with anyone." },
         'Continue',
+        'Cancel',
       );
       break;
 

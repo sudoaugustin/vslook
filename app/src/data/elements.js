@@ -36,12 +36,7 @@ const components = [
         selection: [{ label: 'Background', name: 'selection.background' }],
       },
     },
-    {
-      title: 'Preformat',
-      styles: {
-        normal: [{ label: 'Foreground', name: 'textPreformat.foreground' }],
-      },
-    },
+    { title: 'Preformat', styles: { normal: [{ label: 'Foreground', name: 'textPreformat.foreground' }] } },
     {
       title: 'Link',
       styles: {
@@ -1181,6 +1176,451 @@ const others = [
         normal: [
           { label: 'Add', name: 'diffEditorOverview.insertedLineBackground' },
           { label: 'Delete', name: 'diffEditorOverview.removedLineBackground' },
+        ],
+      },
+    },
+  ],
+];
+
+const syntax = [
+  [
+    {
+      title: 'Comment',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$comment_foreground' },
+          { label: 'Font', name: '$comment_fontStyle', type: 'select' },
+        ],
+        block: [
+          { label: 'Foreground', name: '$comment.block_foreground' },
+          { label: 'Font', name: '$comment.block_fontStyle', type: 'select' },
+        ],
+        document: [
+          { label: 'Foreground', name: '$comment.block.documentation_foreground' },
+          { label: 'Font', name: '$comment.block.documentation_fontStyle', type: 'select' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Constant',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$constant_foreground' },
+          { label: 'Font', name: '$constant_fontStyle', type: 'select' },
+        ],
+        regexp: [
+          { label: 'Foreground', name: '$constant.regexp_foreground' },
+          { label: 'Font', name: '$constant.regexp_fontStyle', type: 'select' },
+        ],
+        color: [
+          { label: 'Foreground', name: '$constant.rgb-value_foreground' },
+          { label: 'Font', name: '$constant.rgb-value_fontStyle', type: 'select' },
+        ],
+      },
+    },
+    {
+      title: 'Character',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$constant.character_foreground' },
+          { label: 'Font', name: '$constant.character_fontStyle', type: 'select' },
+        ],
+        escape: [
+          { label: 'Foreground', name: '$constant.character.escape_foreground' },
+          { label: 'Font', name: '$constant.character.escape_fontStyle', type: 'select' },
+        ],
+      },
+    },
+    {
+      title: 'Number',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$constant.numeric_foreground' },
+          { label: 'Font', name: '$constant.numeric_fontStyle', type: 'select' },
+        ],
+        int: [
+          { label: 'Foreground', name: '$constant.numeric.integer_foreground' },
+          { label: 'Font', name: '$constant.numeric.integer_fontStyle', type: 'select' },
+        ],
+        float: [
+          { label: 'Foreground', name: '$constant.numeric.float_foreground' },
+          { label: 'Font', name: '$constant.numeric.float_fontStyle', type: 'select' },
+        ],
+        octal: [
+          { label: 'Foreground', name: '$constant.numeric.octal_foreground' },
+          { label: 'Font', name: '$constant.numeric.octal_fontStyle', type: 'select' },
+        ],
+        hex: [
+          { label: 'Foreground', name: '$constant.numeric.hex_foreground' },
+          { label: 'Font', name: '$constant.numeric.hex_fontStyle', type: 'select' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Emphasis',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$emphasis_foreground' },
+          { label: 'Font', name: '$emphasis_fontStyle', type: 'select' },
+        ],
+      },
+    },
+  ],
+  [
+    { title: 'Entity' },
+    {
+      title: 'Name',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$entity.name_foreground' },
+          { label: 'Font', name: '$entity.name_fontStyle', type: 'select' },
+        ],
+        class: [
+          { label: 'Foreground', name: '$entity.name.class_foreground' },
+          { label: 'Font', name: '$entity.name.class_fontStyle', type: 'select' },
+        ],
+        func: [
+          { label: 'Foreground', name: '$entity.name.function_foreground' },
+          { label: 'Font', name: '$entity.name.function_fontStyle', type: 'select' },
+        ],
+        method: [
+          { label: 'Foreground', name: '$entity.name.method_foreground' },
+          { label: 'Font', name: '$entity.name.method_fontStyle', type: 'select' },
+        ],
+        selector: [
+          { label: 'Foreground', name: '$entity.name.selector_foreground' },
+          { label: 'Font', name: '$entity.name.selector_fontStyle', type: 'select' },
+        ],
+        tag: [
+          { label: 'Foreground', name: '$entity.name.tag_foreground' },
+          { label: 'Font', name: '$entity.name.tag_fontStyle', type: 'select' },
+        ],
+        type: [
+          { label: 'Foreground', name: '$entity.name.type_foreground' },
+          { label: 'Font', name: '$entity.name.type_fontStyle', type: 'select' },
+        ],
+      },
+    },
+    {
+      title: 'Attribute',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$entity.other.attribute-name_foreground' },
+          { label: 'Font', name: '$entity.other.attribute-name_fontStyle', type: 'select' },
+        ],
+      },
+    },
+    {
+      title: 'Inherited Class',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$entity.other.inherited-class_foreground' },
+          { label: 'Font', name: '$entity.other.inherited-class_fontStyle', type: 'select' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Invalid',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$invalid_foreground' },
+          { label: 'Font', name: '$invalid_fontStyle', type: 'select' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Keyword',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$keyword_foreground' },
+          { label: 'Font', name: '$keyword_fontStyle', type: 'select' },
+        ],
+      },
+    },
+    {
+      title: 'Control',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$keyword.control_foreground' },
+          { label: 'Font', name: '$keyword.control_fontStyle', type: 'select' },
+        ],
+      },
+    },
+    {
+      title: 'Operator',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$keyword.operator_foreground' },
+          { label: 'Font', name: '$keyword.operator_fontStyle', type: 'select' },
+        ],
+        logical: [
+          { label: 'Foreground', name: '$keyword.operator.logical_foreground' },
+          { label: 'Font', name: '$keyword.operator.logical_fontStyle', type: 'select' },
+        ],
+        arithmetic: [
+          { label: 'Foreground', name: '$keyword.operator.arithmetic_foreground' },
+          { label: 'Font', name: '$keyword.operator.arithmetic_fontStyle', type: 'select' },
+        ],
+        assignment: [
+          { label: 'Foreground', name: '$keyword.operator.assignment_foreground' },
+          { label: 'Font', name: '$keyword.operator.assignment_fontStyle', type: 'select' },
+        ],
+        new: [
+          { label: 'Foreground', name: '$keyword.operator.new_foreground' },
+          { label: 'Font', name: '$keyword.operator.new_fontStyle', type: 'select' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Markup',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$markup_foreground' },
+          { label: 'Font', name: '$markup_fontStyle', type: 'select' },
+        ],
+        bold: [
+          { label: 'Foreground', name: '$markup.bold_foreground' },
+          { label: 'Font', name: '$markup.bold_fontStyle', type: 'select' },
+        ],
+        italic: [
+          { label: 'Foreground', name: '$markup.italic_foreground' },
+          { label: 'Font', name: '$markup.italic_fontStyle', type: 'select' },
+        ],
+        underline: [
+          { label: 'Foreground', name: '$markup.underline_foreground' },
+          { label: 'Font', name: '$markup.underline_fontStyle', type: 'select' },
+        ],
+        link: [
+          { label: 'Foreground', name: '$markup.underline.link_foreground' },
+          { label: 'Font', name: '$markup.underline.link_fontStyle', type: 'select' },
+        ],
+        quote: [
+          { label: 'Foreground', name: '$markup.quote_foreground' },
+          { label: 'Font', name: '$markup.quote_fontStyle', type: 'select' },
+        ],
+        heading: [
+          { label: 'Foreground', name: '$markup.heading_foreground' },
+          { label: 'Font', name: '$markup.heading_fontStyle', type: 'select' },
+        ],
+        list: [
+          { label: 'Foreground', name: '$markup.list_foreground' },
+          { label: 'Font', name: '$markup.list_fontStyle', type: 'select' },
+        ],
+        raw: [
+          { label: 'Foreground', name: '$markup.raw_foreground' },
+          { label: 'Font', name: '$markup.raw_fontStyle', type: 'select' },
+        ],
+        inserted: [
+          { label: 'Foreground', name: '$markup.inserted_foreground' },
+          { label: 'Font', name: '$markup.inserted_fontStyle', type: 'select' },
+        ],
+        changed: [
+          { label: 'Foreground', name: '$markup.changed_foreground' },
+          { label: 'Font', name: '$markup.changed_fontStyle', type: 'select' },
+        ],
+        deleted: [
+          { label: 'Foreground', name: '$markup.deleted_foreground' },
+          { label: 'Font', name: '$markup.deleted_fontStyle', type: 'select' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Meta',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$meta_foreground' },
+          { label: 'Font', name: '$meta_fontStyle', type: 'select' },
+        ],
+        block: [
+          { label: 'Foreground', name: '$meta.block_foreground' },
+          { label: 'Font', name: '$meta.block_fontStyle', type: 'select' },
+        ],
+        class: [
+          { label: 'Foreground', name: '$meta.class_foreground' },
+          { label: 'Font', name: '$meta.class_fontStyle', type: 'select' },
+        ],
+        func: [
+          { label: 'Foreground', name: '$meta.function_foreground' },
+          { label: 'Font', name: '$meta.function_fontStyle', type: 'select' },
+        ],
+        'function-call': [
+          { label: 'Foreground', name: '$meta.function-call_foreground' },
+          { label: 'Font', name: '$meta.function-call_fontStyle', type: 'select' },
+        ],
+        preprocessor: [
+          { label: 'Foreground', name: '$meta.preprocessor_foreground' },
+          { label: 'Font', name: '$meta.preprocessor_fontStyle', type: 'select' },
+        ],
+        'return-type': [
+          { label: 'Foreground', name: '$meta.return-type_foreground' },
+          { label: 'Font', name: '$meta.return-type_fontStyle', type: 'select' },
+        ],
+        selector: [
+          { label: 'Foreground', name: '$meta.selector_foreground' },
+          { label: 'Font', name: '$meta.selector_fontStyle', type: 'select' },
+        ],
+        tag: [
+          { label: 'Foreground', name: '$meta.tag_foreground' },
+          { label: 'Font', name: '$meta.tag_fontStyle', type: 'select' },
+        ],
+        type: [
+          { label: 'Foreground', name: '$meta.type_foreground' },
+          { label: 'Font', name: '$meta.type_fontStyle', type: 'select' },
+        ],
+      },
+    },
+  ],
+  [
+    { title: 'Punctuation' },
+    {
+      title: 'Definition',
+      styles: {
+        start: [
+          { label: 'Foreground', name: '$punctuation.definition.string.begin_foreground' },
+          { label: 'Font', name: '$punctuation.definition.string.begin_fontStyle', type: 'select' },
+        ],
+        end: [
+          { label: 'Foreground', name: '$punctuation.definition.string.end_foreground' },
+          { label: 'Font', name: '$punctuation.definition.string.end_fontStyle', type: 'select' },
+        ],
+      },
+    },
+    {
+      title: 'Separator',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$punctuation.separator_foreground' },
+          { label: 'Font', name: '$punctuation.separator_fontStyle', type: 'select' },
+        ],
+      },
+    },
+    {
+      title: 'Terminator',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$punctuation.terminator_foreground' },
+          { label: 'Font', name: '$punctuation.terminator_fontStyle', type: 'select' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Storage',
+      styles: {
+        type: [
+          { label: 'Foreground', name: '$storage.type_foreground' },
+          { label: 'Font', name: '$storage.type_fontStyle', type: 'select' },
+        ],
+        modifier: [
+          { label: 'Foreground', name: '$storage.modifier_foreground' },
+          { label: 'Font', name: '$storage.modifier_fontStyle', type: 'select' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'String',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$string_foreground' },
+          { label: 'Font', name: '$string_fontStyle', type: 'select' },
+        ],
+        regexp: [
+          { label: 'Foreground', name: '$string.regexp_foreground' },
+          { label: 'Font', name: '$string.regexp_fontStyle', type: 'select' },
+        ],
+        unquoted: [
+          { label: 'Foreground', name: '$string.unquoted_foreground' },
+          { label: 'Font', name: '$string.unquoted_fontStyle', type: 'select' },
+        ],
+        interpolated: [
+          { label: 'Foreground', name: '$string.interpolated_foreground' },
+          { label: 'Font', name: '$string.interpolated_fontStyle', type: 'select' },
+        ],
+      },
+    },
+    {
+      title: 'Quoted',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$string.quoted_foreground' },
+          { label: 'Font', name: '$string.quoted_fontStyle', type: 'select' },
+        ],
+        single: [
+          { label: 'Foreground', name: '$string.quoted.single_foreground' },
+          { label: 'Font', name: '$string.quoted.single_fontStyle', type: 'select' },
+        ],
+        double: [
+          { label: 'Foreground', name: '$string.quoted.double_foreground' },
+          { label: 'Font', name: '$string.quoted.double_fontStyle', type: 'select' },
+        ],
+        triple: [
+          { label: 'Foreground', name: '$string.quoted.triple_foreground' },
+          { label: 'Font', name: '$string.quoted.triple_fontStyle', type: 'select' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Support',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$support_foreground' },
+          { label: 'Font', name: '$support_fontStyle', type: 'select' },
+        ],
+        class: [
+          { label: 'Foreground', name: '$support.class_foreground' },
+          { label: 'Font', name: '$support.class_fontStyle', type: 'select' },
+        ],
+        var: [
+          { label: 'Foreground', name: '$support.variable_foreground' },
+          { label: 'Font', name: '$support.variable_fontStyle', type: 'select' },
+        ],
+        const: [
+          { label: 'Foreground', name: '$support.const_foreground' },
+          { label: 'Font', name: '$support.const_fontStyle', type: 'select' },
+        ],
+        type: [
+          { label: 'Foreground', name: '$support.type_foreground' },
+          { label: 'Font', name: '$support.type_fontStyle', type: 'select' },
+        ],
+        func: [
+          { label: 'Foreground', name: '$support.function_foreground' },
+          { label: 'Font', name: '$support.function_fontStyle', type: 'select' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Variable',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$variable_foreground' },
+          { label: 'Font', name: '$variable_fontStyle', type: 'select' },
+        ],
+        name: [
+          { label: 'Foreground', name: '$variable.name_foreground' },
+          { label: 'Font', name: '$variable.name_fontStyle', type: 'select' },
+        ],
+        lang: [
+          { label: 'Foreground', name: '$variable.lang_foreground' },
+          { label: 'Font', name: '$variable.lang_fontStyle', type: 'select' },
         ],
       },
     },

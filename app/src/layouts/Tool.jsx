@@ -1,6 +1,6 @@
 import * as Tabs from '@radix-ui/react-tabs';
-import Elements from '../components/Elements';
-import elements from '../data/elements';
+import elements from 'data/elements';
+import Elements from 'components/Elements';
 
 export default () => {
   const tabs = Object.entries(elements);
@@ -14,7 +14,7 @@ export default () => {
           <Tabs.Trigger
             key={name}
             value={name}
-            className='rounded-full px-2 py-1 font-medium capitalize text-gray-400 !outline-none duration-300 hover:text-gray-600 radix-active:bg-orange-50 radix-active:text-orange-500'
+            className='rounded-full px-2 py-1 font-medium capitalize text-gray-400 duration-300 hover:text-gray-600 radix-active:bg-orange-50 radix-active:text-orange-500'
           >
             {name}
           </Tabs.Trigger>

@@ -1,23 +1,23 @@
 const path = require('path');
 const vscode = require('vscode');
+const config = require('./utils/config');
 
-function createWebview({ root, palette }, onMessage) {
-  const getRootUri = getUri(root);
-  const panel = vscode.window.createWebviewPanel('theme.preview', 'Brush', vscode.ViewColumn.Beside, {
-    enableScripts: true,
-    retainContextWhenHidden: true,
-  });
-
-  panel.iconPath = getRootUri('media', 'logo.svg');
-  panel.webview.html = getHTML({
-    js: panel.webview.asWebviewUri(getRootUri('dist', 'index.js')),
-    css: panel.webview.asWebviewUri(getRootUri('dist', 'index.css')),
-    palette,
-  });
-  panel.webview.onDidReceiveMessage(onMessage);
+function getUri(root) {
+  return (...args) => vscode.Uri.file(path.join(root, ...args));
 }
 
-function getHTML({ js, css, palette }) {
+function getTheme() {
+  const tokenColors = config
+    .get('editor.tokenColorCustomizations.textMateRules', [])
+    .map(({ scope, settings }) => Object.entries(settings).map(([name, value]) => [`$${scope}_${name}`, value]))
+    .flat();
+
+  const colorCustomizations = config.get('workbench.colorCustomizations');
+
+  return { ...colorCustomizations, ...Object.fromEntries(tokenColors) };
+}
+
+function createPage({ js, css }) {
   return `<!doctype html>
       <html>
         <head>
@@ -27,14 +27,28 @@ function getHTML({ js, css, palette }) {
         </head>
         <body>
           <div id="root"></div>
-          <script> window.$palette='${palette}';</script>
+          <script>
+             window.$theme=${JSON.stringify(getTheme())};
+             window.$palette='${config.get('vslook.palette').toLowerCase()}';
+          </script>
           <script src="${js}"></script>
         </body>
       </html>`;
 }
 
-function getUri(root) {
-  return (...args) => vscode.Uri.file(path.join(root, ...args));
+function createWebview({ root }, onMessage) {
+  const getRootUri = getUri(root);
+  const panel = vscode.window.createWebviewPanel('theme.preview', 'VSLook Editor', vscode.ViewColumn.Beside, {
+    enableScripts: true,
+    retainContextWhenHidden: true,
+  });
+
+  panel.iconPath = getRootUri('media', 'logo.svg');
+  panel.webview.html = createPage({
+    js: panel.webview.asWebviewUri(getRootUri('.dist', 'index.js')),
+    css: panel.webview.asWebviewUri(getRootUri('.dist', 'index.css')),
+  });
+  panel.webview.onDidReceiveMessage(onMessage);
 }
 
 module.exports = createWebview;

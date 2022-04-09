@@ -2,13 +2,15 @@ import palettes from './data/palettes';
 
 const vscode = window.acquireVsCodeApi();
 
-export const getTheme = () => {
+export const getColors = () => {
+  console.log(document.documentElement.style.cssText);
   const props = document.documentElement.style.cssText.split(';');
-  return props.reduce((style, property) => {
+  const colors = props.reduce((style, property) => {
     let [name, value] = property.split(':');
     name = name.trim().replace('--vscode-', '').replace('-', '.');
     return { ...style, [name]: value };
   }, {});
+  return colors;
 };
 
 export const setGlobals = () => {
@@ -18,3 +20,10 @@ export const setGlobals = () => {
 };
 
 export const postMessage = msg => vscode.postMessage(msg);
+
+export const getFallbackScope = name => {
+  const [scope, _name] = name.split('_');
+  const scopes = scope.split('.');
+  if (name[0] !== '$' || scopes.length < 2) return '';
+  return `${scopes.slice(0, scopes.length - 1).join('.')}_${_name}`;
+};

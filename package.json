@@ -1,9 +1,9 @@
 {
-  "name": "brush",
+  "name": "vslook",
   "version": "0.0.1",
   "publisher": "sudoaugustin",
-  "displayName": "Brush",
-  "description": "Create your own vscode theme. You can also use popular color palettes such as tailwind and material palettet.",
+  "displayName": "VSLook",
+  "description": "Customize how your vscode should look like.",
   "author": {
     "name": "Augutstin Joseph",
     "email": "sudoaugustin@gmail.com"
@@ -28,42 +28,27 @@
     "theme",
     "design_tool"
   ],
-  "icon": "https://raw.githubusercontent.com/sudoaugustin/brush/main/media/logo.png",
+  "icon": "https://raw.githubusercontent.com/sudoaugustin/vslook/main/media/logo.png",
   "main": "./extension/index.js",
   "contributes": {
     "commands": [
       {
         "title": "Edit Theme",
-        "command": "brush.edit",
-        "category": "Brush"
-      }
-    ],
-    "themes": [
-      {
-        "id": "brush_theme",
-        "label": "Brush Theme",
-        "path": "themes/index.json",
-        "uiTheme": "vs-dark"
+        "command": "vslook.edit",
+        "category": "VSLook"
       }
     ],
     "configuration": {
-      "title": "Brush",
+      "title": "VSLook",
       "properties": {
-        "brush._colors": {
-          "type": "object",
-          "default": {
-            "act": "#fcba03"
-          },
-          "markdownDescription": "Color theme (Don't edit anything)."
-        },
-        "brush.palette": {
+        "vslook.palette": {
           "type": "string",
           "default": "Tailwind",
           "enum": [
             "Tailwind",
             "Material"
           ],
-          "markdownDescription": "Your favourite color palette to use theming."
+          "markdownDescription": "Choose which color system to use design."
         }
       }
     }
@@ -72,8 +57,8 @@
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "node ./test/runTest.js",
-    "build:app": "npm --prefix react-app run build",
-    "watch:app": "npm --prefix react-app run watch"
+    "build-app": "npm --prefix app run build",
+    "watch-app": "npm --prefix app run watch"
   },
   "devDependencies": {
     "@types/glob": "^7.1.4",

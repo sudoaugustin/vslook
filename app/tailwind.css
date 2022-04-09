@@ -10,8 +10,17 @@ html {
 body {
   @apply h-full overflow-y-auto p-0;
 }
+
 #root {
   @apply h-full;
+}
+
+* {
+  outline: none !important;
+}
+
+.pointer {
+  @apply cursor-pointer;
 }
 
 input[type='number']::-webkit-inner-spin-button,
