@@ -150,15 +150,17 @@ const components = [
   [
     {
       title: 'Dropdown',
+      styles: {
+        normal: [
+          { label: 'Background', name: 'dropdown.background' },
+          { label: 'Border', name: 'dropdown.border' },
+        ],
+      },
     },
     {
       title: 'Trigger',
       styles: {
-        normal: [
-          { label: 'Background', name: 'dropdown.background' },
-          { label: 'Foreground', name: 'dropdown.foreground' },
-          { label: 'Border', name: 'dropdown.border' },
-        ],
+        normal: [{ label: 'Foreground', name: 'dropdown.foreground' }],
       },
     },
     {
@@ -263,7 +265,7 @@ const components = [
           { label: 'Background', name: 'keybindingLabel.background' },
           { label: 'Foreground', name: 'keybindingLabel.foreground' },
           { label: 'Border', name: 'keybindingLabel.border' },
-          { label: 'Border Bottom', name: 'keybindingLabel.bottomBorder' },
+          { label: 'Border Btm', name: 'keybindingLabel.bottomBorder' },
         ],
       },
     },
@@ -944,7 +946,7 @@ const pages = [
       },
     },
     {
-      title: 'Select Trigger',
+      title: 'Dropdown Trigger',
       styles: {
         normal: [
           { label: 'Background', name: 'settings.dropdownBackground' },

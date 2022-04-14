@@ -6,7 +6,7 @@ export default ({ trigger, children, classes = {}, onOpenEffect }) => {
 
   useEffect(() => {
     open && onOpenEffect && onOpenEffect();
-  }, [open, onOpenEffect]);
+  }, [open]);
 
   return (
     <Menu.Root className={classes.root} open={open} onOpenChange={setOpen} modal={false}>
@@ -16,7 +16,7 @@ export default ({ trigger, children, classes = {}, onOpenEffect }) => {
           className={`block overflow-hidden rounded-md border border-gray-200 bg-white shadow ${classes.content}`}
           sideOffset={5}
         >
-          {children()}
+          {children({ setOpen })}
         </Menu.Content>
       )}
     </Menu.Root>

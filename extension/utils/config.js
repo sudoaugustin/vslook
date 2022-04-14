@@ -9,10 +9,10 @@ const splitName = (name = '') => {
 };
 
 module.exports = {
-  get: (name, _default) => {
+  get: (name, _default = '') => {
     const { section, property } = splitName(name);
     return getConfig(section).get(property, _default);
-   },
+  },
   set: (name, value) => {
     const { section, property } = splitName(name);
     getConfig(section).update(property, value, ConfigurationTarget.Global);

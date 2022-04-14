@@ -49,7 +49,11 @@ const additional = {
 // }
 
 module.exports = ({ name, value }) => {
+  const additionalName = additional[name];
   const colorCustomizations = config.get('workbench.colorCustomizations');
-  const newColorsCustomizations = { [name]: value, [additional[name]]: value };
-  config.set('workbench.colorCustomizations', { ...colorCustomizations, ...newColorsCustomizations });
+
+  colorCustomizations[name] = value;
+  if (!!additionalName) colorCustomizations[additionalName] = value;
+
+  config.set('workbench.colorCustomizations', colorCustomizations);
 };

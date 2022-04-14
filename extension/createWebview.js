@@ -7,14 +7,16 @@ function getUri(root) {
 }
 
 function getTheme() {
-  const tokenColors = config
-    .get('editor.tokenColorCustomizations.textMateRules', [])
-    .map(({ scope, settings }) => Object.entries(settings).map(([name, value]) => [`$${scope}_${name}`, value]))
-    .flat();
+  // const tokenColors = config
+  //   .get('editor.tokenColorCustomizations.textMateRules', [])
+  //   .map(({ scope, settings }) => Object.entries(settings).map(([name, value]) => [`$${scope}_${name}`, value]))
+  //   .flat();
 
   const colorCustomizations = config.get('workbench.colorCustomizations');
 
-  return { ...colorCustomizations, ...Object.fromEntries(tokenColors) };
+  return colorCustomizations;
+
+  // return { ...colorCustomizations, ...Object.fromEntries(tokenColors) };
 }
 
 function createPage({ js, css }) {
@@ -38,11 +40,10 @@ function createPage({ js, css }) {
 
 function createWebview({ root }, onMessage) {
   const getRootUri = getUri(root);
-  const panel = vscode.window.createWebviewPanel('theme.preview', 'VSLook Editor', vscode.ViewColumn.Beside, {
+  const panel = vscode.window.createWebviewPanel('theme.preview', 'VSLook', vscode.ViewColumn.Beside, {
     enableScripts: true,
     retainContextWhenHidden: true,
   });
-
   panel.iconPath = getRootUri('media', 'logo.svg');
   panel.webview.html = createPage({
     js: panel.webview.asWebviewUri(getRootUri('.dist', 'index.js')),

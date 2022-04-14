@@ -1,4 +1,4 @@
-import Menu from './Menu';
+import Menu from 'components/Menu';
 import { useState } from 'react';
 import { colord } from 'colord';
 import { SelectorIcon } from '@heroicons/react/solid';

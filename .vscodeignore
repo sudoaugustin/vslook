@@ -8,3 +8,4 @@ vsc-extension-quickstart.md
 **/*.map
 **/.eslintrc.json
 app/**
+sample/**

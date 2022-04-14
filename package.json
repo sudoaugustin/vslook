@@ -1,12 +1,20 @@
 {
   "name": "vslook",
-  "version": "0.0.1",
-  "publisher": "sudoaugustin",
   "displayName": "VSLook",
-  "description": "Customize how your vscode should look like.",
+  "icon": "media/logo.png",
+  "main": "./extension/index.js",
+  "version": "0.1.0",
+  "preview": true,
+  "license": "MIT",
+  "publisher": "sudoaugustin",
+  "description": "Customize your own vscode theme.",
   "author": {
     "name": "Augutstin Joseph",
     "email": "sudoaugustin@gmail.com"
+  },
+  "repository": {
+    "url": "https://github.com/sudoaugustin/vslook",
+    "type": "git"
   },
   "extensionKind": [
     "ui",
@@ -21,15 +29,12 @@
     "Other"
   ],
   "activationEvents": [
-    "*"
+    "onCommand:vslook.edit"
   ],
-  "preview": true,
   "keywords": [
     "theme",
     "design_tool"
   ],
-  "icon": "https://raw.githubusercontent.com/sudoaugustin/vslook/main/media/logo.png",
-  "main": "./extension/index.js",
   "contributes": {
     "commands": [
       {
@@ -43,20 +48,18 @@
       "properties": {
         "vslook.palette": {
           "type": "string",
-          "default": "Tailwind",
           "enum": [
             "Tailwind",
             "Material"
           ],
-          "markdownDescription": "Choose which color system to use design."
+          "default": "Tailwind",
+          "description": "Choose the palette you wanna use to paint."
         }
       }
     }
   },
   "scripts": {
-    "lint": "eslint .",
-    "pretest": "npm run lint",
-    "test": "node ./test/runTest.js",
+    "test": "eslint . && node ./test/run.js",
     "build-app": "npm --prefix app run build",
     "watch-app": "npm --prefix app run watch"
   },
@@ -66,6 +69,7 @@
     "@types/node": "14.x",
     "@types/vscode": "^1.63.0",
     "@vscode/test-electron": "^1.6.2",
+    "eslint": "^8.13.0",
     "glob": "^7.1.7",
     "mocha": "^9.1.3",
     "typescript": "^4.4.4"

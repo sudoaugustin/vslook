@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import { useDebouncedCallback } from 'use-debounce';
 
 export default ({ name, label, children }) => {
-  //console.log(`${name} Rendered`);
+  // console.log(`${name} Rendered`);
 
   const [value, setValue] = useRecoilState(valueState(name));
 

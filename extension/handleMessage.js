@@ -2,7 +2,8 @@ const handlePreviews = require('./handlePreviews');
 const handleThemeChange = require('./handleThemeChange');
 
 module.exports = ({ type, payload }) => {
-  console.log('Message recieved');
+  console.log('💬', payload);
+
   switch (type) {
     case 'SET_THEME':
       handleThemeChange(payload);

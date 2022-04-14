@@ -11,7 +11,6 @@ export const valueState = selectorFamily({
     name =>
     ({ get }) => {
       let value = get(themeState)[name];
-      console.log(name);
       if (!value) {
         //? Fallback to css variables values
         value = get(colorsState)[name];

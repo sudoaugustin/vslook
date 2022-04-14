@@ -3,7 +3,6 @@ import palettes from './data/palettes';
 const vscode = window.acquireVsCodeApi();
 
 export const getColors = () => {
-  console.log(document.documentElement.style.cssText);
   const props = document.documentElement.style.cssText.split(';');
   const colors = props.reduce((style, property) => {
     let [name, value] = property.split(':');
