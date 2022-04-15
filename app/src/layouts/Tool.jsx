@@ -1,9 +1,9 @@
-import * as Tabs from '@radix-ui/react-tabs';
-import elements from 'data/elements';
+import styles from 'styles';
 import Elements from 'components/Elements';
+import * as Tabs from '@radix-ui/react-tabs';
 
 export default () => {
-  const tabs = Object.entries(elements);
+  const tabs = Object.entries(styles);
 
   // console.log('○ Tool render');
 
@@ -21,10 +21,10 @@ export default () => {
         ))}
       </Tabs.List>
 
-      {tabs.map(([name, groups]) => (
+      {tabs.map(([name, styles]) => (
         <Tabs.Content key={name} value={name} className='divide-y divide-gray-300 text-xs'>
-          {groups.map((elements, i) => (
-            <Elements key={i} elements={elements} />
+          {styles.map((elements, i) => (
+            <Elements key={i}>{elements}</Elements>
           ))}
         </Tabs.Content>
       ))}

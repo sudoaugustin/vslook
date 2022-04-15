@@ -20,8 +20,8 @@ function getTheme() {
 }
 
 function createPage({ js, css }) {
-  return `<!doctype html>
-      <html>
+  return `<!DOCTYPE html>
+      <html lang="en">
         <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,10 +29,6 @@ function createPage({ js, css }) {
         </head>
         <body>
           <div id="root"></div>
-          <script>
-             window.$theme=${JSON.stringify(getTheme())};
-             window.$palette='${config.get('vslook.palette').toLowerCase()}';
-          </script>
           <script src="${js}"></script>
         </body>
       </html>`;
@@ -50,6 +46,7 @@ function createWebview({ root }, onMessage) {
     css: panel.webview.asWebviewUri(getRootUri('.dist', 'index.css')),
   });
   panel.webview.onDidReceiveMessage(onMessage);
+  return panel.webview;
 }
 
 module.exports = createWebview;

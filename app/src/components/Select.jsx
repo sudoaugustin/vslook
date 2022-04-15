@@ -19,7 +19,7 @@ export default ({ options, ...props }) => {
               {options.map(({ name, value }) => (
                 <Select.Item
                   value={value}
-                  className='flex cursor-pointer justify-between rounded-md px-1.5 py-1 text-gray-600 duration-150 focus:bg-gray-100 focus:text-gray-800 radix-active:text-orange-600'
+                  className='pointer flex justify-between rounded-md px-1.5 py-1 text-gray-600 duration-150 focus:bg-gray-100 focus:text-gray-800 radix-active:text-orange-600'
                 >
                   <Select.ItemText>{name}</Select.ItemText>
                   <Select.ItemIndicator>

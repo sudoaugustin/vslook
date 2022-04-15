@@ -1,5 +1,3 @@
-import palettes from './data/palettes';
-
 const vscode = window.acquireVsCodeApi();
 
 export const getColors = () => {
@@ -12,11 +10,11 @@ export const getColors = () => {
   return colors;
 };
 
-export const setGlobals = () => {
-  window.$shrink = {};
-  const colors = Object.entries({ base: palettes.base, ...palettes[window.$palette] });
-  window.$colors = colors.map(([name, indents]) => [name, Object.entries(indents)]);
-};
+// export const setGlobals = () => {
+//   window.$shrink = {};
+//   const colors = Object.entries({ base: palettes.base, ...palettes[window.$palette] });
+//   window.$colors = colors.map(([name, indents]) => [name, Object.entries(indents)]);
+// };
 
 export const postMessage = msg => vscode.postMessage(msg);
 
@@ -26,3 +24,5 @@ export const getFallbackScope = name => {
   if (name[0] !== '$' || scopes.length < 2) return '';
   return `${scopes.slice(0, scopes.length - 1).join('.')}_${_name}`;
 };
+
+export const toColorsArray = colors => Object.entries(colors).map(([name, indents]) => [name, Object.entries(indents)]);

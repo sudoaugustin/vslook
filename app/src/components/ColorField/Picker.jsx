@@ -1,6 +1,6 @@
 import Menu from 'components/Menu';
-import { useState } from 'react';
 import { colord } from 'colord';
+import { useState } from 'react';
 import { SelectorIcon } from '@heroicons/react/solid';
 import { RgbaColorPicker, HexColorInput } from 'react-colorful';
 
@@ -28,15 +28,14 @@ export default ({ value, onChange }) => {
   };
 
   return (
-    <Menu
-      trigger={<i style={{ background: value }} className='block h-full w-full' />}
-      classes={{
-        trigger: 'bg-pattern-rectangle h-6 flex-1 rounded-l-md overflow-hidden radix-peer',
-        content: 'w-60 p-2',
-      }}
-    >
+    <Menu>
       {() => (
-        <>
+        <button className='bg-pattern-rectangle radix-peer h-6 flex-1 overflow-hidden rounded-l-md'>
+          <i style={{ background: value }} className='block h-full w-full' />
+        </button>
+      )}
+      {() => (
+        <div className='p-2'>
           <RgbaColorPicker color={colors.rgb} onChange={handleChange} />
           <section className='flex items-center pt-3'>
             <div className='flex space-x-1.5'>
@@ -59,14 +58,11 @@ export default ({ value, onChange }) => {
                 );
               })}
             </div>
-            <i
-              className='cursor-pointer pl-2 text-gray-400 duration-200 hover:text-gray-700'
-              onClick={handleFormatChange}
-            >
+            <i className='pointer pl-2 text-gray-400 duration-200 hover:text-gray-700' onClick={handleFormatChange}>
               <SelectorIcon className='h-5' />
             </i>
           </section>
-        </>
+        </div>
       )}
     </Menu>
   );

@@ -1,22 +1,19 @@
 import { useEffect, useState } from 'react';
 import * as Menu from '@radix-ui/react-dropdown-menu';
 
-export default ({ trigger, children, classes = {}, onOpenEffect }) => {
+export default ({ children, className, onOpen }) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    open && onOpenEffect && onOpenEffect();
+    open && onOpen && onOpen();
   }, [open]);
 
   return (
-    <Menu.Root className={classes.root} open={open} onOpenChange={setOpen} modal={false}>
-      <Menu.Trigger className={classes.trigger}>{trigger}</Menu.Trigger>
+    <Menu.Root className={className} open={open} onOpenChange={setOpen} modal={false}>
+      <Menu.Trigger asChild>{children[0]()}</Menu.Trigger>
       {open && (
-        <Menu.Content
-          className={`block overflow-hidden rounded-md border border-gray-200 bg-white shadow ${classes.content}`}
-          sideOffset={5}
-        >
-          {children({ setOpen })}
+        <Menu.Content className='max-h-96 w-64 overflow-y-auto rounded-md border bg-white shadow' sideOffset={5}>
+          {children[1]({ setOpen })}
         </Menu.Content>
       )}
     </Menu.Root>

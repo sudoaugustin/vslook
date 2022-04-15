@@ -8,9 +8,11 @@ export default ({ name, label, children }) => {
 
   const [value, setValue] = useRecoilState(valueState(name));
 
-  const handleChange = value => {
-    setValue(value);
-    handleEffect({ name, value });
+  const handleChange = newValue => {
+    if (newValue !== value) {
+      setValue(newValue);
+      handleEffect({ name, value: newValue });
+    }
   };
 
   const handleEffect = useDebouncedCallback(payload => {

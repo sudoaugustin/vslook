@@ -1,62 +1,57 @@
-import Menu from 'components/Menu';
-import { useRef } from 'react';
+import Menu from '../Menu';
 import { colord } from 'colord';
+import { paletteState } from 'states';
+import { toColorsArray } from 'utils';
+import { useRecoilValue } from 'recoil';
 import * as Tooltip from '@radix-ui/react-tooltip';
+import { Fragment, useRef, useState } from 'react';
 import { ColorSwatchIcon, CheckIcon } from '@heroicons/react/outline';
 
 export default ({ value, onChange }) => {
-  const ref = useRef();
-  const Colord = colord(value);
+  const ref = useRef(null);
+  const palette = useRecoilValue(paletteState);
+  const [initValue, setInitValue] = useState(value);
+  const Colord = colord(initValue);
 
   return (
-    <Menu
-      trigger={<ColorSwatchIcon className='w-4 fill-gray-100/75' />}
-      classes={{
-        trigger:
-          'h-6 w-6 text-gray-400 hover:text-gray-600 inline-flex justify-center items-center rounded-r-md radix-peer',
-        content: 'max-h-96 w-60 overflow-y-auto',
-      }}
-      onOpenEffect={() => {
-        window.$initColor = value;
-        ref?.current?.scrollIntoView();
-      }}
-    >
+    <Menu onOpen={() => ref?.current?.scrollIntoView()}>
+      {() => (
+        <button className='radix-peer flex h-6 w-6 items-center justify-center rounded-r-md text-gray-400 hover:text-gray-600'>
+          <ColorSwatchIcon className='w-4 fill-gray-100' />
+        </button>
+      )}
       {({ setOpen }) => (
-        <Tooltip.Provider>
-          {window.$colors.map(([name, indents]) => (
-            <section key={name} className='space-y-1.5 scroll-smooth px-1.5 py-2'>
+        <Fragment>
+          {toColorsArray(palette).map(([name, indents]) => (
+            <section key={name} className='space-y-1.5 scroll-smooth px-1.5 py-3'>
               <p className='select-none text-xs font-medium uppercase text-gray-500'>{name}</p>
-              <ul className='grid grid-cols-5'>
-                {indents.map(([indent, _value]) => {
-                  const isActive = Colord.isEqual(_value);
+              <div className='grid grid-cols-5'>
+                {indents.map(([indent, value]) => {
+                  const isActive = Colord.isEqual(value);
                   return (
-                    <li
-                      key={indent}
-                      ref={isActive ? ref : null}
-                      className='bg-pattern-rectangle pointer relative h-8 ring ring-transparent ring-offset-1 ring-offset-transparent duration-1000 hover:z-10 hover:ring-orange-200 hover:ring-offset-orange-400'
-                      onClick={() => setOpen(false) || onChange(_value)}
-                    >
-                      <Tooltip.Root>
-                        <Tooltip.Trigger
-                          style={{ background: _value }}
-                          className='flex h-full w-full items-center justify-center'
-                          onMouseOver={() => onChange(_value)}
-                          onMouseLeave={() => onChange(window.$initColor)}
-                        >
-                          {isActive && <CheckIcon className='w-5 text-white mix-blend-difference' />}
-                        </Tooltip.Trigger>
-                        <Tooltip.Content className='mt-0.5 rounded-md border border-gray-300 bg-gray-50 px-2 py-1 text-xs font-semibold text-gray-700'>
-                          <span className='capitalize'>{indent}</span>{' '}
-                          <span className='uppercase'>{name !== 'base' && `• ${_value}`}</span>
-                        </Tooltip.Content>
-                      </Tooltip.Root>
-                    </li>
+                    <Tooltip.Root key={indent}>
+                      <Tooltip.Trigger
+                        ref={isActive ? ref : null}
+                        className='bg-pattern-rectangle pointer relative h-8 duration-150 hover:z-10 hover:scale-125'
+                        onClick={() => setInitValue(value) || setOpen(false) || onChange(value)}
+                        onMouseOver={() => onChange(value)}
+                        onMouseLeave={() => onChange(initValue)}
+                      >
+                        <i style={{ background: value }} className='absolute inset-0 flex items-center justify-center'>
+                          {isActive && <CheckIcon className='mx-auto w-5 text-white mix-blend-difference' />}
+                        </i>
+                      </Tooltip.Trigger>
+                      <Tooltip.Content className='mt-0.5 rounded-md border border-gray-300 bg-gray-50 px-2 py-1 text-xs font-semibold text-gray-700'>
+                        <span className='capitalize'>{indent}</span>{' '}
+                        <span className='uppercase'>{name !== 'base' && `• ${value}`}</span>
+                      </Tooltip.Content>
+                    </Tooltip.Root>
                   );
                 })}
-              </ul>
+              </div>
             </section>
           ))}
-        </Tooltip.Provider>
+        </Fragment>
       )}
     </Menu>
   );
