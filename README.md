@@ -1,6 +1,6 @@
 # VSLook
 
-![What vslook does](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/overview.gif)
+![What vslook does](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/overview.gif)
 
 ## 🌟 Features
 
@@ -28,7 +28,7 @@ Go to Settings `Ctrl+,`. Search for **VSLook**. Then go to **Palette: Type** and
 
 Colors can be added via setting or webview. But we recommend adding via webview.
 
-![Add color variable](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/add-color.gif)
+![Add color variable](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/add-color.gif)
 
 ### Styling
 
