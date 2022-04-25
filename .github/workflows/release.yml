@@ -1,30 +1,12 @@
-name: VSCode CI & CD
+name: VSCode CD
 
 on:
   release:
     types: [created]
 
 jobs:
-  test:
-    name: 👨‍🔧 Testing...
-    strategy:
-      matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
-        node-version: [10.x, 12.x, 14.x, 15.x]
-    runs-on: ${{ matrix.os }}
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm test
-
   publish:
-    name: 🚀 Publishing...
-    needs: test
+    name: 🚀 Publish to marketplace
     runs-on: ubuntu-latest
 
     steps:

@@ -65,20 +65,16 @@
     }
   },
   "scripts": {
-    "test": "eslint . && node ./test/run.js",
+    "lint": "eslint .",
     "build-app": "npm --prefix app run build",
     "watch-app": "npm --prefix app run watch",
+    "postinstall": "npm --prefix app install",
     "local-release": "vsce package && code --install-extension vslook-*.vsix"
   },
   "devDependencies": {
-    "@types/glob": "^7.1.4",
-    "@types/mocha": "^9.0.0",
     "@types/node": "14.x",
     "@types/vscode": "^1.63.0",
-    "@vscode/test-electron": "^1.6.2",
     "eslint": "^8.13.0",
-    "glob": "^7.1.7",
-    "mocha": "^9.1.3",
     "typescript": "^4.4.4"
   }
 }

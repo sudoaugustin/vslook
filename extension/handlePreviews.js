@@ -1,11 +1,11 @@
 const { window } = require('vscode');
 
-function handlePreviews({ name }) {
+module.exports = ({ name }) => {
   switch (name) {
     case 'BASE_COLORS':
       window.withProgress(
         { title: 'Sending request to server...', cancellable: true, location: 15 },
-        () => new Promise((resolve, reject) => {}),
+        () => new Promise(() => {}),
       );
       break;
 
@@ -67,6 +67,4 @@ function handlePreviews({ name }) {
     default:
       break;
   }
-}
-
-module.exports = handlePreviews;
+};
