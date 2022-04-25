@@ -1,6 +1,6 @@
-import Fieldset from 'components/Fieldset';
+import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import * as Select from '@radix-ui/react-select';
-import { SelectorIcon, CheckIcon } from '@heroicons/react/solid';
+import Fieldset from 'components/Fieldset';
 
 export default ({ options, ...props }) => {
   return (

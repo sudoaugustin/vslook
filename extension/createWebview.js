@@ -1,25 +1,11 @@
 const path = require('path');
 const vscode = require('vscode');
-const config = require('./utils/config');
 
 function getUri(root) {
   return (...args) => vscode.Uri.file(path.join(root, ...args));
 }
 
-function getTheme() {
-  // const tokenColors = config
-  //   .get('editor.tokenColorCustomizations.textMateRules', [])
-  //   .map(({ scope, settings }) => Object.entries(settings).map(([name, value]) => [`$${scope}_${name}`, value]))
-  //   .flat();
-
-  const colorCustomizations = config.get('workbench.colorCustomizations');
-
-  return colorCustomizations;
-
-  // return { ...colorCustomizations, ...Object.fromEntries(tokenColors) };
-}
-
-function createPage({ js, css }) {
+function createPage({ js, css, data }) {
   return `<!DOCTYPE html>
       <html lang="en">
         <head>
@@ -29,12 +15,16 @@ function createPage({ js, css }) {
         </head>
         <body>
           <div id="root"></div>
+          <script>
+            window.$theme=${JSON.stringify(data.theme)}
+            window.$palette=${JSON.stringify(data.palette)}
+          </script>
           <script src="${js}"></script>
         </body>
       </html>`;
 }
 
-function createWebview({ root }, onMessage) {
+function createWebview({ root, data }, onMessage) {
   const getRootUri = getUri(root);
   const panel = vscode.window.createWebviewPanel('theme.preview', 'VSLook', vscode.ViewColumn.Beside, {
     enableScripts: true,
@@ -44,9 +34,9 @@ function createWebview({ root }, onMessage) {
   panel.webview.html = createPage({
     js: panel.webview.asWebviewUri(getRootUri('.dist', 'index.js')),
     css: panel.webview.asWebviewUri(getRootUri('.dist', 'index.css')),
+    data,
   });
   panel.webview.onDidReceiveMessage(onMessage);
-  return panel.webview;
 }
 
 module.exports = createWebview;

@@ -1,18 +1,17 @@
-import { valueState } from 'states';
-import { postMessage } from 'utils';
 import { useRecoilState } from 'recoil';
+import { valueState } from 'states';
 import { useDebouncedCallback } from 'use-debounce';
+import { postMessage } from 'utils';
 
 export default ({ name, label, children }) => {
   // console.log(`${name} Rendered`);
 
   const [value, setValue] = useRecoilState(valueState(name));
 
-  const handleChange = newValue => {
-    if (newValue !== value) {
-      setValue(newValue);
-      handleEffect({ name, value: newValue });
-    }
+  const handleChange = (value, { select, revert } = {}) => {
+    if (select) window.$theme[name] = value;
+    setValue(value);
+    handleEffect({ name, value: revert ? (window.$theme[name] ? value : undefined) : value });
   };
 
   const handleEffect = useDebouncedCallback(payload => {

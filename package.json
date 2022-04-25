@@ -7,7 +7,7 @@
   "preview": true,
   "license": "MIT",
   "publisher": "sudoaugustin",
-  "description": "Customize your own vscode theme.",
+  "description": "Customize your VSCode.",
   "author": {
     "name": "Augutstin Joseph",
     "email": "sudoaugustin@gmail.com"
@@ -38,7 +38,7 @@
   "contributes": {
     "commands": [
       {
-        "title": "Edit Theme",
+        "title": "Edit",
         "command": "vslook.edit",
         "category": "VSLook"
       }
@@ -46,14 +46,20 @@
     "configuration": {
       "title": "VSLook",
       "properties": {
-        "vslook.palette": {
+        "vslook.palette.type": {
           "type": "string",
           "enum": [
+            "None",
             "Tailwind",
             "Material"
           ],
           "default": "Tailwind",
-          "description": "Choose the palette you wanna use to paint."
+          "description": "The color palette to merge with your color variables."
+        },
+        "vslook.palette.colors": {
+          "type": "object",
+          "default": {},
+          "description": "Add your custom color variable here."
         }
       }
     }
@@ -61,7 +67,8 @@
   "scripts": {
     "test": "eslint . && node ./test/run.js",
     "build-app": "npm --prefix app run build",
-    "watch-app": "npm --prefix app run watch"
+    "watch-app": "npm --prefix app run watch",
+    "local-release": "vsce package && code --install-extension vslook-*.vsix"
   },
   "devDependencies": {
     "@types/glob": "^7.1.4",

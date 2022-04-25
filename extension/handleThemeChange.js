@@ -48,7 +48,7 @@ const additional = {
 //   return { ...theme, [colorType]: colorTheme };
 // }
 
-module.exports = ({ name, value }) => {
+module.exports = ({ name = '', value }) => {
   const additionalName = additional[name];
   const colorCustomizations = config.get('workbench.colorCustomizations');
 

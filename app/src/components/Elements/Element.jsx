@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { ChevronUpIcon, EyeIcon } from '@heroicons/react/solid';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
-import { EyeIcon, ChevronUpIcon } from '@heroicons/react/solid';
-import Select from 'components/Select';
 import ColorField from 'components/ColorField';
+import Select from 'components/Select';
+import { useState } from 'react';
 import { postMessage } from 'utils';
 
 const options = {
@@ -35,10 +35,12 @@ const Element = ({ title = '', styles = {}, preview, isExpand, onExpandToggle })
             />
           )}
           {preview && (
-            <EyeIcon
-              className='pointer w-3.5'
-              onClick={() => postMessage({ type: 'OPEN_PREVIEW', payload: { name: preview, show: true } })}
-            />
+            <i
+              title='Preview element'
+              onClick={() => postMessage({ type: 'PREVIEW', payload: { name: preview, show: true } })}
+            >
+              <EyeIcon title='Preview element' className='pointer w-3.5' />
+            </i>
           )}
         </div>
         <ToggleGroup.Root type='single' value={state} onValueChange={handleStateChange}>

@@ -16,6 +16,8 @@ export const valueState = selectorFamily({
     },
 });
 
+export const formatState = atom({ key: 'FORMAT_STATE', default: 'rgb' });
+
 export const paletteState = atom({ key: 'PALETTE_STATE', default: {} });
 
 export const isExpandState = atomFamily({ key: 'IS_EXPAND_STATE', default: true });

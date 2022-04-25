@@ -1,7 +1,7 @@
+import * as Dropdown from '@radix-ui/react-dropdown-menu';
 import { useEffect, useState } from 'react';
-import * as Menu from '@radix-ui/react-dropdown-menu';
 
-export default ({ children, className, onOpen }) => {
+const Menu = ({ children, className, onOpen }) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -9,13 +9,15 @@ export default ({ children, className, onOpen }) => {
   }, [open]);
 
   return (
-    <Menu.Root className={className} open={open} onOpenChange={setOpen} modal={false}>
-      <Menu.Trigger asChild>{children[0]()}</Menu.Trigger>
+    <Dropdown.Root className={className} open={open} onOpenChange={setOpen} modal={false}>
+      <Dropdown.Trigger asChild>{children[0]()}</Dropdown.Trigger>
       {open && (
-        <Menu.Content className='max-h-96 w-64 overflow-y-auto rounded-md border bg-white shadow' sideOffset={5}>
+        <Dropdown.Content className='rounded-md border bg-white shadow' sideOffset={5}>
           {children[1]({ setOpen })}
-        </Menu.Content>
+        </Dropdown.Content>
       )}
-    </Menu.Root>
+    </Dropdown.Root>
   );
 };
+
+export default Menu;

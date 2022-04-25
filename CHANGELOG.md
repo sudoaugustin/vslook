@@ -1,9 +1,21 @@
 # Change Log
 
-All notable changes to the "vslook" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+All notable changes to the **VSLook** extension will be in this file.
 
 ## [Unreleased]
 
-- Initial release
+### Added
+
+- Syntax highlighting customization
+
+## [0.0.1] - 2022-04-26
+
+### Added
+
+- Workbench colors customization
+- Color Picker & Color Swatch
+- Custom color vaiables
+- Tailwind and Material palettes
+
+[unreleased]: https://github.com/sudoaugustin/vslook/compare/v0.0.1...HEAD
+[0.0.1]: https://github.com/sudoaugustin/vslook/releases/tag/v0.0.1

@@ -4,7 +4,10 @@ const base = {
   transparent: '#00000000',
 };
 
+const none = { base };
+
 const tailwind = {
+  base: base,
   slate: {
     50: '#f8fafc',
     100: '#f1f5f9',
@@ -272,6 +275,7 @@ const tailwind = {
 };
 
 const material = {
+  base: base,
   'blue grey': {
     50: '#eceff1',
     100: '#cfd8dc',
@@ -502,4 +506,4 @@ const material = {
   },
 };
 
-module.exports = { base, tailwind, material };
+export default { none, tailwind, material };

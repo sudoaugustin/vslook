@@ -1,6 +1,6 @@
-import styles from 'styles';
-import Elements from 'components/Elements';
 import * as Tabs from '@radix-ui/react-tabs';
+import Elements from 'components/Elements';
+import styles from 'data/styles';
 
 export default () => {
   const tabs = Object.entries(styles);

@@ -318,41 +318,6 @@ const layouts = [
   ],
   [
     {
-      title: 'Quick Pick',
-      styles: {
-        normal: [
-          { label: 'Background', name: 'quickInput.background' },
-          { label: 'Foreground', name: 'quickInput.foreground' },
-          { label: 'Seperator', name: 'pickerGroup.border' },
-        ],
-      },
-      preview: 'QUICK_PICK',
-    },
-    {
-      title: 'Title',
-      styles: {
-        normal: [{ label: 'Background', name: 'quickInputTitle.background' }],
-      },
-    },
-    {
-      title: 'Label',
-      styles: {
-        normal: [{ label: 'Foreground', name: 'pickerGroup.foreground' }],
-      },
-    },
-    {
-      title: 'List Item',
-      styles: {
-        focus: [
-          { label: 'Background', name: 'quickInputList.focusBackground' },
-          { label: 'Foreground', name: 'quickInputList.focusForeground' },
-          { label: 'Icon', name: 'quickInputList.focusIconForeground' },
-        ],
-      },
-    },
-  ],
-  [
-    {
       title: 'Activity Bar',
       styles: {
         normal: [
@@ -449,6 +414,41 @@ const layouts = [
         error: [
           { label: 'Background', name: 'statusBarItem.errorBackground' },
           { label: 'Foreground', name: 'statusBarItem.errorForeground' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Quick Pick',
+      styles: {
+        normal: [
+          { label: 'Background', name: 'quickInput.background' },
+          { label: 'Foreground', name: 'quickInput.foreground' },
+          { label: 'Seperator', name: 'pickerGroup.border' },
+        ],
+      },
+      preview: 'QUICK_PICK',
+    },
+    {
+      title: 'Title',
+      styles: {
+        normal: [{ label: 'Background', name: 'quickInputTitle.background' }],
+      },
+    },
+    {
+      title: 'Label',
+      styles: {
+        normal: [{ label: 'Foreground', name: 'pickerGroup.foreground' }],
+      },
+    },
+    {
+      title: 'List Item',
+      styles: {
+        focus: [
+          { label: 'Background', name: 'quickInputList.focusBackground' },
+          { label: 'Foreground', name: 'quickInputList.focusForeground' },
+          { label: 'Icon', name: 'quickInputList.focusIconForeground' },
         ],
       },
     },
