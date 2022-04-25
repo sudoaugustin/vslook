@@ -20,10 +20,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: xvfb-run -a npm test
-        if: runner.os == 'Linux'
       - run: npm test
-        if: runner.os != 'Linux'
 
   publish:
     name: 🚀 Publishing...
