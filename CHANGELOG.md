@@ -14,7 +14,7 @@ All notable changes to the **VSLook** extension will be in this file.
 
 - Workbench colors customization
 - Color Picker & Color Swatch
-- Custom color vaiables
+- Custom color variables
 - Tailwind and Material palettes
 
 [unreleased]: https://github.com/sudoaugustin/vslook/compare/v0.1.0...HEAD
