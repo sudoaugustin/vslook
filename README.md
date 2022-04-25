@@ -39,6 +39,6 @@ VSLook categorizes colors into **Components**, **Layouts**, **Editors** and **Pa
 - **Editors** contain all colors related to the editor groups.
 - **Pages** contain colors for certain VSCode pages. (e.g Settings, Welcome Page)
 
-For more styling informations, [click here](https://github.com/sudoaugustin/vslook/blob/main/styling.md)
+For more styling informations, [click here](https://github.com/sudoaugustin/vslook/blob/main/STYLES.md)
 
 </br>

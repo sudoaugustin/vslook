@@ -6,9 +6,9 @@ All notable changes to the **VSLook** extension will be in this file.
 
 ### Added
 
-- Syntax highlighting customization
+- Nothing
 
-## [0.0.1] - 2022-04-26
+## [0.1.0] - 2022-04-25
 
 ### Added
 
@@ -17,5 +17,5 @@ All notable changes to the **VSLook** extension will be in this file.
 - Custom color vaiables
 - Tailwind and Material palettes
 
-[unreleased]: https://github.com/sudoaugustin/vslook/compare/v0.0.1...HEAD
-[0.0.1]: https://github.com/sudoaugustin/vslook/releases/tag/v0.0.1
+[unreleased]: https://github.com/sudoaugustin/vslook/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/sudoaugustin/vslook/releases/tag/v0.1.0
