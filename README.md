@@ -1,6 +1,6 @@
 # VSLook
 
-![What vslook does](https://raw.githubusercontent.com/sudoaugustin/tailpile/main/.github/overview.gif)
+![What vslook does](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/overview.gif)
 
 ## 🌟 Features
 
@@ -8,7 +8,7 @@
 
 VSLook set the new theme on top of active theme. So only the part you wanna change get changed.
 
-![Flexibility](https://raw.githubusercontent.com/sudoaugustin/tailpile/main/.github/flexible.gif)
+![Flexibility](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/flexible.gif)
 
 ### Color palettes and variables
 
@@ -28,7 +28,7 @@ Go to Settings `Ctrl+,`. Search for **VSLook**. Then go to **Palette: Type** and
 
 Colors can be added via setting or webview. But we recommend adding via webview.
 
-![Add color variable](https://raw.githubusercontent.com/sudoaugustin/tailpile/main/.github/add-color.gif)
+![Add color variable](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/add-color.gif)
 
 ### Styling
 
