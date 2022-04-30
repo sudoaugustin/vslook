@@ -2,11 +2,16 @@
 
 All notable changes to the **VSLook** extension will be in this file.
 
-## [Unreleased]
+## [0.1.1] - 2022-04-30
 
 ### Added
 
-- Nothing
+- Unset color
+
+### Fixed
+
+- Color `undefined` state.
+- Some **Swatch** UI bugs.
 
 ## [0.1.0] - 2022-04-25
 
@@ -17,5 +22,5 @@ All notable changes to the **VSLook** extension will be in this file.
 - Custom color variables
 - Tailwind and Material palettes
 
-[unreleased]: https://github.com/sudoaugustin/vslook/compare/v0.1.0...HEAD
+[0.1.1]: https://github.com/sudoaugustin/vslook/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/sudoaugustin/vslook/releases/tag/v0.1.0

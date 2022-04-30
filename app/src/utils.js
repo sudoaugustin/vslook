@@ -9,13 +9,14 @@ export function postMessage(msg) {
 }
 
 export function getCSSColors() {
-  const props = document.documentElement.style.cssText.split(';');
-  const colors = props.reduce((style, property) => {
-    let [name, value] = property.split(':');
-    name = name.trim().replace('--vscode-', '').replace('-', '.');
-    return { ...style, [name]: value };
-  }, {});
-  return colors;
+  const props = document.documentElement.style.cssText.split(';').map(prop => {
+    const [name, value] = prop.split(':');
+    return [
+      name.trim().replace('--vscode-', '').replace('-', '.'),
+      value && value[0] !== '#' ? colord(value).toHex() : value,
+    ];
+  });
+  return Object.fromEntries(props);
 }
 
 export function getColorValues(value) {

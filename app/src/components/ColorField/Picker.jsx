@@ -9,7 +9,8 @@ import PickerInputs from './PickerInputs';
 import PickerNameForm from './PickerNameForm';
 
 export default ({ value, onChange }) => {
-  const values = getColorValues(value);
+  const val = value || '#00000000';
+  const values = getColorValues(val);
   const [format, setFormat] = useRecoilState(formatState);
   const [showForm, setShowForm] = useState(false);
 
@@ -18,8 +19,12 @@ export default ({ value, onChange }) => {
   return (
     <Menu>
       {() => (
-        <button className='bg-pattern-rectangle radix-peer h-6 flex-1 overflow-hidden rounded-l-md'>
-          <i style={{ background: value }} className='block h-full w-full' />
+        <button
+          className={`radix-peer h-6 flex-1 overflow-hidden rounded-l-md ${
+            !!value ? 'bg-pattern-rectangle' : 'bg-pattern-stripe'
+          }`}
+        >
+          <i style={{ background: val }} className='block h-full w-full' />
         </button>
       )}
       {({ setOpen }) => (
@@ -30,7 +35,7 @@ export default ({ value, onChange }) => {
             <Button label='Add to palette' variant='outline' onClick={() => setShowForm(true)} />
           ) : (
             <PickerNameForm
-              value={getColorString(value, format)}
+              value={getColorString(val, format)}
               onHideMenu={() => setOpen(false)}
               onHideForm={() => setShowForm(false)}
             />

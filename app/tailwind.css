@@ -44,7 +44,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .bg-pattern-rectangle {
-  @apply bg-transparent;
+  background-size: 14px 14px;
   background-image: repeating-linear-gradient(
       45deg,
       theme('colors.gray.300') 25%,
@@ -62,7 +62,17 @@ input[type='number']::-webkit-outer-spin-button {
       theme('colors.gray.300')
     );
   background-position: 0 0, 7px 7px;
-  background-size: 14px 14px;
+}
+
+.bg-pattern-stripe {
+  background-size: 7px 7px;
+  background-image: repeating-linear-gradient(
+    45deg,
+    theme('colors.gray.300') 0,
+    theme('colors.gray.300') 2px,
+    transparent 0,
+    transparent 50%
+  );
 }
 
 .react-colorful {

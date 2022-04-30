@@ -1,6 +1,6 @@
-import Fieldset from 'components/Fieldset';
 import Picker from './Picker';
 import Swatch from './Swatch';
+import Fieldset from 'components/Fieldset';
 
 export default props => {
   return (

@@ -10,7 +10,7 @@ export default ({ name, label, children }) => {
 
   const handleChange = (value, { select, revert } = {}) => {
     if (select) window.$theme[name] = value;
-    setValue(value);
+    value && setValue(value);
     handleEffect({ name, value: revert ? (window.$theme[name] ? value : undefined) : value });
   };
 

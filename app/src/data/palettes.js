@@ -2,6 +2,7 @@ const base = {
   black: '#000',
   white: '#fff',
   transparent: '#00000000',
+  none: undefined,
 };
 
 const none = { base };
