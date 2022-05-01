@@ -22,8 +22,6 @@ function activate(context) {
     colors: config.get('vslook.palette.colors'),
   });
 
-  console.log(config.get('vslook.palette.type').toLowerCase());
-
   const disposableOnEdit = vscode.commands.registerCommand(`vslook.edit`, () => {
     const data = { palette: getPalette(), theme: getTheme() };
     createWebview({ root: paths.root, data }, handleMessage);
