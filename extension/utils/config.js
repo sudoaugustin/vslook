@@ -9,11 +9,11 @@ const splitName = (name = '') => {
 };
 
 module.exports = {
-  get: (name = '', _default = '') => {
+  get: (name = '', $default) => {
     const { section, property } = splitName(name);
-    return JSON.parse(JSON.stringify(getConfig(section).get(property, _default)));
+    return JSON.parse(JSON.stringify(getConfig(section).get(property, $default)));
   },
-  set: (name = '', value = '') => {
+  set: (name = '', value) => {
     const { section, property } = splitName(name);
     getConfig(section).update(property, value, ConfigurationTarget.Global);
   },

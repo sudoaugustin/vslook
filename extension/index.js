@@ -1,32 +1,10 @@
 const vscode = require('vscode');
-const config = require('./utils/config');
-const createWebview = require('./createWebview');
-const handleMessage = require('./handleMessage');
+const webview = require('./webview');
 
-function activate(context) {
-  const paths = { root: context.extensionPath };
-  const getTheme = () => {
-    // const tokenColors = config
-    //   .get('editor.tokenColorCustomizations.textMateRules', [])
-    //   .map(({ scope, settings }) => Object.entries(settings).map(([name, value]) => [`$${scope}_${name}`, value]))
-    //   .flat();
+function activate(context = {}) {
+  const paths = { root: context.extensionPath, storage: context.globalStoragePath };
 
-    const colorCustomizations = config.get('workbench.colorCustomizations');
-
-    return colorCustomizations;
-
-    // return { ...colorCustomizations, ...Object.fromEntries(tokenColors) };
-  };
-  const getPalette = () => ({
-    type: config.get('vslook.palette.type').toLowerCase(),
-    colors: config.get('vslook.palette.colors'),
-  });
-
-  const disposableOnEdit = vscode.commands.registerCommand(`vslook.edit`, () => {
-    const data = { palette: getPalette(), theme: getTheme() };
-    createWebview({ root: paths.root, data }, handleMessage);
-  });
-
+  const disposableOnEdit = vscode.commands.registerCommand(`vslook.edit`, () => webview(paths.root));
   context.subscriptions.push(disposableOnEdit);
 }
 

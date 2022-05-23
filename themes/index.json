@@ -1,0 +1,44 @@
+{
+	"colors": {
+		"titleBar.border": "#0f172a",
+		"titleBar.activeForeground": "#ef4444",
+		"titleBar.inactiveForeground": "#ef4444",
+		"editor.foreground": "#f97316",
+		"progressBar.background": "#94a3b8",
+		"titleBar.activeBackground": "#dddddd",
+		"titleBar.inactiveBackground": "#dddddd",
+		"editor.background": "#111827"
+	},
+	"tokenColors": [
+		{
+			"scope": "comment",
+			"settings": {
+				"foreground": "#334155",
+				"fontStyle": "italic"
+			}
+		},
+		{
+			"scope": "constant",
+			"settings": {
+				"fontStyle": "bold",
+				"foreground": "#94a3b8"
+			}
+		},
+		{
+			"scope": "entity.name.type",
+			"settings": {
+				"fontStyle": "underline"
+			}
+		},
+		{
+			"scope": "keyword",
+			"settings": {
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"scope": "invalid.illegal",
+			"settings": {}
+		}
+	]
+}

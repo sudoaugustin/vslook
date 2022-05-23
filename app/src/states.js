@@ -1,4 +1,5 @@
-import { atom, atomFamily, selectorFamily } from 'recoil';
+import { atom, atomFamily, DefaultValue, selectorFamily } from 'recoil';
+import { getParentScope } from 'utils';
 
 export const themeState = atom({ key: 'THEME_STATE', default: {} });
 
@@ -7,7 +8,14 @@ export const valueState = selectorFamily({
   get:
     name =>
     ({ get }) => {
-      return get(themeState)[name];
+      const theme = get(themeState);
+
+      if (name[0] === '$') {
+        const defaultValue = name.includes('fontStyle') ? '' : theme['editor.foreground'];
+        return theme[name] || theme[getParentScope(name)] || defaultValue;
+      } else {
+        return theme[name];
+      }
     },
   set:
     name =>

@@ -1,4 +1,4 @@
-const { window } = require('vscode');
+const { window, ThemeColor } = require('vscode');
 
 module.exports = ({ name }) => {
   switch (name) {
@@ -45,6 +45,25 @@ module.exports = ({ name }) => {
       window.showErrorMessage('An error occured');
       window.showWarningMessage('This action is not recommended.');
       window.showInformationMessage('Successfully created an account.');
+      break;
+
+    case 'STATUS_BAR_ITEM':
+      const items = [
+        { text: '$(heart) Normal Item', color: '' },
+        { text: '$(error) Error Item', color: 'statusBarItem.errorBackground' },
+        { text: '$(warning) Warning Item', color: 'statusBarItem.warningBackground' },
+      ];
+
+      items.forEach(({ text, color }) => {
+        const item = window.createStatusBarItem(2);
+        item.text = text;
+        item.tooltip = 'This item will be hidden within 1min.';
+        if (color) {
+          item.backgroundColor = new ThemeColor(color);
+        }
+        item.show();
+        setTimeout(() => item.hide(), 60000);
+      });
       break;
 
     // case 'INPUT':

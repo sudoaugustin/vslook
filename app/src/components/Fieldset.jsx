@@ -8,10 +8,12 @@ export default ({ name, label, children }) => {
 
   const [value, setValue] = useRecoilState(valueState(name));
 
-  const handleChange = (value, { select, revert } = {}) => {
-    if (select) window.$theme[name] = value;
-    value && setValue(value);
-    handleEffect({ name, value: revert ? (window.$theme[name] ? value : undefined) : value });
+  const handleChange = (newValue, { select, revert } = {}) => {
+    if (select) window.$theme[name] = newValue;
+    setValue(newValue);
+    // name[0] === '$' ? setValue(newValue) : newValue && setValue(newValue);
+    // name[0] === '$' ? setValue(newValue !== undefined ? newValue : window.$theme[name]) : newValue && setValue(newValue);
+    handleEffect({ name, value: revert ? (window.$theme[name] ? newValue : undefined) : newValue });
   };
 
   const handleEffect = useDebouncedCallback(payload => {

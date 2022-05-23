@@ -26,11 +26,8 @@ export default ({ value, onChange }) => {
                 value={value}
                 colors={colors}
                 activeRef={ref}
-                onSelect={value => {
-                  setOpen(false);
-                  onChange(value, { select: true });
-                }}
-                onPreview={onChange}
+                onClose={() => setOpen(false)}
+                onChange={onChange}
               />
             </section>
           ))}

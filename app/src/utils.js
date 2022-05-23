@@ -52,9 +52,8 @@ export function getColorsFromPalette({ type, colors }) {
   return Object.entries(merge(palettes[type], colors)).map(([name, indents]) => [name, Object.entries(indents)]);
 }
 
-export const getFallbackScope = name => {
+export function getParentScope(name) {
   const [scope, _name] = name.split('_');
   const scopes = scope.split('.');
-  if (name[0] !== '$' || scopes.length < 2) return '';
-  return `${scopes.slice(0, scopes.length - 1).join('.')}_${_name}`;
-};
+  return scopes.length >= 2 ? `${scopes.slice(0, scopes.length - 1).join('.')}_${_name}` : undefined;
+}

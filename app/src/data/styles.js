@@ -416,6 +416,7 @@ const layouts = [
           { label: 'Foreground', name: 'statusBarItem.errorForeground' },
         ],
       },
+      preview: 'STATUS_BAR_ITEM',
     },
   ],
   [
@@ -1042,148 +1043,6 @@ const pages = [
   ],
 ];
 
-const others = [
-  [
-    {
-      title: 'Git Decoration',
-      styles: {
-        normal: [
-          { label: 'Add', name: 'gitDecoration.addedResourceForeground' },
-          { label: 'Modify', name: 'gitDecoration.modifiedResourceForeground' },
-          { label: 'Delete', name: 'gitDecoration.deletedResourceForeground' },
-          { label: 'Rename', name: 'gitDecoration.renamedResourceForeground' },
-          { label: 'Untrack', name: 'gitDecoration.untrackedResourceForeground' },
-          { label: 'Ignore', name: 'gitDecoration.ignoredResourceForeground' },
-          { label: 'Conflict', name: 'gitDecoration.conflictingResourceForeground' },
-          { label: 'Submodule', name: 'gitDecoration.submoduleResourceForeground' },
-        ],
-        staged: [
-          { label: 'Modify', name: 'gitDecoration.stageModifiedResourceForeground' },
-          { label: 'Delete', name: 'gitDecoration.stageDeletedResourceForeground' },
-        ],
-      },
-    },
-  ],
-  [
-    {
-      title: 'Terminal ANSI',
-      styles: {
-        normal: [
-          { label: 'Black', name: 'terminal.ansiBlack' },
-          { label: 'Blue', name: 'terminal.ansiBlue' },
-          { label: 'Cyan', name: 'terminal.ansiCyan' },
-          { label: 'Green', name: 'terminal.ansiGreen' },
-          { label: 'Magenta', name: 'terminal.ansiMagenta' },
-          { label: 'Red', name: 'terminal.ansiRed' },
-          { label: 'White', name: 'terminal.ansiWhite' },
-          { label: 'Yellow', name: 'terminal.ansiYellow' },
-        ],
-        bright: [
-          { label: 'Black', name: 'terminal.ansiBrightBlack' },
-          { label: 'Blue', name: 'terminal.ansiBrightBlue' },
-          { label: 'Cyan', name: 'terminal.ansiBrightCyan' },
-          { label: 'Green', name: 'terminal.ansiBrightGreen' },
-          { label: 'Magenta', name: 'terminal.ansiBrightMagenta' },
-          { label: 'Red', name: 'terminal.ansiBrightRed' },
-          { label: 'White', name: 'terminal.ansiBrightWhite' },
-          { label: 'Yellow', name: 'terminal.ansiBrightYellow' },
-        ],
-      },
-    },
-  ],
-  [
-    {
-      title: 'Symbols',
-      styles: {
-        normal: [
-          { label: 'Array', name: 'symbolIcon.arrayForeground' },
-          { label: 'Boolean', name: 'symbolIcon.booleanForeground' },
-          { label: 'Class', name: 'symbolIcon.classForeground' },
-          { label: 'Color', name: 'symbolIcon.colorForeground' },
-          { label: 'Constant', name: 'symbolIcon.constantForeground' },
-          { label: 'Constructor', name: 'symbolIcon.constructorForeground' },
-          { label: 'Enum', name: 'symbolIcon.enumeratorForeground' },
-          { label: 'Enum Member', name: 'symbolIcon.enumeratorMemberForeground' },
-          { label: 'Event', name: 'symbolIcon.eventForeground' },
-          { label: 'Field', name: 'symbolIcon.fieldForeground' },
-          { label: 'File', name: 'symbolIcon.fileForeground' },
-          { label: 'Folder', name: 'symbolIcon.folderForeground' },
-          { label: 'Function', name: 'symbolIcon.functionForeground' },
-          { label: 'Interface', name: 'symbolIcon.interfaceForeground' },
-          { label: 'Key', name: 'symbolIcon.keyForeground' },
-          { label: 'Keyword', name: 'symbolIcon.keywordForeground' },
-          { label: 'Method', name: 'symbolIcon.methodForeground' },
-          { label: 'Module', name: 'symbolIcon.moduleForeground' },
-          { label: 'Namespace', name: 'symbolIcon.namespaceForeground' },
-          { label: 'Null', name: 'symbolIcon.nullForeground' },
-          { label: 'Number', name: 'symbolIcon.numberForeground' },
-          { label: 'Object', name: 'symbolIcon.objectForeground' },
-          { label: 'Operator', name: 'symbolIcon.operatorForeground' },
-          { label: 'Package', name: 'symbolIcon.packageForeground' },
-          { label: 'Property', name: 'symbolIcon.propertyForeground' },
-          { label: 'Reference', name: 'symbolIcon.referenceForeground' },
-          { label: 'Snippet', name: 'symbolIcon.snippetForeground' },
-          { label: 'String', name: 'symbolIcon.stringForeground' },
-          { label: 'Struct', name: 'symbolIcon.structForeground' },
-          { label: 'Text', name: 'symbolIcon.textForeground' },
-          { label: 'Parameter', name: 'symbolIcon.typeParameterForeground' },
-          { label: 'Unit', name: 'symbolIcon.unitForeground' },
-          { label: 'Variable', name: 'symbolIcon.variableForeground' },
-        ],
-      },
-    },
-  ],
-  [
-    {
-      title: 'Diff Editor',
-      styles: {
-        normal: [
-          { label: 'Separator', name: 'diffEditor.border' },
-          { label: 'Stripe', name: 'diffEditor.diagonalFill' },
-        ],
-      },
-    },
-    {
-      title: 'Text Highlight',
-      styles: {
-        add: [
-          { label: 'Background', name: 'diffEditor.insertedTextBackground' },
-          { label: 'Border', name: 'diffEditor.insertedTextBorder' },
-        ],
-        delete: [
-          { label: 'Background', name: 'diffEditor.removedTextBackground' },
-          { label: 'Border', name: 'diffEditor.removedTextBorder' },
-        ],
-      },
-    },
-    {
-      title: 'Line Highlight',
-      styles: {
-        add: [{ label: 'Background', name: 'diffEditor.insertedLineBackground' }],
-        delete: [{ label: 'Background', name: 'diffEditor.removedLineBackground' }],
-      },
-    },
-    {
-      title: 'Gutter Highlights',
-      styles: {
-        normal: [
-          { label: 'Add', name: 'diffEditorGutter.insertedLineBackground' },
-          { label: 'Delete', name: 'diffEditorGutter.removedLineBackground' },
-        ],
-      },
-    },
-    {
-      title: 'Overview Highlights',
-      styles: {
-        normal: [
-          { label: 'Add', name: 'diffEditorOverview.insertedLineBackground' },
-          { label: 'Delete', name: 'diffEditorOverview.removedLineBackground' },
-        ],
-      },
-    },
-  ],
-];
-
 const syntax = [
   [
     {
@@ -1193,13 +1052,9 @@ const syntax = [
           { label: 'Foreground', name: '$comment_foreground' },
           { label: 'Font', name: '$comment_fontStyle', type: 'select' },
         ],
-        block: [
+        'multi-line': [
           { label: 'Foreground', name: '$comment.block_foreground' },
           { label: 'Font', name: '$comment.block_fontStyle', type: 'select' },
-        ],
-        document: [
-          { label: 'Foreground', name: '$comment.block.documentation_foreground' },
-          { label: 'Font', name: '$comment.block.documentation_fontStyle', type: 'select' },
         ],
       },
     },
@@ -1212,20 +1067,11 @@ const syntax = [
           { label: 'Foreground', name: '$constant_foreground' },
           { label: 'Font', name: '$constant_fontStyle', type: 'select' },
         ],
-        regexp: [
-          { label: 'Foreground', name: '$constant.regexp_foreground' },
-          { label: 'Font', name: '$constant.regexp_fontStyle', type: 'select' },
+        number: [
+          { label: 'Foreground', name: '$constant.numeric_foreground' },
+          { label: 'Font', name: '$constant.numeric_fontStyle', type: 'select' },
         ],
-        color: [
-          { label: 'Foreground', name: '$constant.rgb-value_foreground' },
-          { label: 'Font', name: '$constant.rgb-value_fontStyle', type: 'select' },
-        ],
-      },
-    },
-    {
-      title: 'Character',
-      styles: {
-        normal: [
+        character: [
           { label: 'Foreground', name: '$constant.character_foreground' },
           { label: 'Font', name: '$constant.character_fontStyle', type: 'select' },
         ],
@@ -1233,95 +1079,44 @@ const syntax = [
           { label: 'Foreground', name: '$constant.character.escape_foreground' },
           { label: 'Font', name: '$constant.character.escape_fontStyle', type: 'select' },
         ],
-      },
-    },
-    {
-      title: 'Number',
-      styles: {
-        normal: [
-          { label: 'Foreground', name: '$constant.numeric_foreground' },
-          { label: 'Font', name: '$constant.numeric_fontStyle', type: 'select' },
-        ],
-        int: [
-          { label: 'Foreground', name: '$constant.numeric.integer_foreground' },
-          { label: 'Font', name: '$constant.numeric.integer_fontStyle', type: 'select' },
-        ],
-        float: [
-          { label: 'Foreground', name: '$constant.numeric.float_foreground' },
-          { label: 'Font', name: '$constant.numeric.float_fontStyle', type: 'select' },
-        ],
-        octal: [
-          { label: 'Foreground', name: '$constant.numeric.octal_foreground' },
-          { label: 'Font', name: '$constant.numeric.octal_fontStyle', type: 'select' },
-        ],
-        hex: [
-          { label: 'Foreground', name: '$constant.numeric.hex_foreground' },
-          { label: 'Font', name: '$constant.numeric.hex_fontStyle', type: 'select' },
+        language: [
+          { label: 'Foreground', name: '$constant.language_foreground' },
+          { label: 'Font', name: '$constant.language_fontStyle', type: 'select' },
         ],
       },
     },
   ],
   [
     {
-      title: 'Emphasis',
+      title: 'Entity Name',
       styles: {
-        normal: [
-          { label: 'Foreground', name: '$emphasis_foreground' },
-          { label: 'Font', name: '$emphasis_fontStyle', type: 'select' },
-        ],
-      },
-    },
-  ],
-  [
-    { title: 'Entity' },
-    {
-      title: 'Name',
-      styles: {
-        normal: [
-          { label: 'Foreground', name: '$entity.name_foreground' },
-          { label: 'Font', name: '$entity.name_fontStyle', type: 'select' },
+        type: [
+          { label: 'Foreground', name: '$entity.name.type_foreground' },
+          { label: 'Font', name: '$entity.name.type_fontStyle', type: 'select' },
         ],
         class: [
           { label: 'Foreground', name: '$entity.name.class_foreground' },
           { label: 'Font', name: '$entity.name.class_fontStyle', type: 'select' },
         ],
-        func: [
+        superclass: [
+          { label: 'Foreground', name: '$entity.other.inherited-class_foreground' },
+          { label: 'Font', name: '$entity.other.inherited-class_fontStyle', type: 'select' },
+        ],
+        function: [
           { label: 'Foreground', name: '$entity.name.function_foreground' },
           { label: 'Font', name: '$entity.name.function_fontStyle', type: 'select' },
         ],
-        method: [
-          { label: 'Foreground', name: '$entity.name.method_foreground' },
-          { label: 'Font', name: '$entity.name.method_fontStyle', type: 'select' },
-        ],
-        selector: [
-          { label: 'Foreground', name: '$entity.name.selector_foreground' },
-          { label: 'Font', name: '$entity.name.selector_fontStyle', type: 'select' },
+        section: [
+          { label: 'Foreground', name: '$entity.name.section_foreground' },
+          { label: 'Font', name: '$entity.name.section_fontStyle', type: 'select' },
         ],
         tag: [
           { label: 'Foreground', name: '$entity.name.tag_foreground' },
           { label: 'Font', name: '$entity.name.tag_fontStyle', type: 'select' },
         ],
-        type: [
-          { label: 'Foreground', name: '$entity.name.type_foreground' },
-          { label: 'Font', name: '$entity.name.type_fontStyle', type: 'select' },
-        ],
-      },
-    },
-    {
-      title: 'Attribute',
-      styles: {
-        normal: [
+        attribute: [
           { label: 'Foreground', name: '$entity.other.attribute-name_foreground' },
           { label: 'Font', name: '$entity.other.attribute-name_fontStyle', type: 'select' },
-        ],
-      },
-    },
-    {
-      title: 'Inherited Class',
-      styles: {
-        normal: [
-          { label: 'Foreground', name: '$entity.other.inherited-class_foreground' },
-          { label: 'Font', name: '$entity.other.inherited-class_fontStyle', type: 'select' },
         ],
       },
     },
@@ -1330,9 +1125,13 @@ const syntax = [
     {
       title: 'Invalid',
       styles: {
-        normal: [
-          { label: 'Foreground', name: '$invalid_foreground' },
-          { label: 'Font', name: '$invalid_fontStyle', type: 'select' },
+        illegal: [
+          { label: 'Foreground', name: '$invalid.illegal_foreground' },
+          { label: 'Font', name: '$invalid.illegal_fontStyle', type: 'select' },
+        ],
+        deprecated: [
+          { label: 'Foreground', name: '$invalid.deprecated_foreground' },
+          { label: 'Font', name: '$invalid.deprecated_fontStyle', type: 'select' },
         ],
       },
     },
@@ -1398,10 +1197,6 @@ const syntax = [
           { label: 'Foreground', name: '$markup.italic_foreground' },
           { label: 'Font', name: '$markup.italic_fontStyle', type: 'select' },
         ],
-        underline: [
-          { label: 'Foreground', name: '$markup.underline_foreground' },
-          { label: 'Font', name: '$markup.underline_fontStyle', type: 'select' },
-        ],
         link: [
           { label: 'Foreground', name: '$markup.underline.link_foreground' },
           { label: 'Font', name: '$markup.underline.link_fontStyle', type: 'select' },
@@ -1410,29 +1205,13 @@ const syntax = [
           { label: 'Foreground', name: '$markup.quote_foreground' },
           { label: 'Font', name: '$markup.quote_fontStyle', type: 'select' },
         ],
-        heading: [
-          { label: 'Foreground', name: '$markup.heading_foreground' },
-          { label: 'Font', name: '$markup.heading_fontStyle', type: 'select' },
-        ],
         list: [
           { label: 'Foreground', name: '$markup.list_foreground' },
           { label: 'Font', name: '$markup.list_fontStyle', type: 'select' },
         ],
-        raw: [
-          { label: 'Foreground', name: '$markup.raw_foreground' },
-          { label: 'Font', name: '$markup.raw_fontStyle', type: 'select' },
-        ],
-        inserted: [
-          { label: 'Foreground', name: '$markup.inserted_foreground' },
-          { label: 'Font', name: '$markup.inserted_fontStyle', type: 'select' },
-        ],
-        changed: [
-          { label: 'Foreground', name: '$markup.changed_foreground' },
-          { label: 'Font', name: '$markup.changed_fontStyle', type: 'select' },
-        ],
-        deleted: [
-          { label: 'Foreground', name: '$markup.deleted_foreground' },
-          { label: 'Font', name: '$markup.deleted_fontStyle', type: 'select' },
+        heading: [
+          { label: 'Foreground', name: '$markup.heading_foreground' },
+          { label: 'Font', name: '$markup.heading_fontStyle', type: 'select' },
         ],
       },
     },
@@ -1457,17 +1236,13 @@ const syntax = [
           { label: 'Foreground', name: '$meta.function_foreground' },
           { label: 'Font', name: '$meta.function_fontStyle', type: 'select' },
         ],
-        'function-call': [
+        'func-call': [
           { label: 'Foreground', name: '$meta.function-call_foreground' },
           { label: 'Font', name: '$meta.function-call_fontStyle', type: 'select' },
         ],
         preprocessor: [
           { label: 'Foreground', name: '$meta.preprocessor_foreground' },
           { label: 'Font', name: '$meta.preprocessor_fontStyle', type: 'select' },
-        ],
-        'return-type': [
-          { label: 'Foreground', name: '$meta.return-type_foreground' },
-          { label: 'Font', name: '$meta.return-type_fontStyle', type: 'select' },
         ],
         selector: [
           { label: 'Foreground', name: '$meta.selector_foreground' },
@@ -1480,6 +1255,10 @@ const syntax = [
         type: [
           { label: 'Foreground', name: '$meta.type_foreground' },
           { label: 'Font', name: '$meta.type_fontStyle', type: 'select' },
+        ],
+        'return-type': [
+          { label: 'Foreground', name: '$meta.return-type_foreground' },
+          { label: 'Font', name: '$meta.return-type_fontStyle', type: 'select' },
         ],
       },
     },
@@ -1629,4 +1408,146 @@ const syntax = [
   ],
 ];
 
-export default { components, layouts, editors, pages, others };
+const others = [
+  [
+    {
+      title: 'Git Decoration',
+      styles: {
+        normal: [
+          { label: 'Add', name: 'gitDecoration.addedResourceForeground' },
+          { label: 'Modify', name: 'gitDecoration.modifiedResourceForeground' },
+          { label: 'Delete', name: 'gitDecoration.deletedResourceForeground' },
+          { label: 'Rename', name: 'gitDecoration.renamedResourceForeground' },
+          { label: 'Untrack', name: 'gitDecoration.untrackedResourceForeground' },
+          { label: 'Ignore', name: 'gitDecoration.ignoredResourceForeground' },
+          { label: 'Conflict', name: 'gitDecoration.conflictingResourceForeground' },
+          { label: 'Submodule', name: 'gitDecoration.submoduleResourceForeground' },
+        ],
+        staged: [
+          { label: 'Modify', name: 'gitDecoration.stageModifiedResourceForeground' },
+          { label: 'Delete', name: 'gitDecoration.stageDeletedResourceForeground' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Terminal ANSI',
+      styles: {
+        normal: [
+          { label: 'Black', name: 'terminal.ansiBlack' },
+          { label: 'Blue', name: 'terminal.ansiBlue' },
+          { label: 'Cyan', name: 'terminal.ansiCyan' },
+          { label: 'Green', name: 'terminal.ansiGreen' },
+          { label: 'Magenta', name: 'terminal.ansiMagenta' },
+          { label: 'Red', name: 'terminal.ansiRed' },
+          { label: 'White', name: 'terminal.ansiWhite' },
+          { label: 'Yellow', name: 'terminal.ansiYellow' },
+        ],
+        bright: [
+          { label: 'Black', name: 'terminal.ansiBrightBlack' },
+          { label: 'Blue', name: 'terminal.ansiBrightBlue' },
+          { label: 'Cyan', name: 'terminal.ansiBrightCyan' },
+          { label: 'Green', name: 'terminal.ansiBrightGreen' },
+          { label: 'Magenta', name: 'terminal.ansiBrightMagenta' },
+          { label: 'Red', name: 'terminal.ansiBrightRed' },
+          { label: 'White', name: 'terminal.ansiBrightWhite' },
+          { label: 'Yellow', name: 'terminal.ansiBrightYellow' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Symbols',
+      styles: {
+        normal: [
+          { label: 'Array', name: 'symbolIcon.arrayForeground' },
+          { label: 'Boolean', name: 'symbolIcon.booleanForeground' },
+          { label: 'Class', name: 'symbolIcon.classForeground' },
+          { label: 'Color', name: 'symbolIcon.colorForeground' },
+          { label: 'Constant', name: 'symbolIcon.constantForeground' },
+          { label: 'Constructor', name: 'symbolIcon.constructorForeground' },
+          { label: 'Enum', name: 'symbolIcon.enumeratorForeground' },
+          { label: 'Enum Member', name: 'symbolIcon.enumeratorMemberForeground' },
+          { label: 'Event', name: 'symbolIcon.eventForeground' },
+          { label: 'Field', name: 'symbolIcon.fieldForeground' },
+          { label: 'File', name: 'symbolIcon.fileForeground' },
+          { label: 'Folder', name: 'symbolIcon.folderForeground' },
+          { label: 'Function', name: 'symbolIcon.functionForeground' },
+          { label: 'Interface', name: 'symbolIcon.interfaceForeground' },
+          { label: 'Key', name: 'symbolIcon.keyForeground' },
+          { label: 'Keyword', name: 'symbolIcon.keywordForeground' },
+          { label: 'Method', name: 'symbolIcon.methodForeground' },
+          { label: 'Module', name: 'symbolIcon.moduleForeground' },
+          { label: 'Namespace', name: 'symbolIcon.namespaceForeground' },
+          { label: 'Null', name: 'symbolIcon.nullForeground' },
+          { label: 'Number', name: 'symbolIcon.numberForeground' },
+          { label: 'Object', name: 'symbolIcon.objectForeground' },
+          { label: 'Operator', name: 'symbolIcon.operatorForeground' },
+          { label: 'Package', name: 'symbolIcon.packageForeground' },
+          { label: 'Property', name: 'symbolIcon.propertyForeground' },
+          { label: 'Reference', name: 'symbolIcon.referenceForeground' },
+          { label: 'Snippet', name: 'symbolIcon.snippetForeground' },
+          { label: 'String', name: 'symbolIcon.stringForeground' },
+          { label: 'Struct', name: 'symbolIcon.structForeground' },
+          { label: 'Text', name: 'symbolIcon.textForeground' },
+          { label: 'Parameter', name: 'symbolIcon.typeParameterForeground' },
+          { label: 'Unit', name: 'symbolIcon.unitForeground' },
+          { label: 'Variable', name: 'symbolIcon.variableForeground' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Diff Editor',
+      styles: {
+        normal: [
+          { label: 'Separator', name: 'diffEditor.border' },
+          { label: 'Stripe', name: 'diffEditor.diagonalFill' },
+        ],
+      },
+    },
+    {
+      title: 'Text Highlight',
+      styles: {
+        add: [
+          { label: 'Background', name: 'diffEditor.insertedTextBackground' },
+          { label: 'Border', name: 'diffEditor.insertedTextBorder' },
+        ],
+        delete: [
+          { label: 'Background', name: 'diffEditor.removedTextBackground' },
+          { label: 'Border', name: 'diffEditor.removedTextBorder' },
+        ],
+      },
+    },
+    {
+      title: 'Line Highlight',
+      styles: {
+        add: [{ label: 'Background', name: 'diffEditor.insertedLineBackground' }],
+        delete: [{ label: 'Background', name: 'diffEditor.removedLineBackground' }],
+      },
+    },
+    {
+      title: 'Gutter Highlights',
+      styles: {
+        normal: [
+          { label: 'Add', name: 'diffEditorGutter.insertedLineBackground' },
+          { label: 'Delete', name: 'diffEditorGutter.removedLineBackground' },
+        ],
+      },
+    },
+    {
+      title: 'Overview Highlights',
+      styles: {
+        normal: [
+          { label: 'Add', name: 'diffEditorOverview.insertedLineBackground' },
+          { label: 'Delete', name: 'diffEditorOverview.removedLineBackground' },
+        ],
+      },
+    },
+  ],
+];
+
+export default { components, layouts, editors, syntax, pages, others };

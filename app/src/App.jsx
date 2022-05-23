@@ -12,8 +12,13 @@ export default () => {
   const [isDataLoaded, setDataLoaded] = useState(false);
 
   useEffectOnce(() => {
-    setTheme(getCSSColors());
-    const observer = new MutationObserver(() => setTheme(getCSSColors()));
+    setTheme({ ...window.$theme, ...getCSSColors() });
+    const observer = new MutationObserver(() =>
+      setTheme(theme => {
+        const newTheme = { ...theme, ...getCSSColors() };
+        return newTheme;
+      }),
+    );
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
   });
 

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  @apply h-full min-w-[25rem] bg-white text-[length:var(--vscode-editor-font-size)];
+  @apply h-full min-w-[37rem] bg-white text-[length:var(--vscode-editor-font-size)];
 }
 
 body {

@@ -19,11 +19,7 @@ export default ({ value, onChange }) => {
   return (
     <Menu>
       {() => (
-        <button
-          className={`radix-peer h-6 flex-1 overflow-hidden rounded-l-md ${
-            !!value ? 'bg-pattern-rectangle' : 'bg-pattern-stripe'
-          }`}
-        >
+        <button className='radix-peer bg-pattern-rectangle h-6 flex-1 overflow-hidden rounded-l-md'>
           <i style={{ background: val }} className='block h-full w-full' />
         </button>
       )}

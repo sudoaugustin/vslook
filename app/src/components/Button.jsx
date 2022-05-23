@@ -5,7 +5,7 @@ export default ({ label, variant = 'fill', ...rest }) => {
   };
   return (
     <button
-      className={`w-full rounded-md border p-1 text-center font-medium duration-150 ${classes[variant]}`}
+      className={`w-full select-none rounded-md border p-1 text-center font-medium duration-150 ${classes[variant]}`}
       {...rest}
     >
       {label}

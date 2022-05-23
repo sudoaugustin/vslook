@@ -7,7 +7,7 @@
   "preview": true,
   "license": "MIT",
   "publisher": "sudoaugustin",
-  "description": "Customize your VSCode.",
+  "description": "Customize the look of your VSCode",
   "author": {
     "name": "Augutstin Joseph",
     "email": "sudoaugustin@gmail.com"
@@ -29,6 +29,7 @@
     "Other"
   ],
   "activationEvents": [
+    "*",
     "onCommand:vslook.edit"
   ],
   "keywords": [
@@ -36,6 +37,13 @@
     "design_tool"
   ],
   "contributes": {
+    "themes": [
+      {
+        "label": "VSLook",
+        "path": "./themes/index.json",
+        "uiTheme": "vs"
+      }
+    ],
     "commands": [
       {
         "title": "Edit",

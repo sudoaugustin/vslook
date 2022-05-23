@@ -4,24 +4,36 @@
 
 ### Base Colors
 
-![Base colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-base-colors.png)
+![base colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-base-colors.png)
 
 ### Scrollbar
 
-![Scrollbar](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-scrollbar.png)
+![scrollbar colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-scrollbar.png)
 
 ### Text
 
-![Text](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-text.png)
+![text colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-text.png)
 
 ### Toolbar & Buttons
 
-![Toolbar & Buttons](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-toolbar-buttons.png)
+![toolbar & buttons colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-toolbar-buttons.png)
 
 ### Checkbox, Input & Dropdown
 
-![Checkbox, Input & Dropdown](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-checkbox-input-dropdown.png)
+![checkbox, input & dropdown colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-checkbox-input-dropdown.png)
 
 ### Toast & Badge
 
-![Toast & Badge](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-toast-badge.png)
+![toast & badge colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-toast-badge.png)
+
+### List & Keybinding Label
+
+![list & keybinding label colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-list-keybinding.png)
+
+</br>
+
+## Layouts
+
+### Title Bar & Activity Bar
+
+![title bar & activity bar colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-titlebar-activitybar.png)
