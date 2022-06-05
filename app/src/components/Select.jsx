@@ -10,7 +10,7 @@ export default ({ options, ...props }) => {
           <Select.Trigger className='flex h-6 w-full items-center justify-between px-1.5 leading-none text-gray-800'>
             <Select.Value>{options.find(option => option.value === value)?.name}</Select.Value>
             <Select.Icon>
-              <SelectorIcon className='pointer w-4 text-gray-400' />
+              <SelectorIcon className='w-4 cursor-pointer text-gray-400' />
             </Select.Icon>
           </Select.Trigger>
 
@@ -20,7 +20,7 @@ export default ({ options, ...props }) => {
                 <Select.Item
                   key={name}
                   value={value}
-                  className='pointer flex justify-between rounded-md px-1.5 py-1 text-gray-600 duration-150 focus:bg-gray-100 focus:text-gray-800 radix-active:text-orange-600'
+                  className='flex cursor-pointer justify-between rounded-md px-1.5 py-1 text-gray-600 duration-150 focus:bg-gray-100 focus:text-gray-800 radix-active:text-orange-600'
                 >
                   <Select.ItemText>{name}</Select.ItemText>
                   <Select.ItemIndicator>

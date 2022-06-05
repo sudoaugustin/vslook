@@ -1,5 +1,4 @@
 const fs = require('./utils/fs');
-const config = require('./utils/config');
 const inherits = require('./data/inherits.json');
 
 function get(path) {
@@ -15,7 +14,7 @@ function get(path) {
   return { ...theme.colors, ...tokenColors };
 }
 
-function set(path, { name = '', value }) {
+function set(path, setGlobal, { name = '', value, select }) {
   fs.update(
     path,
     theme => {
@@ -27,21 +26,31 @@ function set(path, { name = '', value }) {
           i = newTokenColors.length;
           newTokenColors[i] = { scope, settings: {} };
         }
-        newTokenColors[i].settings[setting] = value;
 
-        return { ...theme, tokenColors: newTokenColors };
+        if (!!value) {
+          newTokenColors[i].settings[setting] = value;
+        } else {
+          delete newTokenColors[i].settings[setting];
+        }
+
+        theme.tokenColors = newTokenColors.filter(({ settings }) => Object.keys(settings).length > 0);
       } else {
-        const inherit = inherits[name];
         const newColors = theme.colors;
-        if (value) {
+        const inheritProps = (inherits[name] || '').split(', ');
+
+        if (!!value) {
           newColors[name] = value;
-          if (!!inherit) newColors[inherit] = value;
+          inheritProps.forEach(name => (newColors[name] = value));
         } else {
           delete newColors[name];
-          delete newColors[inherit];
+          inheritProps.forEach(name => delete newColors[name]);
         }
-        return { ...theme, colors: newColors };
+
+        theme.colors = newColors;
       }
+
+      select && setGlobal('theme', theme);
+      return theme;
     },
     { json: true },
   );

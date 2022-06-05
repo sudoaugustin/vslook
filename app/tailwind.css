@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  @apply h-full min-w-[37rem] bg-white text-[length:var(--vscode-editor-font-size)];
+  @apply h-full min-w-[25rem] bg-white text-[length:var(--vscode-editor-font-size)];
 }
 
 body {
@@ -16,10 +16,6 @@ body {
 
 * {
   outline: none !important;
-}
-
-.pointer {
-  @apply cursor-pointer;
 }
 
 input[type='number']::-webkit-inner-spin-button,
@@ -43,36 +39,10 @@ input[type='number']::-webkit-outer-spin-button {
   @apply hidden w-0;
 }
 
-.bg-pattern-rectangle {
-  background-size: 14px 14px;
-  background-image: repeating-linear-gradient(
-      45deg,
-      theme('colors.gray.300') 25%,
-      transparent 25%,
-      transparent 75%,
-      theme('colors.gray.300') 75%,
-      theme('colors.gray.300')
-    ),
-    repeating-linear-gradient(
-      45deg,
-      theme('colors.gray.300') 25%,
-      transparent 25%,
-      transparent 75%,
-      theme('colors.gray.300') 75%,
-      theme('colors.gray.300')
-    );
-  background-position: 0 0, 7px 7px;
-}
-
-.bg-pattern-stripe {
-  background-size: 7px 7px;
-  background-image: repeating-linear-gradient(
-    45deg,
-    theme('colors.gray.300') 0,
-    theme('colors.gray.300') 2px,
-    transparent 0,
-    transparent 50%
-  );
+.bg-pattern-transparent {
+  background-image: repeating-conic-gradient(theme('colors.gray.300') 0% 25%, #fff 0% 50%);
+  background-position: 0 0, 5.5px 5.5px;
+  background-size: 11px 11px;
 }
 
 .react-colorful {

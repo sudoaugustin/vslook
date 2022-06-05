@@ -23,9 +23,8 @@ function template({ js, css, globals }) {
     </html>`;
 }
 
-module.exports = root => {
-  const getUri = (...args) => vscode.Uri.file(path.resolve(root, ...args));
-  const themePath = path.join(root, 'themes', 'index.json');
+module.exports = ({ paths, setGlobal }) => {
+  const getUri = (...args) => vscode.Uri.file(path.join(paths.root, ...args));
   const panel = vscode.window.createWebviewPanel('theme.preview', 'VSLook', vscode.ViewColumn.Beside, {
     enableScripts: true,
     retainContextWhenHidden: true,
@@ -34,7 +33,7 @@ module.exports = root => {
   panel.webview.html = template({
     js: panel.webview.asWebviewUri(getUri('.dist', 'index.js')),
     css: panel.webview.asWebviewUri(getUri('.dist', 'index.css')),
-    globals: { theme: theme.get(themePath), palette: palette.get() },
+    globals: { theme: theme.get(paths.theme), palette: palette.get() },
   });
 
   panel.webview.onDidReceiveMessage(({ type, payload }) => {
@@ -44,7 +43,7 @@ module.exports = root => {
         preview(payload);
         break;
       case 'SET_THEME':
-        theme.set(themePath, payload);
+        theme.set(paths.theme, setGlobal, payload);
         break;
       case 'SET_PALETTE_COLORS':
         palette.set(payload);

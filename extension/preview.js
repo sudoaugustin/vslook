@@ -1,6 +1,7 @@
-const { window, ThemeColor } = require('vscode');
+const { window, commands, ThemeColor } = require('vscode');
 
 module.exports = ({ name }) => {
+  console.log(name);
   switch (name) {
     case 'BASE_COLORS':
       window.withProgress(
@@ -34,17 +35,11 @@ module.exports = ({ name }) => {
           { label: '$(watch) Scheduled reminders' },
         ],
         {
-          title: '⚙️ Settings (Press `Esc` to close)',
+          title: '🌈 Sample quick pick (ESC to close)',
           placeHolder: 'Search or jump to...',
           ignoreFocusOut: true,
         },
       );
-      break;
-
-    case 'TOAST':
-      window.showErrorMessage('An error occured');
-      window.showWarningMessage('This action is not recommended.');
-      window.showInformationMessage('Successfully created an account.');
       break;
 
     case 'STATUS_BAR_ITEM':
@@ -56,6 +51,7 @@ module.exports = ({ name }) => {
 
       items.forEach(({ text, color }) => {
         const item = window.createStatusBarItem(2);
+        item.command = '';
         item.text = text;
         item.tooltip = 'This item will be hidden within 1min.';
         if (color) {
@@ -64,6 +60,16 @@ module.exports = ({ name }) => {
         item.show();
         setTimeout(() => item.hide(), 60000);
       });
+      break;
+
+    case 'TOAST':
+      commands.executeCommand('notifications.hideList');
+      showMessages();
+      break;
+
+    case 'NOTIFICATION_CENTER':
+      commands.executeCommand('notifications.showList');
+      showMessages();
       break;
 
     // case 'INPUT':
@@ -83,7 +89,14 @@ module.exports = ({ name }) => {
     //   input.show();
 
     //   break;
+
     default:
       break;
   }
 };
+
+function showMessages() {
+  window.showErrorMessage('An error occured');
+  window.showWarningMessage('This action is not recommended.');
+  window.showInformationMessage('Successfully created an account.');
+}

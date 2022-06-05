@@ -1,6 +1,28 @@
 # Change Log
 
-All notable changes to the **VSLook** extension will be in this file.
+## [0.2.0] - $DATE
+
+### Added
+
+- Color theme
+
+### Changed
+
+- #### UI
+
+  - Moved **Preformat** to **code** in **Text**.
+  - Moved **Toolbar** to **Icon** under **Button**.
+
+- #### Styles
+  - List Item's `obscure`
+
+### Removed
+
+- Changing styles in `setting.json`
+- #### UI
+  - Unset color
+
+</br>
 
 ## [0.1.1] - 2022-04-30
 
@@ -13,6 +35,8 @@ All notable changes to the **VSLook** extension will be in this file.
 - Color `undefined` state.
 - Some **Swatch** UI bugs.
 
+</br>
+
 ## [0.1.0] - 2022-04-25
 
 ### Added
@@ -22,5 +46,6 @@ All notable changes to the **VSLook** extension will be in this file.
 - Custom color variables
 - Tailwind and Material palettes
 
+[0.2.0]: https://github.com/sudoaugustin/vslook/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/sudoaugustin/vslook/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/sudoaugustin/vslook/releases/tag/v0.1.0

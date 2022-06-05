@@ -31,7 +31,7 @@ export default ({ format, values, onChange, onFormatChange }) => {
         })}
       </div>
       <i
-        className='pointer relative -top-2.5 text-gray-400 duration-100 hover:text-gray-700'
+        className='relative -top-2.5 cursor-pointer text-gray-400 duration-100 hover:text-gray-700'
         onClick={handleFormatChange}
       >
         <SelectorIcon className='h-5' />
