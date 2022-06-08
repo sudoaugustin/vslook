@@ -20,10 +20,10 @@ export default ({ name, label, children }) => {
 
   return (
     <fieldset>
-      <label className="mb-1 flex items-baseline text-xs font-medium text-gray-400">{label}</label>
-      <div className="relative flex divide-x rounded-md shadow-sm">
+      <label className='mb-1 flex items-baseline text-xs font-medium text-gray-400'>{label}</label>
+      <div className='relative flex divide-x rounded-md shadow-sm'>
         {children({ value, onChange: handleChange })}
-        <span className="absolute inset-0 -z-10 rounded-md ring ring-transparent ring-offset-1 ring-offset-gray-200 duration-200 radix-peer-open:ring-orange-200 radix-peer-open:ring-offset-orange-400" />
+        <span className='absolute inset-0 -z-10 rounded-md ring ring-transparent ring-offset-1 ring-offset-gray-200 duration-200 radix-peer-open:ring-orange-200 radix-peer-open:ring-offset-orange-400' />
       </div>
     </fieldset>
   );

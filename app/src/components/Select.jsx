@@ -8,7 +8,7 @@ export default ({ options, ...props }) => {
       {({ value, onChange }) => (
         <Select.Root value={value} onValueChange={value => onChange(value, { select: true })}>
           <Select.Trigger className='flex h-6 w-full items-center justify-between px-1.5 leading-none text-gray-800'>
-            <Select.Value>{options.find(option => option.value === value)?.name}</Select.Value>
+            <Select.Value>{options.find(option => option.value === value).name}</Select.Value>
             <Select.Icon>
               <SelectorIcon className='w-4 cursor-pointer text-gray-400' />
             </Select.Icon>

@@ -9,15 +9,15 @@ export const valueState = selectorFamily({
     name =>
     ({ get }) => {
       const theme = get(themeState);
+      const value = theme[name];
 
-      if (name[0] === '$') {
+      if (name[0] === '$' && value === undefined) {
         const parentScope = getParentScope(name);
-        const defaultValue = name.includes('fontStyle') ? '' : theme['editor.foreground'];
-
-        return theme[name] || (parentScope ? get(valueState(parentScope)) : defaultValue);
-      } else {
-        return theme[name];
+        const defaultValue = name.includes('fontStyle') ? null : theme['editor.foreground'];
+        return !!parentScope ? get(valueState(parentScope)) : defaultValue;
       }
+
+      return value;
     },
   set:
     name =>

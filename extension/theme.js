@@ -27,7 +27,7 @@ function set(path, setGlobal, { name = '', value, select }) {
           newTokenColors[i] = { scope, settings: {} };
         }
 
-        if (!!value) {
+        if (!!value || value === '') {
           newTokenColors[i].settings[setting] = value;
         } else {
           delete newTokenColors[i].settings[setting];
