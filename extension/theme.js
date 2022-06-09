@@ -1,13 +1,14 @@
 const fs = require('./utils/fs');
-const inherits = require('./data/inherits.json');
+const getInherits = require('./utils/inherits');
 
 function get(path) {
   const theme = fs.read(path, { json: true });
   const tokenColors = theme.tokenColors.reduce((colors, { scope, settings }) => {
+    const $scope = typeof scope === 'string' ? scope : scope[0];
     return {
       ...colors,
-      [`$${scope}_fontStyle`]: settings.fontStyle,
-      [`$${scope}_foreground`]: settings.foreground,
+      [`$${$scope}_fontStyle`]: settings.fontStyle,
+      [`$${$scope}_foreground`]: settings.foreground,
     };
   }, {});
 
@@ -21,10 +22,10 @@ function set(path, setGlobal, { name = '', value, select }) {
       if (name[0] === '$') {
         const newTokenColors = theme.tokenColors;
         const [scope, setting] = name.substring(1).split('_');
-        let i = newTokenColors.findIndex(tokenColor => tokenColor.scope === scope);
+        let i = newTokenColors.findIndex(tokenColor => tokenColor.scope[0] === scope);
         if (i < 0) {
           i = newTokenColors.length;
-          newTokenColors[i] = { scope, settings: {} };
+          newTokenColors[i] = { scope: [scope, ...getInherits(scope)], settings: {} };
         }
 
         if (!!value || value === '') {
@@ -36,14 +37,14 @@ function set(path, setGlobal, { name = '', value, select }) {
         theme.tokenColors = newTokenColors.filter(({ settings }) => Object.keys(settings).length > 0);
       } else {
         const newColors = theme.colors;
-        const inheritProps = (inherits[name] || '').split(', ');
+        const inheritColors = getInherits(name);
 
         if (!!value) {
           newColors[name] = value;
-          inheritProps.forEach(name => (newColors[name] = value));
+          inheritColors.forEach(name => (newColors[name] = value));
         } else {
           delete newColors[name];
-          inheritProps.forEach(name => delete newColors[name]);
+          inheritColors.forEach(name => delete newColors[name]);
         }
 
         theme.colors = newColors;

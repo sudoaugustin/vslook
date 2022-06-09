@@ -905,26 +905,26 @@ const pages = [
       },
     },
   ],
-  [
-    {
-      title: 'Search Editor',
-    },
-    {
-      title: 'Find Match',
-      styles: {
-        normal: [
-          { label: 'Background', name: 'searchEditor.findMatchBackground' },
-          { label: 'Border', name: 'searchEditor.findMatchBorder' },
-        ],
-      },
-    },
-    {
-      title: 'Input',
-      styles: {
-        normal: [{ label: 'Border', name: 'searchEditor.textInputBorder' }],
-      },
-    },
-  ],
+  // [
+  //   {
+  //     title: 'Search Editor',
+  //   },
+  //   {
+  //     title: 'Find Match',
+  //     styles: {
+  //       normal: [
+  //         { label: 'Background', name: 'searchEditor.findMatchBackground' },
+  //         { label: 'Border', name: 'searchEditor.findMatchBorder' },
+  //       ],
+  //     },
+  //   },
+  //   {
+  //     title: 'Input',
+  //     styles: {
+  //       normal: [{ label: 'Border', name: 'searchEditor.textInputBorder' }],
+  //     },
+  //   },
+  // ],
 ];
 
 const syntax = [
@@ -959,7 +959,10 @@ const syntax = [
     {
       title: 'Variable',
       styles: {
-        normal: [{ label: 'Font Style', name: '$meta.var_fontStyle', type: 'select' }],
+        normal: [
+          // { label: 'Foreground', name: '$meta.var_foreground' },
+          { label: 'Font Style', name: '$meta.var_fontStyle', type: 'select' },
+        ],
       },
     },
     {
@@ -968,6 +971,10 @@ const syntax = [
         normal: [
           { label: 'Foreground', name: '$variable_foreground' },
           { label: 'Font Style', name: '$variable_fontStyle', type: 'select' },
+        ],
+        property: [
+          { label: 'Foreground', name: '$meta.object.member_foreground' },
+          { label: 'Font Style', name: '$meta.object.member_fontStyle', type: 'select' },
         ],
         parameter: [
           { label: 'Foreground', name: '$variable.parameter_foreground' },
@@ -1017,7 +1024,10 @@ const syntax = [
     {
       title: 'Type',
       styles: {
-        normal: [{ label: 'Font Style', name: '$meta.type_fontStyle', type: 'select' }],
+        normal: [
+          // { label: 'Foreground', name: '$meta.type_foreground' },
+          { label: 'Font Style', name: '$meta.type_fontStyle', type: 'select' },
+        ],
       },
     },
     {
@@ -1034,7 +1044,10 @@ const syntax = [
     {
       title: 'Enum',
       styles: {
-        normal: [{ label: 'Font Style', name: '$meta.enum_fontStyle', type: 'select' }],
+        normal: [
+          // { label: 'Foreground', name: '$meta.enum_foreground' },
+          { label: 'Font Style', name: '$meta.enum_fontStyle', type: 'select' },
+        ],
       },
     },
     {
@@ -1051,7 +1064,10 @@ const syntax = [
     {
       title: 'Interface',
       styles: {
-        normal: [{ label: 'Font Style', name: '$meta.interface_fontStyle', type: 'select' }],
+        normal: [
+          // { label: 'Foreground', name: '$meta.interface_foreground' },
+          { label: 'Font Style', name: '$meta.interface_fontStyle', type: 'select' },
+        ],
       },
     },
     {
@@ -1068,7 +1084,10 @@ const syntax = [
     {
       title: 'Class',
       styles: {
-        normal: [{ label: 'Font Style', name: '$meta.class_fontStyle', type: 'select' }],
+        normal: [
+          // { label: 'Foreground', name: '$meta.class_foreground' },
+          { label: 'Font Style', name: '$meta.class_fontStyle', type: 'select' },
+        ],
       },
     },
     {
@@ -1098,8 +1117,14 @@ const syntax = [
     {
       title: 'Function',
       styles: {
-        normal: [{ label: 'Font Style', name: '$meta.function_fontStyle', type: 'select' }],
-        invoke: [{ label: 'Font Style', name: '$meta.function-call_fontStyle', type: 'select' }],
+        normal: [
+          // { label: 'Foreground', name: '$meta.function_foreground' },
+          { label: 'Font Style', name: '$meta.function_fontStyle', type: 'select' },
+        ],
+        invoke: [
+          // { label: 'Foreground', name: '$meta.function-call_foreground' },
+          { label: 'Font Style', name: '$meta.function-call_fontStyle', type: 'select' },
+        ],
       },
     },
     {
@@ -1116,7 +1141,10 @@ const syntax = [
     {
       title: 'Tag',
       styles: {
-        normal: [{ label: 'Font Style', name: '$meta.tag_fontStyle', type: 'select' }],
+        normal: [
+          // { label: 'Foreground', name: '$meta.tag_foreground' },
+          { label: 'Font Style', name: '$meta.tag_fontStyle', type: 'select' },
+        ],
       },
     },
     {
@@ -1142,7 +1170,10 @@ const syntax = [
     {
       title: 'Import',
       styles: {
-        normal: [{ label: 'Font Style', name: '$meta.import_fontStyle', type: 'select' }],
+        normal: [
+          // { label: 'Foreground', name: '$meta.import_foreground' },
+          { label: 'Font Style', name: '$meta.import_fontStyle', type: 'select' },
+        ],
       },
     },
   ],
@@ -1379,39 +1410,45 @@ const others = [
       title: 'Symbols',
       styles: {
         normal: [
-          { label: 'Array', name: 'symbolIcon.arrayForeground' },
-          { label: 'Boolean', name: 'symbolIcon.booleanForeground' },
           { label: 'Class', name: 'symbolIcon.classForeground' },
-          { label: 'Color', name: 'symbolIcon.colorForeground' },
-          { label: 'Constant', name: 'symbolIcon.constantForeground' },
-          { label: 'Constructor', name: 'symbolIcon.constructorForeground' },
+          { label: 'Struct', name: 'symbolIcon.structForeground' },
           { label: 'Enum', name: 'symbolIcon.enumeratorForeground' },
-          { label: 'Enum Member', name: 'symbolIcon.enumeratorMemberForeground' },
+          { label: 'Interface', name: 'symbolIcon.interfaceForeground' },
+
           { label: 'Event', name: 'symbolIcon.eventForeground' },
           { label: 'Field', name: 'symbolIcon.fieldForeground' },
           { label: 'File', name: 'symbolIcon.fileForeground' },
           { label: 'Folder', name: 'symbolIcon.folderForeground' },
-          { label: 'Function', name: 'symbolIcon.functionForeground' },
-          { label: 'Interface', name: 'symbolIcon.interfaceForeground' },
+
           { label: 'Key', name: 'symbolIcon.keyForeground' },
           { label: 'Keyword', name: 'symbolIcon.keywordForeground' },
+          { label: 'Operator', name: 'symbolIcon.operatorForeground' },
+          { label: 'Namespace', name: 'symbolIcon.namespaceForeground' },
+
+          { label: 'Function', name: 'symbolIcon.functionForeground' },
+          { label: 'Constructor', name: 'symbolIcon.constructorForeground' },
           { label: 'Method', name: 'symbolIcon.methodForeground' },
           { label: 'Module', name: 'symbolIcon.moduleForeground' },
-          { label: 'Namespace', name: 'symbolIcon.namespaceForeground' },
-          { label: 'Null', name: 'symbolIcon.nullForeground' },
-          { label: 'Number', name: 'symbolIcon.numberForeground' },
-          { label: 'Object', name: 'symbolIcon.objectForeground' },
-          { label: 'Operator', name: 'symbolIcon.operatorForeground' },
-          { label: 'Package', name: 'symbolIcon.packageForeground' },
-          { label: 'Property', name: 'symbolIcon.propertyForeground' },
-          { label: 'Reference', name: 'symbolIcon.referenceForeground' },
-          { label: 'Snippet', name: 'symbolIcon.snippetForeground' },
-          { label: 'String', name: 'symbolIcon.stringForeground' },
-          { label: 'Struct', name: 'symbolIcon.structForeground' },
+
           { label: 'Text', name: 'symbolIcon.textForeground' },
+          { label: 'String', name: 'symbolIcon.stringForeground' },
+          { label: 'Number', name: 'symbolIcon.numberForeground' },
+          { label: 'Array', name: 'symbolIcon.arrayForeground' },
+          { label: 'Boolean', name: 'symbolIcon.booleanForeground' },
+          { label: 'Null', name: 'symbolIcon.nullForeground' },
+          { label: 'Object', name: 'symbolIcon.objectForeground' },
+          { label: 'Color', name: 'symbolIcon.colorForeground' },
+
+          { label: 'Constant', name: 'symbolIcon.constantForeground' },
+          { label: 'Property', name: 'symbolIcon.propertyForeground' },
           { label: 'Parameter', name: 'symbolIcon.typeParameterForeground' },
-          { label: 'Unit', name: 'symbolIcon.unitForeground' },
           { label: 'Variable', name: 'symbolIcon.variableForeground' },
+          { label: 'Enum Member', name: 'symbolIcon.enumeratorMemberForeground' },
+
+          { label: 'Unit', name: 'symbolIcon.unitForeground' },
+          { label: 'Snippet', name: 'symbolIcon.snippetForeground' },
+          { label: 'Reference', name: 'symbolIcon.referenceForeground' },
+          { label: 'Package', name: 'symbolIcon.packageForeground' },
         ],
       },
     },
