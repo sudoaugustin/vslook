@@ -7,7 +7,7 @@ const read = (path = '', options = {}) => {
   return options.json ? JSON.parse(content) : content;
 };
 
-const write = (path = '', content = '', options = {}) => {
+const write = (path = '', content, options = {}) => {
   content = options.json ? JSON.stringify(content, null, '\t') : content;
   fs.writeFileSync(path, content);
 };

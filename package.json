@@ -29,25 +29,23 @@
     "Other"
   ],
   "activationEvents": [
-    "*",
-    "onCommand:vslook.edit"
+    "onCommand:vslook.edit",
+    "onCommand:vslook.sync"
   ],
   "keywords": [
     "theme",
     "design_tool"
   ],
   "contributes": {
-    "themes": [
-      {
-        "label": "VSLook",
-        "path": "./themes/index.json",
-        "uiTheme": "vs-dark"
-      }
-    ],
     "commands": [
       {
         "title": "Edit",
         "command": "vslook.edit",
+        "category": "VSLook"
+      },
+      {
+        "title": "Sync",
+        "command": "vslook.sync",
         "category": "VSLook"
       }
     ],

@@ -12,14 +12,9 @@ export default () => {
   const [isDataLoaded, setDataLoaded] = useState(false);
 
   useEffectOnce(() => {
+    const observer = new MutationObserver(() => setTheme(theme => ({ ...theme, ...getCSSColors() })));
+
     setTheme({ ...window.$theme, ...getCSSColors() });
-    const observer = new MutationObserver(() =>
-      setTheme(theme => {
-        console.log(theme['sash.hoverBorder'], getCSSColors()['sash.hoverBorder']);
-        const newTheme = { ...theme, ...getCSSColors() };
-        return newTheme;
-      }),
-    );
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
   });
 
@@ -28,5 +23,5 @@ export default () => {
     setDataLoaded(true);
   });
 
-  return <div className="select-none">{isDataLoaded ? <Tool /> : <Loading />}</div>;
+  return <div className='select-none'>{isDataLoaded ? <Tool /> : <Loading />}</div>;
 };

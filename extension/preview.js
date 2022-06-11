@@ -1,7 +1,6 @@
 const { window, commands, ThemeColor } = require('vscode');
 
 module.exports = ({ name }) => {
-  console.log(name);
   switch (name) {
     case 'BASE_COLORS':
       window.withProgress(

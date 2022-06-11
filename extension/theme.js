@@ -1,42 +1,43 @@
-const fs = require('./utils/fs');
+const config = require('./utils/config');
 const getInherits = require('./utils/inherits');
 
-function get(path) {
-  const theme = fs.read(path, { json: true });
-  const tokenColors = theme.tokenColors.reduce((colors, { scope, settings }) => {
-    const $scope = typeof scope === 'string' ? scope : scope[0];
-    return {
-      ...colors,
-      [`$${$scope}_fontStyle`]: settings.fontStyle,
-      [`$${$scope}_foreground`]: settings.foreground,
-    };
-  }, {});
+module.exports = globalTheme => {
+  return {
+    get: () => {
+      const theme = globalTheme.get();
+      const tokenColors = theme.tokenColors.reduce((colors, { scope, settings }) => {
+        const $scope = typeof scope === 'string' ? scope : scope[0];
+        return {
+          ...colors,
+          [`$${$scope}_fontStyle`]: settings.fontStyle,
+          [`$${$scope}_foreground`]: settings.foreground,
+        };
+      }, {});
 
-  return { ...theme.colors, ...tokenColors };
-}
-
-function set(path, setGlobal, { name = '', value, select }) {
-  fs.update(
-    path,
-    theme => {
+      return { ...theme.colors, ...tokenColors };
+    },
+    set: ({ name, value }) => {
       if (name[0] === '$') {
-        const newTokenColors = theme.tokenColors;
-        const [scope, setting] = name.substring(1).split('_');
-        let i = newTokenColors.findIndex(tokenColor => tokenColor.scope[0] === scope);
+        const [scope, setting] = name.replace('$', '').split('_');
+        const newTextMateRules = config.get('editor.tokenColorCustomizations.textMateRules', []);
+        let i = newTextMateRules.findIndex((rule = {}) => rule.scope && rule.scope[0] === scope);
+
         if (i < 0) {
-          i = newTokenColors.length;
-          newTokenColors[i] = { scope: [scope, ...getInherits(scope)], settings: {} };
+          i = newTextMateRules.length;
+          newTextMateRules[i] = { scope: [scope, ...getInherits(scope)], settings: {} };
         }
 
         if (!!value || value === '') {
-          newTokenColors[i].settings[setting] = value;
+          newTextMateRules[i].settings[setting] = value;
         } else {
-          delete newTokenColors[i].settings[setting];
+          delete newTextMateRules[i].settings[setting];
         }
+        const newTokenColors = newTextMateRules.filter(({ settings }) => Object.keys(settings).length > 0);
 
-        theme.tokenColors = newTokenColors.filter(({ settings }) => Object.keys(settings).length > 0);
+        globalTheme.set({ tokenColors: newTokenColors });
+        config.set('editor.tokenColorCustomizations', { textMateRules: newTokenColors });
       } else {
-        const newColors = theme.colors;
+        const newColors = config.get('workbench.colorCustomizations', {});
         const inheritColors = getInherits(name);
 
         if (!!value) {
@@ -46,15 +47,9 @@ function set(path, setGlobal, { name = '', value, select }) {
           delete newColors[name];
           inheritColors.forEach(name => delete newColors[name]);
         }
-
-        theme.colors = newColors;
+        globalTheme.set({ colors: newColors });
+        config.set('workbench.colorCustomizations', newColors);
       }
-
-      select && setGlobal('theme', theme);
-      return theme;
     },
-    { json: true },
-  );
-}
-
-module.exports = { get, set };
+  };
+};

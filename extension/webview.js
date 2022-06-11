@@ -1,6 +1,6 @@
 const path = require('path');
-const theme = require('./theme');
 const vscode = require('vscode');
+const fs = require('./utils/fs');
 const palette = require('./palette');
 const preview = require('./preview');
 
@@ -23,7 +23,8 @@ function template({ js, css, globals }) {
     </html>`;
 }
 
-module.exports = ({ paths, setGlobal }) => {
+module.exports = ({ paths, globalTheme }) => {
+  const theme = require('./theme')(globalTheme);
   const getUri = (...args) => vscode.Uri.file(path.join(paths.root, ...args));
   const panel = vscode.window.createWebviewPanel('theme.preview', 'VSLook', vscode.ViewColumn.Beside, {
     enableScripts: true,
@@ -33,17 +34,19 @@ module.exports = ({ paths, setGlobal }) => {
   panel.webview.html = template({
     js: panel.webview.asWebviewUri(getUri('.dist', 'index.js')),
     css: panel.webview.asWebviewUri(getUri('.dist', 'index.css')),
-    globals: { theme: theme.get(paths.theme), palette: palette.get() },
+    globals: { theme: theme.get(), palette: palette.get() },
+  });
+  panel.onDidDispose(() => {
+    fs.write(paths.theme, globalTheme.get(), { json: true });
   });
 
   panel.webview.onDidReceiveMessage(({ type, payload }) => {
-    // console.log('💬', payload);
     switch (type) {
       case 'PREVIEW':
         preview(payload);
         break;
       case 'SET_THEME':
-        theme.set(paths.theme, setGlobal, payload);
+        theme.set(payload);
         break;
       case 'SET_PALETTE_COLORS':
         palette.set(payload);
