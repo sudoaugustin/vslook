@@ -1,8 +1,7 @@
 const path = require('path');
 const vscode = require('vscode');
-const fs = require('./utils/fs');
 const palette = require('./palette');
-const preview = require('./preview');
+const previewElement = require('./preview-element');
 
 function template({ js, css, globals }) {
   return `<!DOCTYPE html>
@@ -36,14 +35,15 @@ module.exports = ({ paths, globalTheme }) => {
     css: panel.webview.asWebviewUri(getUri('.dist', 'index.css')),
     globals: { theme: theme.get(), palette: palette.get() },
   });
+
   panel.onDidDispose(() => {
-    fs.write(paths.theme, globalTheme.get(), { json: true });
+    vscode.commands.executeCommand('vslook.sync');
   });
 
   panel.webview.onDidReceiveMessage(({ type, payload }) => {
     switch (type) {
       case 'PREVIEW':
-        preview(payload);
+        previewElement(payload);
         break;
       case 'SET_THEME':
         theme.set(payload);

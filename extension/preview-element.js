@@ -10,12 +10,7 @@ module.exports = ({ name }) => {
       break;
 
     case 'BUTTONS':
-      window.showInformationMessage(
-        'Do you want to request OTP?',
-        { detail: "You will recieve a 6-digit code. Please don't share it with anyone." },
-        'Continue',
-        'Cancel',
-      );
+      window.showInformationMessage('Do you want to request OTP?', 'Continue', 'Cancel');
       break;
 
     case 'QUICK_PICK':

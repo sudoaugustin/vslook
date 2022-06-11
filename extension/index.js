@@ -1,11 +1,20 @@
 const path = require('path');
 const vscode = require('vscode');
 const fs = require('./utils/fs');
-const webview = require('./webview');
 const config = require('./utils/config');
+const webview = require('./webview');
 
 function activate(context = {}) {
   context.globalState.setKeysForSync(['theme', 'time']);
+
+  const time = context.globalState.get('time');
+  const localTime = context.globalState.get('local_time');
+
+  console.log(time, localTime);
+
+  if (time > localTime) {
+    vscode.commands.executeCommand('vslook.sync');
+  }
 
   const paths = {
     root: context.extensionPath,
@@ -29,20 +38,18 @@ function activate(context = {}) {
     webview({ paths, globalTheme });
   });
 
-  // const disposableOnSync = vscode.commands.registerCommand('vslook.sync', () => {
-  //   const theme = globalTheme.get();
+  const disposableOnSync = vscode.commands.registerCommand('vslook.sync', () => {
+    const theme = globalTheme.get();
+    fs.write(paths.theme, theme, { json: true });
+    context.globalState.update('local_time', Date.now());
+    config.set('workbench.colorCustomizations', undefined);
+    config.set('editor.tokenColorCustomizations', undefined);
+    setTimeout(() => {
+      vscode.commands.executeCommand('workbench.action.reloadWindow');
+    }, 1000);
+  });
 
-  //   fs.write(paths.theme, theme, { json: true });
-  //   context.globalState.update('local_time', Date.now());
-  //   config.set('workbench.colorCustomizations', undefined);
-  //   config.set('editor.tokenColorCustomizations', undefined);
-  //   setTimeout(() => {
-  //     vscode.commands.executeCommand('workbench.action.reloadWindow');
-  //   }, 1000);
-  // });
-
-  context.subscriptions.push(disposableOnEdit);
-  // context.subscriptions.push(disposableOnSync);
+  context.subscriptions.push([disposableOnEdit, disposableOnSync]);
 }
 
 function deactivate() {}
