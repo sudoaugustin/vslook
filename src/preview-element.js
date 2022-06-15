@@ -10,7 +10,7 @@ module.exports = ({ name }) => {
       break;
 
     case 'BUTTONS':
-      window.showInformationMessage('Do you want to request OTP?', 'Continue', 'Cancel');
+      window.showInformationMessage('A demo toast to show buttons.', 'Continue', 'Cancel');
       break;
 
     case 'QUICK_PICK':
@@ -90,7 +90,7 @@ module.exports = ({ name }) => {
 };
 
 function showMessages() {
-  window.showErrorMessage('An error occured');
-  window.showWarningMessage('This action is not recommended.');
-  window.showInformationMessage('Successfully created an account.');
+  window.showErrorMessage('This is a sample error message by VSLook');
+  window.showWarningMessage('This is a sample warning message by VSLook');
+  window.showInformationMessage('This is a sample information message by VSLook');
 }

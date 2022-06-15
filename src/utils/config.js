@@ -1,6 +1,6 @@
-const { workspace, ConfigurationTarget } = require('vscode');
+const vscode = require('vscode');
 
-const getConfig = section => workspace.getConfiguration(section);
+const getConfig = section => vscode.workspace.getConfiguration(section);
 
 const splitName = (name = '') => {
   const names = name.split('.');
@@ -15,6 +15,6 @@ module.exports = {
   },
   set: (name = '', value) => {
     const { section, property } = splitName(name);
-    getConfig(section).update(property, value, ConfigurationTarget.Global);
+    getConfig(section).update(property, value, vscode.ConfigurationTarget.Global);
   },
 };

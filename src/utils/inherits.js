@@ -8,7 +8,7 @@ const inherits = {
   'statusBar.background': 'statusBar.noFolderBackground',
   'statusBar.foreground': 'statusBar.noFolderForeground',
   'statusBar.border': 'statusBar.noFolderBorder',
-  'statusBarItem.prominentBackground': 'statusBarItem.prominentHoverBackground',
+  'statusBarItem.hoverBackground': 'statusBarItem.prominentHoverBackground',
   'titleBar.activeBackground': 'titleBar.inactiveBackground',
   'titleBar.activeForeground': 'titleBar.inactiveForeground',
   'tab.inactiveBackground': 'tab.unfocusedInactiveBackground',
@@ -27,6 +27,8 @@ const inherits = {
   'editorBracketMatch.background': 'editorOverviewRuler.bracketMatchForeground',
   'editor.wordHighlightBackground': 'editorOverviewRuler.wordHighlightForeground',
   'editor.wordHighlightStrongBackground': 'editorOverviewRuler.wordHighlightStrongForeground',
+  'editorWidget.background': 'debugToolBar.background',
+  'editorWidget.border': 'debugToolBar.border',
   'minimap.errorHighlight': 'editorOverviewRuler.errorForeground',
   'minimap.warningHighlight': 'editorOverviewRuler.warningForeground',
   'minimap.findMatchHighlight': 'editorOverviewRuler.findMatchForeground',
@@ -38,11 +40,20 @@ const inherits = {
   'gitDecoration.addedResourceForeground': 'editorGutter.addedBackground',
   'gitDecoration.modifiedResourceForeground': 'editorGutter.modifiedBackground',
   'gitDecoration.deletedResourceForeground': 'editorGutter.deletedBackground',
+  'symbolIcon.stringForeground': 'symbolIcon.textForeground, symbolIcon.colorForeground',
+  'symbolIcon.constantForeground':
+    'symbolIcon.booleanForeground, symbolIcon.nullForeground, symbolIcon.arrayForeground, symbolIcon.moduleForeground',
+  'symbolIcon.classForeground': 'symbolIcon.structForeground, symbolIcon.unitForeground',
+  'symbolIcon.functionForeground':
+    'symbolIcon.constructorForeground, symbolIcon.methodForeground, symbolIcon.eventForeground',
+  'symbolIcon.variableForeground':
+    'symbolIcon.typeParameterForeground, symbolIcon.enumeratorMemberForeground, symbolIcon.propertyForeground',
+  'symbolIcon.keywordForeground': 'symbolIcon.namespaceForeground',
   'meta.object.member': 'support.type.property-name',
-  'entity.name.type': 'support.type',
+  comment: 'punctuation.definition.comment',
+  'entity.name.type': 'support.type, meta.return.type',
   'entity.name.function': 'support.function',
   'entity.name.type.class': 'support.class',
-  comment: 'punctuation.definition.comment',
 };
 
 module.exports = name => {

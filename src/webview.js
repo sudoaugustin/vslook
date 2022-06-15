@@ -1,15 +1,21 @@
 const path = require('path');
 const vscode = require('vscode');
+const config = require('./utils/config');
 const palette = require('./palette');
 const previewElement = require('./preview-element');
+const { COLORS, TOKEN_COLORS, IGNORED_SETTINGS } = require('./types');
 
-function template({ js, css, globals }) {
+function getUri(...args) {
+  return vscode.Uri.file(path.join(__dirname, '../', ...args));
+}
+
+function template({ globals, asWebviewUri }) {
   return `<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="${css}" rel="stylesheet">
+        <link href="${asWebviewUri('index.css')}" rel="stylesheet">
       </head>
       <body>
         <div id="root"></div>
@@ -17,27 +23,32 @@ function template({ js, css, globals }) {
           window.$theme=${JSON.stringify(globals.theme)}
           window.$palette=${JSON.stringify(globals.palette)}
         </script>
-        <script src="${js}"></script>
+        <script src="${asWebviewUri('index.js')}"></script>
       </body>
     </html>`;
 }
 
-module.exports = ({ paths, globalTheme }) => {
-  const theme = require('./theme')(globalTheme);
-  const getUri = (...args) => vscode.Uri.file(path.join(paths.root, ...args));
-  const panel = vscode.window.createWebviewPanel('theme.preview', 'VSLook', vscode.ViewColumn.Beside, {
+module.exports = globalState => {
+  const theme = require('./theme')(globalState);
+  const panel = vscode.window.createWebviewPanel('vslook', 'VSLook', vscode.ViewColumn.Beside, {
     enableScripts: true,
     retainContextWhenHidden: true,
   });
+  const ignoredSettings = config.get(IGNORED_SETTINGS);
+
+  config.set(IGNORED_SETTINGS, [...ignoredSettings, COLORS, TOKEN_COLORS]);
+
   panel.iconPath = getUri('media', 'logo.svg');
   panel.webview.html = template({
-    js: panel.webview.asWebviewUri(getUri('.dist', 'index.js')),
-    css: panel.webview.asWebviewUri(getUri('.dist', 'index.css')),
     globals: { theme: theme.get(), palette: palette.get() },
+    asWebviewUri: file => panel.webview.asWebviewUri(getUri('.dist', file)),
   });
 
   panel.onDidDispose(() => {
-    vscode.commands.executeCommand('vslook.sync');
+    config.set(COLORS, undefined);
+    config.set(TOKEN_COLORS, undefined);
+    config.set(IGNORED_SETTINGS, ignoredSettings);
+    setTimeout(() => vscode.commands.executeCommand('workbench.action.reloadWindow'), 1500);
   });
 
   panel.webview.onDidReceiveMessage(({ type, payload }) => {

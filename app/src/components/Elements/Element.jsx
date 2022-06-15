@@ -7,7 +7,6 @@ import { postMessage } from 'utils';
 
 const options = {
   'Font Style': [
-    { name: 'Auto', value: null },
     { name: 'Normal', value: '' },
     { name: 'Bold', value: 'bold' },
     { name: 'Italic', value: 'italic' },

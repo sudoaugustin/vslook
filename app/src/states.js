@@ -13,7 +13,7 @@ export const valueState = selectorFamily({
 
       if (name[0] === '$' && value === undefined) {
         const parentScope = getParentScope(name);
-        const defaultValue = name.includes('fontStyle') ? null : theme['editor.foreground'];
+        const defaultValue = name.includes('fontStyle') ? '' : theme['editor.foreground'];
         return !!parentScope ? get(valueState(parentScope)) : defaultValue;
       }
 

@@ -8,19 +8,12 @@
 
 ### Changed
 
-- #### UI
-
-  - Moved **Preformat** to **code** in **Text**.
-  - Moved **Toolbar** to **Icon** under **Button**.
-
-- #### Styles
-  - List Item's `obscure`
+- UI to more user friendly
 
 ### Removed
 
+- Unset color
 - Changing styles in `setting.json`
-- #### UI
-  - Unset color
 
 </br>
 

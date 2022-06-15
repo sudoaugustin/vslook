@@ -2,12 +2,12 @@
   "name": "vslook",
   "displayName": "VSLook",
   "icon": "media/logo.png",
-  "main": "./extension/index.js",
-  "version": "0.1.1",
+  "main": "./src/index.js",
+  "version": "0.2.0",
   "preview": true,
   "license": "MIT",
   "publisher": "sudoaugustin",
-  "description": "Customize the look of your VSCode",
+  "description": "Customize the look of your VSCode 😎",
   "author": {
     "name": "Augutstin Joseph",
     "email": "sudoaugustin@gmail.com"

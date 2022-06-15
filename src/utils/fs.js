@@ -8,7 +8,7 @@ const read = (path = '', options = {}) => {
 };
 
 const write = (path = '', content, options = {}) => {
-  content = options.json ? JSON.stringify(content, null, '\t') : content;
+  content = options.json ? JSON.stringify(content) : content;
   fs.writeFileSync(path, content);
 };
 
@@ -17,8 +17,4 @@ const update = (path = '', apply, options = {}) => {
   write(path, apply(content), options);
 };
 
-const getDirs = path => {
-  return fs.readdirSync(path);
-};
-
-module.exports = { read, write, update, getDirs };
+module.exports = { read, write, update };

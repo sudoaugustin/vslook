@@ -1,51 +1,51 @@
-# VSLook
+# `VSLook`
 
 ![What vslook does](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/overview.gif)
 
-## 🌟 Features
+## 📗 Get started
 
-### Flexible
+- Install from [marketplace](https://marketplace.visualstudio.com/items?itemName=sudoaugustin.vslook).
+- Choose **VSLook** from Color Theme.
+- Open Command Palette `Ctrl+Shift+P`. Search for **VSLook: Edit** and press `Enter`.
 
-VSLook set the new theme on top of active theme. So only the part you wanna change get changed.
-
-![Flexibility](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/flexible.gif)
-
-### Color palettes and variables
-
-You can use **Tailwind** or **Material** colors & also create your own color vaiables.
+_For styling guide, [click here](https://github.com/sudoaugustin/vslook/blob/main/STYLES.md)._
 
 </br>
 
-## 📗 Getting Started
+### 🎨 Color palettes
 
-Open Command Palette `Ctrl+Shift+P`. Search for **VSLook: Edit** and press `Enter`.
+VSLook comes with `Tailwind` & `Material` color palettes.
 
-### Change palette
+To change palette
 
-Go to Settings `Ctrl+,`. Search for **VSLook**. Then go to **Palette: Type** and choose the palette you want to use. (Note: You need to reopen the VSLook editor to see the palette you choosed.)
+- Go to Settings `Ctrl+,`.
+- Search for **VSLook Palette Type**.
+- Choose the palette you want to use.
 
-### Add color variable
+</br>
 
-Colors can be added via setting or webview. But we recommend adding via webview.
+### 🌈 Color variables
+
+Create color variables from **Color Picker** and it will be merged with color palettes.
 
 ![Add color variable](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/add-color.gif)
 
-### Unset color
+To group your color variables, use a `/` in their names.
 
-You can unset an element color by selecting `None`. <br>
-_Note: This only removes the value set by `VSLook`, the value applied by your active theme will be still applied._
+![Add color variable](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/add-color.gif)
 
-![Unset color](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/unset-color.gif)
+If you wanna set bulk amount of colors, open `setting.json` and paste something like this.
 
-### Styling
-
-VSLook categorizes colors into **Components**, **Layouts**, **Editors** and **Pages**.
-
-- **Components** contain utility component colors used in different parts of VSCode. (e.g Button, Input, Checkbox )
-- **Layouts** contain component colors that has only one instance in VSCode. (e.g Activity Bar, Title Bar)
-- **Editors** contain all colors related to the editor groups.
-- **Pages** contain colors for certain VSCode pages. (e.g Settings, Welcome Page)
-
-For more styling informations, [click here](https://github.com/sudoaugustin/vslook/blob/main/STYLES.md)
-
-</br>
+```json
+"vslook.palette.colors": {
+  "base":{
+    "primary":"#111e6c",
+    "secondary":"#b0dfe5"
+  },
+  "pink": {
+    "100": "#ef4444",
+    "200": "#ec4899",
+  },
+  ...
+},
+```
