@@ -45,10 +45,14 @@ module.exports = globalState => {
   });
 
   panel.onDidDispose(() => {
-    config.set(COLORS, undefined);
-    config.set(TOKEN_COLORS, undefined);
-    config.set(IGNORED_SETTINGS, ignoredSettings);
-    setTimeout(() => vscode.commands.executeCommand('workbench.action.reloadWindow'), 1500);
+    const promises = [
+      config.set(COLORS, undefined),
+      config.set(TOKEN_COLORS, undefined),
+      config.set(IGNORED_SETTINGS, ignoredSettings),
+    ];
+    Promise.allSettled(promises).then(() => {
+      vscode.commands.executeCommand('workbench.action.reloadWindow');
+    });
   });
 
   panel.webview.onDidReceiveMessage(({ type, payload }) => {

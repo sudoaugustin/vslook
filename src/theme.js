@@ -20,7 +20,6 @@ module.exports = globalState => {
     },
     set: ({ name, value }) => {
       const { colors, tokenColors } = globalState.get('theme');
-      console.log(colors);
 
       if (name[0] === '$') {
         const [scope, setting] = name.replace('$', '').split('_');

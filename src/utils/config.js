@@ -15,6 +15,6 @@ module.exports = {
   },
   set: (name = '', value) => {
     const { section, property } = splitName(name);
-    getConfig(section).update(property, value, vscode.ConfigurationTarget.Global);
+    return getConfig(section).update(property, value, vscode.ConfigurationTarget.Global);
   },
 };

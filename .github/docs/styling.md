@@ -1,39 +1,104 @@
-### 🏗️ This page is still under construction
+# 🪄 Styling Guide
 
-## Components
+VSLook group the styles into
+
+- [Components](#components) (e.g Input, Button)
+- [Layouts](#layouts) (e.g Activity Bar, Side Bar)
+- [Editors](#editors) (e.g Pane, Tabs)
+- [Syntaxes](#syntaxes) (e.g Variables, Functions)
+
+  <br/>
+
+## `Components`
 
 ### Base Colors
 
-![base colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-base-colors.png)
-
-### Scrollbar
-
-![scrollbar colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-scrollbar.png)
+![base colors guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/base.png)
 
 ### Text
 
-![text colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-text.png)
+![text color guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/text.png)
 
-### Toolbar & Buttons
+### Icon
 
-![toolbar & buttons colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-toolbar-buttons.png)
+![icon color guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/icon.png)
 
-### Checkbox, Input & Dropdown
+### Button
 
-![checkbox, input & dropdown colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-checkbox-input-dropdown.png)
+![button color guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/button.png)
 
-### Toast & Badge
+### Chechbox, Input & Dropdown
 
-![toast & badge colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-toast-badge.png)
+![checkbox, input & dropdown colors guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/checkbox-input-dropdown.png)
 
-### List & Keybinding Label
+### List
 
-![list & keybinding label colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-list-keybinding.png)
+![list color guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/list.png)
 
-</br>
+### Badge, Scrollbar & Keybinding
 
-## Layouts
+![badge, scrollbar & keybinding colors guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/badge-scrollbar-keybinding.png)
 
-### Title Bar & Activity Bar
+<br/>
 
-![title bar & activity bar colors](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/docs-titlebar-activitybar.png)
+## `Layouts`
+
+### Title Bar
+
+![titlebar color guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/titlebar.png)
+
+### Activity Bar, Side Bar & Status Bar
+
+![activity bar, side bar & status bar colors guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/activitybar-sidebar-statusbar.png)
+
+### Quickpick, Panel & Notification Center
+
+![quickpick, panel & notification center colors guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/quickpick-panel-notifications.png)
+
+<br/>
+
+## `Editors`
+
+### Pane, Tabs, Breadcrumb, Gutter, Minimap & Overview Ruler
+
+![editor's pane, tabs, breadcrumb, gutter, minimap & overview ruler colors guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/editor-tabs-breadcrumb-gutter-minimap-ruler.png)
+
+### Body
+
+![editor's body colors guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/editor-body.png)
+
+### Hightlights
+
+![editor's hightlight colors guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/editor-body-highlight.png)
+
+### Widget, Tooltip & Suggestions
+
+![editor's widget, tooltip & suggestions colors guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/editor-widget-tooltip-suggestions.png)
+
+<br/>
+
+## `Syntax`
+
+### Linter
+
+![linter colors guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/syntax-linter.png)
+
+### Variables & String
+
+![variables & string syntax guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/syntax-variable-string.png)
+
+### Function & Class
+
+![function & class syntax guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/syntax-function-class.png)
+
+### Type, Enum & Interface
+
+![type,enum & interface syntax guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/syntax-type-interface-enum.png)
+
+### Import & Tag
+
+![import & tag syntax guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/syntax-import-tag.png)
+
+### Keyword, Operator & Punctuation
+
+![keyword,operator & punctuation syntax guide](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/styles/syntax-keyword-operator-punctuation.png)

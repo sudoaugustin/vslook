@@ -40,7 +40,29 @@ const components = [
       },
     },
   ],
-  [{ title: 'Icon', styles: { normal: [{ label: 'Foreground', name: 'icon.foreground' }] } }],
+  [
+    {
+      title: 'Icon',
+      styles: {
+        normal: [
+          { label: 'Default', name: 'icon.foreground' },
+          { label: 'Info', name: 'problemsInfoIcon.foreground' },
+          { label: 'Warning', name: 'problemsWarningIcon.foreground' },
+          { label: 'Error', name: 'problemsErrorIcon.foreground' },
+        ],
+      },
+    },
+    {
+      title: 'Extension',
+      styles: {
+        normal: [
+          { label: 'Star', name: 'extensionIcon.starForeground' },
+          { label: 'Verified', name: 'extensionIcon.verifiedForeground' },
+          { label: 'Pre-release', name: 'extensionIcon.preReleaseForeground' },
+        ],
+      },
+    },
+  ],
   [
     {
       title: 'Button',
@@ -157,17 +179,6 @@ const components = [
   ],
   [
     {
-      title: 'Badge',
-      styles: {
-        normal: [
-          { label: 'Background', name: 'badge.background' },
-          { label: 'Foreground', name: 'badge.foreground' },
-        ],
-      },
-    },
-  ],
-  [
-    {
       title: 'List',
       styles: {
         normal: [{ label: 'Indent', name: 'tree.indentGuidesStroke' }],
@@ -213,6 +224,17 @@ const components = [
         normal: [
           { label: 'Background', name: 'list.filterMatchBackground' },
           { label: 'Border', name: 'list.filterMatchBorder' },
+        ],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Badge',
+      styles: {
+        normal: [
+          { label: 'Background', name: 'badge.background' },
+          { label: 'Foreground', name: 'badge.foreground' },
         ],
       },
     },
@@ -331,13 +353,18 @@ const layouts = [
           { label: 'Foreground', name: 'sideBar.foreground' },
           { label: 'Border', name: 'sideBar.border' },
         ],
-        drop: [{ label: 'Background', name: 'sideBar.dropBackground' }],
       },
     },
     {
       title: 'Title',
       styles: {
         normal: [{ label: 'Foreground', name: 'sideBarTitle.foreground' }],
+      },
+    },
+    {
+      title: 'Section',
+      styles: {
+        drop: [{ label: 'Background', name: 'sideBar.dropBackground' }],
       },
     },
     {
@@ -461,16 +488,6 @@ const layouts = [
         drop: [{ label: 'Background', name: 'terminal.dropBackground' }],
       },
     },
-    {
-      title: 'Icons',
-      styles: {
-        normal: [
-          { label: 'Info', name: 'problemsInfoIcon.foreground' },
-          { label: 'Warning', name: 'problemsWarningIcon.foreground' },
-          { label: 'Error', name: 'problemsErrorIcon.foreground' },
-        ],
-      },
-    },
   ],
   [
     {
@@ -496,41 +513,6 @@ const layouts = [
         ],
       },
       preview: 'TOAST',
-    },
-    {
-      title: 'Icons',
-      styles: {
-        normal: [
-          { label: 'Info', name: 'notificationsInfoIcon.foreground' },
-          { label: 'Warning', name: 'notificationsWarningIcon.foreground' },
-          { label: 'Error', name: 'notificationsErrorIcon.foreground' },
-        ],
-      },
-    },
-  ],
-  [
-    {
-      title: 'Extension',
-    },
-    {
-      title: 'Button',
-      styles: {
-        normal: [
-          { label: 'Background', name: 'extensionButton.prominentBackground' },
-          { label: 'Foreground', name: 'extensionButton.prominentForeground' },
-        ],
-        hover: [{ label: 'Background', name: 'extensionButton.prominentHoverBackground' }],
-      },
-    },
-    {
-      title: 'Icons',
-      styles: {
-        normal: [
-          { label: 'Star', name: 'extensionIcon.starForeground' },
-          { label: 'Verified', name: 'extensionIcon.verifiedForeground' },
-          { label: 'Pre-release', name: 'extensionIcon.preReleaseForeground' },
-        ],
-      },
     },
   ],
 ];
@@ -614,6 +596,48 @@ const editors = [
   ],
   [
     {
+      title: 'Gutter',
+      styles: {
+        normal: [
+          { label: 'Background', name: 'editorGutter.background' },
+          { label: 'Fold Icon', name: 'editorGutter.foldingControlForeground' },
+        ],
+      },
+    },
+    {
+      title: 'Line No',
+      styles: {
+        normal: [{ label: 'Foreground', name: 'editorLineNumber.foreground' }],
+        active: [{ label: 'Foreground', name: 'editorLineNumber.activeForeground' }],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Minimap',
+      styles: {
+        normal: [
+          { label: 'Background', name: 'minimap.background' },
+          { label: 'Slider', name: 'minimapSlider.background' },
+        ],
+        hover: [{ label: 'Slider', name: 'minimapSlider.hoverBackground' }],
+        active: [{ label: 'Slider', name: 'minimapSlider.activeBackground' }],
+      },
+    },
+  ],
+  [
+    {
+      title: 'Overview Ruler',
+      styles: {
+        normal: [
+          { label: 'Background', name: 'editorOverviewRuler.background' },
+          { label: 'Border', name: 'editorOverviewRuler.border' },
+        ],
+      },
+    },
+  ],
+  [
+    {
       title: 'Body',
       styles: {
         normal: [
@@ -655,15 +679,11 @@ const editors = [
           { label: 'Background', name: 'editor.wordHighlightBackground' },
           { label: 'Border', name: 'editor.wordHighlightBorder' },
         ],
-        strong: [
-          { label: 'Background', name: 'editor.wordHighlightStrongBackground' },
-          { label: 'Border', name: 'editor.wordHighlightStrongBorder' },
-        ],
         bracket: [
           { label: 'Background', name: 'editorBracketMatch.background' },
           { label: 'Border', name: 'editorBracketMatch.border' },
         ],
-        occurence: [
+        selection: [
           { label: 'Background', name: 'editor.selectionHighlightBackground' },
           { label: 'Border', name: 'editor.selectionHighlightBorder' },
         ],
@@ -686,48 +706,6 @@ const editors = [
     //     ],
     //   },
     // },
-  ],
-  [
-    {
-      title: 'Gutter',
-      styles: {
-        normal: [
-          { label: 'Background', name: 'editorGutter.background' },
-          { label: 'Fold Icon', name: 'editorGutter.foldingControlForeground' },
-        ],
-      },
-    },
-    {
-      title: 'Line No',
-      styles: {
-        normal: [{ label: 'Foreground', name: 'editorLineNumber.foreground' }],
-        active: [{ label: 'Foreground', name: 'editorLineNumber.activeForeground' }],
-      },
-    },
-  ],
-  [
-    {
-      title: 'Minimap',
-      styles: {
-        normal: [
-          { label: 'Background', name: 'minimap.background' },
-          { label: 'Slider', name: 'minimapSlider.background' },
-        ],
-        hover: [{ label: 'Slider', name: 'minimapSlider.hoverBackground' }],
-        active: [{ label: 'Slider', name: 'minimapSlider.activeBackground' }],
-      },
-    },
-  ],
-  [
-    {
-      title: 'Overview Ruler',
-      styles: {
-        normal: [
-          { label: 'Background', name: 'editorOverviewRuler.background' },
-          { label: 'Border', name: 'editorOverviewRuler.border' },
-        ],
-      },
-    },
   ],
   [
     {
@@ -923,6 +901,30 @@ const syntaxes = [
   ],
   [
     {
+      title: 'Function',
+      styles: {
+        normal: [
+          // { label: 'Foreground', name: '$meta.function_foreground' },
+          { label: 'Font Style', name: '$meta.function_fontStyle', type: 'select' },
+        ],
+        invoke: [
+          // { label: 'Foreground', name: '$meta.function-call_foreground' },
+          { label: 'Font Style', name: '$meta.function-call_fontStyle', type: 'select' },
+        ],
+      },
+    },
+    {
+      title: 'Name',
+      styles: {
+        normal: [
+          { label: 'Foreground', name: '$entity.name.function_foreground' },
+          { label: 'Font Style', name: '$entity.name.function_fontStyle', type: 'select' },
+        ],
+      },
+    },
+  ],
+  [
+    {
       title: 'Class',
       styles: {
         normal: [
@@ -950,30 +952,6 @@ const syntaxes = [
         normal: [
           { label: 'Foreground', name: '$keyword.operator.new_foreground' },
           { label: 'Font Style', name: '$keyword.operator.new_fontStyle', type: 'select' },
-        ],
-      },
-    },
-  ],
-  [
-    {
-      title: 'Function',
-      styles: {
-        normal: [
-          // { label: 'Foreground', name: '$meta.function_foreground' },
-          { label: 'Font Style', name: '$meta.function_fontStyle', type: 'select' },
-        ],
-        invoke: [
-          // { label: 'Foreground', name: '$meta.function-call_foreground' },
-          { label: 'Font Style', name: '$meta.function-call_fontStyle', type: 'select' },
-        ],
-      },
-    },
-    {
-      title: 'Name',
-      styles: {
-        normal: [
-          { label: 'Foreground', name: '$entity.name.function_foreground' },
-          { label: 'Font Style', name: '$entity.name.function_fontStyle', type: 'select' },
         ],
       },
     },

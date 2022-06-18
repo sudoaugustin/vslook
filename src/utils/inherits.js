@@ -5,6 +5,9 @@ const inherits = {
   'list.inactiveSelectionIconForeground': 'list.activeSelectionIconForeground',
   'list.inactiveFocusBackground': 'list.focusBackground',
   'list.inactiveFocusOutline': 'list.focusOutline',
+  'problemsInfoIcon.foreground': 'notificationsInfoIcon.foreground',
+  'problemsWarningIcon.foreground': 'notificationsWarningIcon.foreground',
+  'problemsErrorIcon.foreground': 'notificationsErrorIcon.foreground',
   'statusBar.background': 'statusBar.noFolderBackground',
   'statusBar.foreground': 'statusBar.noFolderForeground',
   'statusBar.border': 'statusBar.noFolderBorder',
@@ -25,8 +28,9 @@ const inherits = {
   'editor.selectionHighlightBackground':
     'minimap.selectionOccurrenceHighlight, editorOverviewRuler.selectionHighlightForeground',
   'editorBracketMatch.background': 'editorOverviewRuler.bracketMatchForeground',
-  'editor.wordHighlightBackground': 'editorOverviewRuler.wordHighlightForeground',
-  'editor.wordHighlightStrongBackground': 'editorOverviewRuler.wordHighlightStrongForeground',
+  'editor.wordHighlightBackground':
+    'editorOverviewRuler.wordHighlightForeground, editor.wordHighlightStrongBackground, editorOverviewRuler.wordHighlightStrongForeground',
+  'editor.wordHighlightBorder': 'editor.wordHighlightStrongBorder',
   'editorWidget.background': 'debugToolBar.background',
   'editorWidget.border': 'debugToolBar.border',
   'minimap.errorHighlight': 'editorOverviewRuler.errorForeground',

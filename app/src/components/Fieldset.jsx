@@ -28,5 +28,3 @@ export default ({ name, label, children }) => {
     </fieldset>
   );
 };
-
-console.log();

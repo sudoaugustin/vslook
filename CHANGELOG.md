@@ -5,6 +5,8 @@
 ### Added
 
 - Color theme
+- Syntax Highlight
+- Theme Sync across multiple devices
 
 ### Changed
 

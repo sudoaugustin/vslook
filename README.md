@@ -8,7 +8,7 @@
 - Choose **VSLook** from Color Theme.
 - Open Command Palette `Ctrl+Shift+P`. Search for **VSLook: Edit** and press `Enter`.
 
-_For styling guide, [click here](https://github.com/sudoaugustin/vslook/blob/main/STYLES.md)._
+_For styling guide, [click here](https://github.com/sudoaugustin/vslook/main/.github/docs/styling.md)._
 
 </br>
 
@@ -26,13 +26,13 @@ To change palette
 
 ### 🌈 Color variables
 
-Create color variables from **Color Picker** and it will be merged with color palettes.
+Create color variables from **Color Picker**. It will merge with color palettes.
 
 ![Add color variable](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/add-color.gif)
 
 To group your color variables, use a `/` in their names.
 
-![Add color variable](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/add-color.gif)
+![Add color variable](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/group-color.gif)
 
 If you wanna set bulk amount of colors, open `setting.json` and paste something like this.
 
@@ -45,7 +45,7 @@ If you wanna set bulk amount of colors, open `setting.json` and paste something 
   "pink": {
     "100": "#ef4444",
     "200": "#ec4899",
+    ...
   },
-  ...
 },
 ```

@@ -4,13 +4,13 @@ module.exports = ({ name }) => {
   switch (name) {
     case 'BASE_COLORS':
       window.withProgress(
-        { title: 'Sending request to server...', cancellable: true, location: 15 },
+        { title: 'Progress bar preview is here.', cancellable: true, location: 15 },
         () => new Promise(() => {}),
       );
       break;
 
     case 'BUTTONS':
-      window.showInformationMessage('A demo toast to show buttons.', 'Continue', 'Cancel');
+      window.showInformationMessage('Buttons preview is here', 'Continue', 'Cancel');
       break;
 
     case 'QUICK_PICK':
@@ -29,7 +29,7 @@ module.exports = ({ name }) => {
           { label: '$(watch) Scheduled reminders' },
         ],
         {
-          title: '🌈 Sample quick pick (ESC to close)',
+          title: 'Quick pick preview is here (ESC to close)',
           placeHolder: 'Search or jump to...',
           ignoreFocusOut: true,
         },
@@ -90,7 +90,7 @@ module.exports = ({ name }) => {
 };
 
 function showMessages() {
-  window.showErrorMessage('This is a sample error message by VSLook');
-  window.showWarningMessage('This is a sample warning message by VSLook');
-  window.showInformationMessage('This is a sample information message by VSLook');
+  window.showErrorMessage('Error Toast preview is here.');
+  window.showWarningMessage('Warning Toast preview is here.');
+  window.showInformationMessage('Information Toast preview is here.');
 }

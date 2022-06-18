@@ -11,18 +11,22 @@ function activate(context = {}) {
   globalState = context.globalState;
   const version = context.extension.packageJSON.version;
 
-  globalState.setKeysForSync(['theme', 'last-version']);
+  // Don't sync `last-version`. It needs to be machine dependent
+  globalState.setKeysForSync(['theme']);
 
   if (!globalState.get('theme')) {
-    // Initialize  `globalState` on first install.
+    // Initialize `theme` on first install.
     globalState.update('theme', fs.read(themePath, { json: true }));
-    globalState.update('last-version', version);
-  } else if (globalState.get('last-version') !== version) {
-    // Updates overwrite theme-file. So reload after each update & `deactivate` will do it's job.
-    vscode.commands.executeCommand('workbench.action.reloadWindow');
   }
 
-  const disposableOnEdit = vscode.commands.registerCommand('vslook.edit', () => webview(context.globalState));
+  if (!globalState.get('last-version') || globalState.get('last-version') !== version) {
+    // Installing extension overwrite theme-file. So reload after each install & `deactivate` will do it's job.
+    globalState.update('last-version', version).then(() => {
+      vscode.commands.executeCommand('workbench.action.reloadWindow');
+    });
+  }
+
+  const disposableOnEdit = vscode.commands.registerCommand('vslook.edit', () => webview(globalState));
 
   context.subscriptions.push(disposableOnEdit);
 }
