@@ -8,7 +8,7 @@
 - Choose **VSLook** from Color Theme.
 - Open Command Palette `Ctrl+Shift+P`. Search for **VSLook: Edit** and press `Enter`.
 
-_For styling guide, [click here](https://github.com/sudoaugustin/vslook/main/.github/docs/styling.md)._
+_For styling guide, [click here](https://github.com/sudoaugustin/vslook/blob/main/.github/docs/styling.md)._
 
 </br>
 
