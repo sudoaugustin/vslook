@@ -77,7 +77,7 @@ VSLook group the styles into
 
 <br/>
 
-## `Syntax`
+## `Syntaxes`
 
 ### Linter
 
