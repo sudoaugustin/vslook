@@ -1,5 +1,14 @@
 # Change Log
 
+## [0.3.0] - 2022-07-13
+
+### Added
+
+- Clone theme
+- Export theme
+
+</br>
+
 ## [0.2.0] - 2022-06-19
 
 ### Added

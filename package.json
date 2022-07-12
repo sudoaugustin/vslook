@@ -3,7 +3,7 @@
   "displayName": "VSLook",
   "icon": "media/logo.png",
   "main": "./src/index.js",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "preview": true,
   "license": "MIT",
   "publisher": "sudoaugustin",
@@ -48,6 +48,16 @@
         "title": "Edit",
         "command": "vslook.edit",
         "category": "VSLook"
+      },
+      {
+        "title": "Clone",
+        "command": "vslook.clone",
+        "category": "VSLook"
+      },
+      {
+        "title": "Export",
+        "command": "vslook.export",
+        "category": "VSLook"
       }
     ],
     "configuration": {
@@ -83,5 +93,8 @@
     "@types/vscode": "^1.63.0",
     "eslint": "^8.13.0",
     "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "json5": "^2.2.1"
   }
 }

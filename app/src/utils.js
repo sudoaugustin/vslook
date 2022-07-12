@@ -1,6 +1,6 @@
 import { colord } from 'colord';
-import palettes from 'data/palettes';
 import merge from 'lodash/fp/merge';
+import palettes from 'data/palettes';
 
 const vscode = window.acquireVsCodeApi();
 

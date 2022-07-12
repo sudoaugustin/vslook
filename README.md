@@ -12,6 +12,26 @@ _For styling guide, [click here](https://github.com/sudoaugustin/vslook/blob/mai
 
 </br>
 
+### 🚚 Export theme
+
+- Open Command Palette `Ctrl+Shift+P`. Search for **VSLook: Export** and press `Enter`.
+- Theme will be saved in `$HOME/vslook-theme.json`.
+
+</br>
+
+### 🖨 Clone theme
+
+- Open Command Palette `Ctrl+Shift+P`. Search for **VSLook: Clone** and press `Enter`.
+- Choose the theme you want to clone.
+- VSLook will copy all the styles from the selected theme.
+
+⚠️Notes:
+
+- This action is not reversible.
+- Changing syntax colors with VSLook won't work correctly after cloning a theme.
+
+</br>
+
 ### 🎨 Color palettes
 
 VSLook comes with `Tailwind` & `Material` color palettes.

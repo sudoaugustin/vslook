@@ -1,9 +1,9 @@
 const path = require('path');
 const vscode = require('vscode');
-const config = require('./utils/config');
 const palette = require('./palette');
+const { config } = require('./utils');
 const previewElement = require('./preview-element');
-const { COLORS, TOKEN_COLORS, IGNORED_SETTINGS } = require('./types');
+const { COLORS, TOKENS, IGNORED_SETTINGS } = require('./types');
 
 function getUri(...args) {
   return vscode.Uri.file(path.join(__dirname, '../', ...args));
@@ -28,15 +28,14 @@ function template({ globals, asWebviewUri }) {
     </html>`;
 }
 
-module.exports = globalState => {
-  const theme = require('./theme')(globalState);
+module.exports = theme => {
   const panel = vscode.window.createWebviewPanel('vslook', 'VSLook', vscode.ViewColumn.Beside, {
     enableScripts: true,
     retainContextWhenHidden: true,
   });
   const ignoredSettings = config.get(IGNORED_SETTINGS);
 
-  config.set(IGNORED_SETTINGS, [...ignoredSettings, COLORS, TOKEN_COLORS]);
+  config.set(IGNORED_SETTINGS, [...ignoredSettings, COLORS, TOKENS]);
 
   panel.iconPath = getUri('media', 'logo.svg');
   panel.webview.html = template({
@@ -47,7 +46,7 @@ module.exports = globalState => {
   panel.onDidDispose(() => {
     const promises = [
       config.set(COLORS, undefined),
-      config.set(TOKEN_COLORS, undefined),
+      config.set(TOKENS, undefined),
       config.set(IGNORED_SETTINGS, ignoredSettings),
     ];
     Promise.allSettled(promises).then(() => {

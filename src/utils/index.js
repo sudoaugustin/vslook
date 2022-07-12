@@ -1,5 +1,5 @@
-function mergeTokenColors(tokens1, tokens2) {
-  const tokens = [...tokens1, ...tokens2].reduce(() => {}, {});
-}
+const fs = require('./fs');
+const config = require('./config');
+const inherits = require('./inherits');
 
-module.exports = { mergeTokenColors };
+module.exports = { fs, config, getInherits: inherits };
