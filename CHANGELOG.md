@@ -1,5 +1,13 @@
 # Change Log
 
+## [0.3.1] - 2022-07-13
+
+### Fixed
+
+- Cloning theme's scope undefined case
+
+</br>
+
 ## [0.3.0] - 2022-07-13
 
 ### Added

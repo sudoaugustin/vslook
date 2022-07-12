@@ -10,7 +10,7 @@ module.exports = globalState => {
   return {
     get: () => {
       const { colors, tokenColors } = globalState.get('theme');
-      const newTokenColors = tokenColors.reduce((colors, { scope, settings }) => {
+      const newTokenColors = tokenColors.reduce((colors, { scope = '', settings }) => {
         const $scope = typeof scope === 'string' ? scope : scope[0];
         return {
           ...colors,

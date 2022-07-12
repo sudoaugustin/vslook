@@ -3,11 +3,11 @@
   "displayName": "VSLook",
   "icon": "media/logo.png",
   "main": "./src/index.js",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "preview": true,
   "license": "MIT",
   "publisher": "sudoaugustin",
-  "description": "Customize the look of your VSCode 😎",
+  "description": "Easiest way to create vscode theme.",
   "author": {
     "name": "Augutstin Joseph",
     "email": "sudoaugustin@gmail.com"
