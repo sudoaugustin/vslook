@@ -2,6 +2,14 @@
 
 ![What vslook does](https://raw.githubusercontent.com/sudoaugustin/vslook/main/.github/media/overview.gif)
 
+## Warnings
+- This is extension will delete `colorCustomizations` and `tokenColorCustomizations` in `setting.json`. This behavior is because vscode doesn't update the UI when the theme file changes. It only updates when `setting.json` changes.
+
+- VSLook will reload VSCode everytime it's closeed in order to show the latest colors from theme file.
+
+
+</br>
+
 ## 📗 Get started
 
 - Install from [marketplace](https://marketplace.visualstudio.com/items?itemName=sudoaugustin.vslook).
